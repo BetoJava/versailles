@@ -1,4 +1,5 @@
 import { chatbotRouter } from "~/server/api/routers/chatbot";
+import { onboardingRouter } from "~/server/api/routers/onboarding";
 import { createCallerFactory, createTRPCRouter } from "~/server/api/trpc";
 
 /**
@@ -8,6 +9,7 @@ import { createCallerFactory, createTRPCRouter } from "~/server/api/trpc";
  */
 export const appRouter = createTRPCRouter({
   chatbot: chatbotRouter,
+  onboarding: onboardingRouter,
 });
 
 // export type definition of API

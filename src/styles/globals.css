@@ -40,14 +40,28 @@
   src: url('../assets/fonts/Satoshi-Bold.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
+/* Apollon-Regular.woff */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Apollon';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/Apollon-Regular.woff') format('woff');
+}
+
+
 
 
 @theme {
   --font-sans: 'Satoshi', ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-apollon: 'Apollon', ui-sans-serif, system-ui, sans-serif;
+  --font-satoshi: 'Satoshi', ui-sans-serif, system-ui, sans-serif;
 }
 
 @theme inline {
+  --color-or: oklch(0.7115 0.0809 83.93);
+  --color-beige: oklch(0.9523 0.007 88.64);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);

@@ -10,7 +10,7 @@ export default function ChatPage() {
       <div className="flex h-screen flex-col">
         <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
           <div className="container flex h-14 px-8 items-center justify-between">
-            <h1 className="text-lg font-semibold">Chat Assistant</h1>
+            <h1 className="text-lg font-semibold font-apollon">Chat Assistant</h1>
             <ModeToggle />
           </div>
         </header>
