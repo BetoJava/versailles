@@ -1,0 +1,38 @@
+[
+    {
+        "sectionId": "1",
+        "name": "grande-ecurie"
+    },
+    {
+        "sectionId": "2",
+        "name": "domaine-trianon"
+    },
+    {
+        "sectionId": "3",
+        "name": "chateau"
+    },
+    {
+        "sectionId": "4",
+        "name": "les-jardins"
+    },
+    {
+        "sectionId": "5",
+        "name": "parc"
+    },
+    {
+        "sectionId": "6",
+        "name": "petite-ecurie"
+    },
+    {
+        "sectionId": "7",
+        "name": "salle-jeu-paume"
+    },
+    {
+        "sectionId": "8",
+        "name": "domaine-marly"
+    },
+    {
+        "sectionId": "9",
+        "name": "ville-versailles-cite-royale"
+    }
+]
