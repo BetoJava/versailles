@@ -7,9 +7,23 @@ import { MessageBubble } from "./message-bubble";
 interface MessageListProps {
   messages: Message[];
   isLoading: boolean;
+  emptyChild?: React.ReactNode;
 }
 
-export function MessageList({ messages, isLoading }: MessageListProps) {
+const defaultEmptyChild = (
+  <div className="flex h-full items-center justify-center">
+    <div className="text-center">
+      <h2 className="text-2xl font-semibold text-muted-foreground">
+        Commencez une conversation
+      </h2>
+      <p className="mt-2 text-muted-foreground">
+        Posez une question ou utilisez une des suggestions ci-dessous
+      </p>
+    </div>
+  </div>
+);
+
+export function MessageList({ messages, isLoading, emptyChild = defaultEmptyChild }: MessageListProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -20,16 +34,7 @@ export function MessageList({ messages, isLoading }: MessageListProps) {
 
   if (messages.length === 0) {
     return (
-      <div className="flex h-full items-center justify-center">
-        <div className="text-center">
-          <h2 className="text-2xl font-semibold text-muted-foreground">
-            Commencez une conversation
-          </h2>
-          <p className="mt-2 text-muted-foreground">
-            Posez une question ou utilisez une des suggestions ci-dessous
-          </p>
-        </div>
-      </div>
+      emptyChild
     );
   }
 
