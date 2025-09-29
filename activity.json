@@ -19,7 +19,8 @@
     "openingTime": 12.5,
     "closingTime": 17.5,
     "sectionId": "1",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/grande-ecurie/galerie-carrosses"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/grande-ecurie/galerie-carrosses",
+    "ticket": "chateau"
   },
   {
     "activityId": "2",
@@ -41,14 +42,15 @@
     "openingTime": 9.5,
     "closingTime": 17.5,
     "sectionId": "1",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/grande-ecurie/campus-versailles"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/grande-ecurie/campus-versailles",
+    "ticket": "chateau"
   },
   {
     "activityId": "3",
     "name": "academie-equestre-versailles",
     "latitude": 48.80378,
     "longitude": 2.12829,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 4,
       "landscape": 2,
@@ -60,10 +62,11 @@
       "spirituality": 2,
       "nature": 3
     },
-    "openingTime": 15.0,
-    "closingTime": 19.0,
+    "openingTime": 15,
+    "closingTime": 19,
     "sectionId": "1",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/grande-ecurie/academie-equestre-versailles"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/grande-ecurie/academie-equestre-versailles",
+    "ticket": "chateau"
   },
   {
     "activityId": "4",
@@ -82,17 +85,18 @@
       "spirituality": 2,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "2",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/les-jardins-francaise"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/les-jardins-francaise",
+    "ticket": "passeport"
   },
   {
     "activityId": "5",
     "name": "hameau-reine",
     "latitude": 48.81417,
     "longitude": 2.10556,
-    "duration": 2.0,
+    "duration": 2,
     "interests": {
       "architecture": 4,
       "landscape": 4,
@@ -104,10 +108,11 @@
       "spirituality": 1,
       "nature": 4
     },
-    "openingTime": 12.0,
+    "openingTime": 12,
     "closingTime": 18.5,
     "sectionId": "2",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/hameau-reine"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/hameau-reine",
+    "ticket": "passeport"
   },
   {
     "activityId": "6",
@@ -126,17 +131,18 @@
       "spirituality": 2,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "2",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/jardin-anglais"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/jardin-anglais",
+    "ticket": "passeport"
   },
   {
     "activityId": "7",
     "name": "petit-trianon",
     "latitude": 48.81417,
     "longitude": 2.10556,
-    "duration": 2.0,
+    "duration": 2,
     "interests": {
       "architecture": 5,
       "landscape": 4,
@@ -148,17 +154,18 @@
       "spirituality": 2,
       "nature": 3
     },
-    "openingTime": 12.0,
+    "openingTime": 12,
     "closingTime": 18.5,
     "sectionId": "2",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/petit-trianon"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/petit-trianon",
+    "ticket": "passeport"
   },
   {
     "activityId": "8",
     "name": "grand-trianon",
     "latitude": 48.81417,
     "longitude": 2.10556,
-    "duration": 2.0,
+    "duration": 2,
     "interests": {
       "architecture": 5,
       "landscape": 4,
@@ -170,10 +177,11 @@
       "spirituality": 2,
       "nature": 4
     },
-    "openingTime": 12.0,
+    "openingTime": 12,
     "closingTime": 18.5,
     "sectionId": "2",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/trianon/grand-trianon"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/trianon/grand-trianon",
+    "ticket": "passeport"
   },
   {
     "activityId": "9",
@@ -192,10 +200,11 @@
       "spirituality": 1,
       "nature": 2
     },
-    "openingTime": 12.0,
+    "openingTime": 12,
     "closingTime": 18.5,
     "sectionId": "2",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/theatre-reine"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/theatre-reine",
+    "ticket": "passeport"
   },
   {
     "activityId": "10",
@@ -214,10 +223,11 @@
       "spirituality": 1,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "2",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/jardin-francais-petit-trianon"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/jardin-francais-petit-trianon",
+    "ticket": "passeport"
   },
   {
     "activityId": "11",
@@ -236,17 +246,18 @@
       "spirituality": 2,
       "nature": 1
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/appartement-interieur-roi"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/appartement-interieur-roi",
+    "ticket": "chateau"
   },
   {
     "activityId": "12",
     "name": "galerie-glaces",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 5,
       "landscape": 3,
@@ -258,10 +269,11 @@
       "spirituality": 2,
       "nature": 1
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/galerie-glaces"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/galerie-glaces",
+    "ticket": "chateau"
   },
   {
     "activityId": "13",
@@ -280,17 +292,18 @@
       "spirituality": 2,
       "nature": 1
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/appartement-roi"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/appartement-roi",
+    "ticket": "chateau"
   },
   {
     "activityId": "14",
     "name": "grand-appartement-roi",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 2.0,
+    "duration": 2,
     "interests": {
       "architecture": 5,
       "landscape": 2,
@@ -302,10 +315,11 @@
       "spirituality": 2,
       "nature": 1
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/grand-appartement-roi"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/grand-appartement-roi",
+    "ticket": "chateau"
   },
   {
     "activityId": "15",
@@ -324,17 +338,18 @@
       "spirituality": 2,
       "nature": 1
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/opera-royal"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/opera-royal",
+    "ticket": "chateau"
   },
   {
     "activityId": "16",
     "name": "chapelle-royale",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 5,
       "landscape": 2,
@@ -346,10 +361,11 @@
       "spirituality": 5,
       "nature": 1
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/chapelle-royale"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/chapelle-royale",
+    "ticket": "chateau"
   },
   {
     "activityId": "17",
@@ -368,17 +384,18 @@
       "spirituality": 2,
       "nature": 1
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/grand-appartement-reine"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/grand-appartement-reine",
+    "ticket": "chateau"
   },
   {
     "activityId": "18",
     "name": "galerie-batailles",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 2.0,
+    "duration": 2,
     "interests": {
       "architecture": 5,
       "landscape": 2,
@@ -390,10 +407,11 @@
       "spirituality": 2,
       "nature": 1
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/galerie-batailles"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/galerie-batailles",
+    "ticket": "chateau"
   },
   {
     "activityId": "19",
@@ -412,10 +430,11 @@
       "spirituality": 1,
       "nature": 2
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/appartement-madame-pompadour"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/appartement-madame-pompadour",
+    "ticket": "chateau"
   },
   {
     "activityId": "20",
@@ -434,10 +453,11 @@
       "spirituality": 2,
       "nature": 2
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/appartement-dauphine"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/appartement-dauphine",
+    "ticket": "chateau"
   },
   {
     "activityId": "21",
@@ -456,10 +476,11 @@
       "spirituality": 2,
       "nature": 2
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/les-appartements-filles-louis-xv"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/les-appartements-filles-louis-xv",
+    "ticket": "chateau"
   },
   {
     "activityId": "22",
@@ -478,17 +499,18 @@
       "spirituality": 2,
       "nature": 1
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/les-galeries-historiques"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/les-galeries-historiques",
+    "ticket": "chateau"
   },
   {
     "activityId": "23",
     "name": "salle-congres",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 4,
       "landscape": 2,
@@ -500,10 +522,11 @@
       "spirituality": 1,
       "nature": 1
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/salle-congres"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/salle-congres",
+    "ticket": "chateau"
   },
   {
     "activityId": "24",
@@ -522,10 +545,11 @@
       "spirituality": 4,
       "nature": 1
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/salles-croisades"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/salles-croisades",
+    "ticket": "chateau"
   },
   {
     "activityId": "25",
@@ -544,17 +568,18 @@
       "spirituality": 2,
       "nature": 2
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/les-cabinets-interieurs-marie-antoinette"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/les-cabinets-interieurs-marie-antoinette",
+    "ticket": "chateau"
   },
   {
     "activityId": "26",
     "name": "salle-sacre",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 4,
       "landscape": 2,
@@ -566,10 +591,11 @@
       "spirituality": 2,
       "nature": 1
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/salle-sacre"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/salle-sacre",
+    "ticket": "chateau"
   },
   {
     "activityId": "27",
@@ -588,17 +614,18 @@
       "spirituality": 2,
       "nature": 1
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/salles-empire"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/salles-empire",
+    "ticket": "chateau"
   },
   {
     "activityId": "28",
     "name": "salles-afrique-crimee-italie",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 2.0,
+    "duration": 2,
     "interests": {
       "architecture": 4,
       "landscape": 2,
@@ -610,10 +637,11 @@
       "spirituality": 2,
       "nature": 1
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/salles-afrique-crimee-italie"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/salles-afrique-crimee-italie",
+    "ticket": "chateau"
   },
   {
     "activityId": "29",
@@ -632,17 +660,18 @@
       "spirituality": 2,
       "nature": 1
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/salle-1792"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/salle-1792",
+    "ticket": "chateau"
   },
   {
     "activityId": "30",
     "name": "galerie-histoire-chateau",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 2.0,
+    "duration": 2,
     "interests": {
       "architecture": 5,
       "landscape": 4,
@@ -654,10 +683,11 @@
       "spirituality": 3,
       "nature": 3
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/galerie-histoire-chateau"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/galerie-histoire-chateau",
+    "ticket": "chateau"
   },
   {
     "activityId": "31",
@@ -676,10 +706,11 @@
       "spirituality": 3,
       "nature": 2
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/salles-louis-xiv"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/salles-louis-xiv",
+    "ticket": "chateau"
   },
   {
     "activityId": "32",
@@ -698,10 +729,11 @@
       "spirituality": 2,
       "nature": 2
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/appartement-dauphin"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/appartement-dauphin",
+    "ticket": "chateau"
   },
   {
     "activityId": "33",
@@ -720,17 +752,18 @@
       "spirituality": 2,
       "nature": 2
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/appartement-madame-barry"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/appartement-madame-barry",
+    "ticket": "chateau"
   },
   {
     "activityId": "34",
     "name": "grand-commun",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 5,
       "landscape": 2,
@@ -742,10 +775,11 @@
       "spirituality": 2,
       "nature": 1
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/grand-commun"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/grand-commun",
+    "ticket": "chateau"
   },
   {
     "activityId": "35",
@@ -764,10 +798,11 @@
       "spirituality": 2,
       "nature": 1
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/attique-chimay"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/attique-chimay",
+    "ticket": "chateau"
   },
   {
     "activityId": "36",
@@ -786,10 +821,11 @@
       "spirituality": 2,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/jardins/orangerie"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/jardins/orangerie",
+    "ticket": "passeport"
   },
   {
     "activityId": "38",
@@ -808,10 +844,11 @@
       "spirituality": 3,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-sculptures"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-sculptures",
+    "ticket": "passeport"
   },
   {
     "activityId": "42",
@@ -833,14 +870,15 @@
     "openingTime": 12.5,
     "closingTime": 18.5,
     "sectionId": "6",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/petite-ecurie/galerie-sculptures-moulages"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/petite-ecurie/galerie-sculptures-moulages",
+    "ticket": "chateau"
   },
   {
     "activityId": "43",
     "name": "grand-canal",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 2.0,
+    "duration": 2,
     "interests": {
       "architecture": 4,
       "landscape": 5,
@@ -852,10 +890,11 @@
       "spirituality": 2,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "5",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/parc"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/parc",
+    "ticket": "chateau"
   },
   {
     "activityId": "44",
@@ -874,17 +913,18 @@
       "spirituality": 2,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "5",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/parc"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/parc",
+    "ticket": "chateau"
   },
   {
     "activityId": "45",
     "name": "ru-gally",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 2,
       "landscape": 4,
@@ -896,17 +936,18 @@
       "spirituality": 2,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "5",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/parc"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/parc",
+    "ticket": "chateau"
   },
   {
     "activityId": "46",
     "name": "salle-jeu-paume",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 4,
       "landscape": 2,
@@ -921,7 +962,8 @@
     "openingTime": 12.5,
     "closingTime": 17.5,
     "sectionId": "7",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/salle-jeu-paume"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/salle-jeu-paume",
+    "ticket": "chateau"
   },
   {
     "activityId": "47",
@@ -940,10 +982,11 @@
       "spirituality": 3,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "8",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-marly"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-marly",
+    "ticket": ""
   },
   {
     "activityId": "48",
@@ -962,10 +1005,11 @@
       "spirituality": 3,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines",
+    "ticket": "passeport"
   },
   {
     "activityId": "49",
@@ -984,10 +1028,11 @@
       "spirituality": 3,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines",
+    "ticket": "passeport"
   },
   {
     "activityId": "50",
@@ -1006,10 +1051,11 @@
       "spirituality": 3,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines",
+    "ticket": "passeport"
   },
   {
     "activityId": "51",
@@ -1028,10 +1074,11 @@
       "spirituality": 3,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines",
+    "ticket": "passeport"
   },
   {
     "activityId": "52",
@@ -1050,10 +1097,11 @@
       "spirituality": 2,
       "nature": 3
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines",
+    "ticket": "passeport"
   },
   {
     "activityId": "53",
@@ -1072,10 +1120,11 @@
       "spirituality": 2,
       "nature": 3
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines",
+    "ticket": "passeport"
   },
   {
     "activityId": "54",
@@ -1094,17 +1143,18 @@
       "spirituality": 3,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines",
+    "ticket": "passeport"
   },
   {
     "activityId": "55",
     "name": "bassin-neptune",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 4,
       "landscape": 5,
@@ -1116,10 +1166,11 @@
       "spirituality": 3,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines",
+    "ticket": "passeport"
   },
   {
     "activityId": "56",
@@ -1138,10 +1189,11 @@
       "spirituality": 3,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines",
+    "ticket": "passeport"
   },
   {
     "activityId": "57",
@@ -1160,10 +1212,11 @@
       "spirituality": 3,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines",
+    "ticket": "passeport"
   },
   {
     "activityId": "58",
@@ -1182,10 +1235,11 @@
       "spirituality": 2,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines",
+    "ticket": "passeport"
   },
   {
     "activityId": "59",
@@ -1204,10 +1258,11 @@
       "spirituality": 3,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines",
+    "ticket": "passeport"
   },
   {
     "activityId": "60",
@@ -1226,10 +1281,11 @@
       "spirituality": 3,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines",
+    "ticket": "passeport"
   },
   {
     "activityId": "61",
@@ -1248,17 +1304,18 @@
       "spirituality": 2,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines",
+    "ticket": "passeport"
   },
   {
     "activityId": "62",
     "name": "bosquet-reine",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 4,
       "landscape": 5,
@@ -1270,17 +1327,18 @@
       "spirituality": 2,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
+    "ticket": "passeport"
   },
   {
     "activityId": "63",
     "name": "bosquet-salle-bal",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 5,
       "landscape": 5,
@@ -1292,10 +1350,11 @@
       "spirituality": 2,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
+    "ticket": "passeport"
   },
   {
     "activityId": "64",
@@ -1314,10 +1373,11 @@
       "spirituality": 2,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
+    "ticket": "passeport"
   },
   {
     "activityId": "65",
@@ -1336,10 +1396,11 @@
       "spirituality": 2,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
+    "ticket": "passeport"
   },
   {
     "activityId": "66",
@@ -1358,17 +1419,18 @@
       "spirituality": 3,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
+    "ticket": "passeport"
   },
   {
     "activityId": "67",
     "name": "bosquet-theatre-eau",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 5,
       "landscape": 5,
@@ -1380,10 +1442,11 @@
       "spirituality": 2,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
+    "ticket": "passeport"
   },
   {
     "activityId": "68",
@@ -1402,10 +1465,11 @@
       "spirituality": 2,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
+    "ticket": "passeport"
   },
   {
     "activityId": "69",
@@ -1424,17 +1488,18 @@
       "spirituality": 2,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
+    "ticket": "passeport"
   },
   {
     "activityId": "70",
     "name": "bosquet-colonnade",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 5,
       "landscape": 5,
@@ -1446,10 +1511,11 @@
       "spirituality": 3,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
+    "ticket": "passeport"
   },
   {
     "activityId": "71",
@@ -1468,10 +1534,11 @@
       "spirituality": 2,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
+    "ticket": "passeport"
   },
   {
     "activityId": "72",
@@ -1490,10 +1557,11 @@
       "spirituality": 3,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
+    "ticket": "passeport"
   },
   {
     "activityId": "73",
@@ -1512,10 +1580,11 @@
       "spirituality": 3,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
+    "ticket": "passeport"
   },
   {
     "activityId": "74",
@@ -1534,17 +1603,18 @@
       "spirituality": 3,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
+    "ticket": "passeport"
   },
   {
     "activityId": "75",
     "name": "bosquet-bains-apollon",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 5,
       "landscape": 5,
@@ -1556,17 +1626,18 @@
       "spirituality": 3,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
+    "ticket": "passeport"
   },
   {
     "activityId": "76",
     "name": "parterre-eau",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 5,
       "landscape": 5,
@@ -1578,17 +1649,18 @@
       "spirituality": 2,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/jardins/parterres"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/jardins/parterres",
+    "ticket": "passeport"
   },
   {
     "activityId": "77",
     "name": "parterre-nord",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 4,
       "landscape": 5,
@@ -1600,17 +1672,18 @@
       "spirituality": 2,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/jardins/parterres"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/jardins/parterres",
+    "ticket": "passeport"
   },
   {
     "activityId": "78",
     "name": "parterre-midi",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 4,
       "landscape": 5,
@@ -1622,10 +1695,11 @@
       "spirituality": 2,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/jardins/parterres"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/jardins/parterres",
+    "ticket": "passeport"
   },
   {
     "activityId": "79",
@@ -1644,17 +1718,18 @@
       "spirituality": 3,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/jardins/parterres"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/jardins/parterres",
+    "ticket": "passeport"
   },
   {
     "activityId": "80",
     "name": "allee-eau-marmousets",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 5,
       "landscape": 5,
@@ -1666,10 +1741,11 @@
       "spirituality": 2,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/jardins/allees"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/jardins/allees",
+    "ticket": "passeport"
   },
   {
     "activityId": "81",
@@ -1688,17 +1764,18 @@
       "spirituality": 2,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/jardins/allees"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/jardins/allees",
+    "ticket": "passeport"
   },
   {
     "activityId": "82",
     "name": "jardin-roi",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 4,
       "landscape": 5,
@@ -1710,9 +1787,10 @@
       "spirituality": 2,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/jardins/allees"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/jardins/allees",
+    "ticket": "passeport"
   }
 ]
