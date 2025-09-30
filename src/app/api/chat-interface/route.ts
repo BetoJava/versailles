@@ -43,23 +43,54 @@ export async function POST(request: NextRequest) {
       },
     ];
 
-    // Appel à Mistral AI sans streaming
-    const completion = await client.chat.completions.create({
-      model: "mistral-large-latest",
-      messages: messages,
-      temperature: 0.7,
-      max_tokens: 50000,
+    // Créer un encoder de texte pour le streaming
+    const encoder = new TextEncoder();
+
+    // Créer un ReadableStream pour le streaming
+    const stream = new ReadableStream({
+      async start(controller) {
+        try {
+          // Appel à Mistral AI avec streaming
+          const completion = await client.chat.completions.create({
+            model: "mistral-large-latest",
+            messages: messages,
+            temperature: 0.7,
+            max_tokens: 10000,
+            stream: true,
+          });
+
+          // Streamer les chunks
+          for await (const chunk of completion) {
+            const content = chunk.choices[0]?.delta?.content;
+            
+            if (content) {
+              const data = JSON.stringify({ content });
+              controller.enqueue(encoder.encode(`data: ${data}\n\n`));
+            }
+          }
+
+          // Envoyer le signal de fin
+          controller.enqueue(encoder.encode("data: [DONE]\n\n"));
+          controller.close();
+        } catch (error) {
+          console.error("Erreur streaming:", error);
+          const errorMessage = JSON.stringify({
+            error: error instanceof Error ? error.message : "Erreur inconnue",
+          });
+          controller.enqueue(encoder.encode(`data: ${errorMessage}\n\n`));
+          controller.close();
+        }
+      },
     });
 
-    const response = completion.choices[0]?.message?.content || "Désolé, je n'ai pas pu générer de réponse.";
-
-    return new Response(
-      JSON.stringify({ content: response }),
-      { 
-        status: 200, 
-        headers: { "Content-Type": "application/json" } 
-      }
-    );
+    // Retourner la réponse avec les headers appropriés pour le streaming
+    return new Response(stream, {
+      headers: {
+        "Content-Type": "text/event-stream",
+        "Cache-Control": "no-cache",
+        Connection: "keep-alive",
+      },
+    });
   } catch (error) {
     console.error("Erreur API chat:", error);
     return new Response(
