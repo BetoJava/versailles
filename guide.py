@@ -18,7 +18,7 @@ lunch_break_end = 14 * 3600    # 14h00 en secondes
 dist_df_walk = pd.read_csv(r'activity_distances_temp.csv', index_col=0)
 print(dist_df_walk)
 # Charger les données des activités
-with open(r'src\assets\activity.json', 'r', encoding='utf-8') as file:
+with open(r'src\assets\data\activity_v2.json', 'r', encoding='utf-8') as file:
     data = json.load(file)
 
 # Charger les préférences de l'utilisateur (likes/dislikes)

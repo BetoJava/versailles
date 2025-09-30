@@ -8,6 +8,7 @@ import { Button } from "~/components/ui/button"
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "~/components/ui/dialog"
 import { api } from "~/trpc/react"
 import { CircleQuestionMarkIcon, HeartIcon, Image, LoaderIcon, XIcon } from "lucide-react"
+import { useRouter } from "next/navigation"
 
 interface ActivityImageProps {
   activityId: string
@@ -235,12 +236,24 @@ function SwipeableCard({ activity, onSwipe, isTop }: SwipeableCardProps) {
 }
 
 function SwipePageContent() {
-  const { state, setSwipeResults } = useOnboarding()
+  const router = useRouter()
+  const { state, setSwipeResults, setItinerary } = useOnboarding()
   const [currentIndex, setCurrentIndex] = useState(0)
   const [likedActivities, setLikedActivities] = useState<string[]>([])
   const [dislikedActivities, setDislikedActivities] = useState<string[]>([])
   const [swipeCount, setSwipeCount] = useState(0)
   const [showWelcomeDialog, setShowWelcomeDialog] = useState(true)
+  
+  const buildItineraryMutation = api.itinerary.buildItinerary.useMutation({
+    onSuccess: (result) => {
+      console.log("Itinéraire généré:", result)
+      setItinerary(result.itinerary)
+      router.push("/my-route")
+    },
+    onError: (error) => {
+      console.error("Erreur lors de la génération de l'itinéraire:", error)
+    }
+  })
 
   // Utiliser les activités du contexte (celles qui ont passé le filtrage)
   const activities = state.swipeActivities
@@ -274,6 +287,11 @@ function SwipePageContent() {
   }
 
   const handleItineraryClick = () => {
+    if (!state.data?.visitDays || state.data.visitDays.length === 0) {
+      console.error("Pas de jour de visite défini")
+      return
+    }
+
     // Créer un JSON avec activityId et like (boolean)
     const swipeResults = activities?.map(activity => ({
       activityId: activity.activityId,
@@ -283,9 +301,22 @@ function SwipePageContent() {
     // Sauvegarder dans le contexte
     setSwipeResults(swipeResults)
     
-    console.log(JSON.stringify(swipeResults, null, 2))
-    console.log("Likes:", likedActivities)
-    console.log("Dislikes:", dislikedActivities)
+    console.log("Génération de l'itinéraire avec:", swipeResults)
+    
+    // Utiliser le premier jour de visite pour start/end time
+    const firstDay = state.data.visitDays[0]!
+    
+    buildItineraryMutation.mutate({
+      likesDislikes: swipeResults,
+      startTime: firstDay.startTime,
+      endTime: firstDay.endTime,
+      walkSpeed: state.data.walkingLevel ?? 50,
+      maxActivities: 10,
+      alpha: 1.0,
+      beta: 0.4,
+      gamma: 0.5,
+      delta: 0.2
+    })
   }
 
   const canContinue = swipeCount >= 10
