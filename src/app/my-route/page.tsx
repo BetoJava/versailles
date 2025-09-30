@@ -118,9 +118,24 @@ function TimelineItem({ step, isLast, isInView }: TimelineItemProps) {
 }
 
 function MyRouteContent() {
-    const { state } = useOnboarding()
+    const { state, setItinerary } = useOnboarding()
     const [visibleItems, setVisibleItems] = useState<Set<number>>(new Set())
     const containerRef = useRef<HTMLDivElement>(null)
+
+    // Charger l'itinéraire fictif au montage du composant
+    useEffect(() => {
+        if (!state.itinerary) {
+            // Charger l'itinéraire fictif depuis le fichier JSON
+            fetch('/src/assets/data/sample-itinerary.json')
+                .then(response => response.json())
+                .then(data => {
+                    setItinerary(data)
+                })
+                .catch(error => {
+                    console.error('Erreur lors du chargement de l\'itinéraire fictif:', error)
+                })
+        }
+    }, [state.itinerary, setItinerary])
 
     const itinerary = state.itinerary
 
