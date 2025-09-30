@@ -47,11 +47,25 @@ export const chatbotRouter = createTRPCRouter({
       conversationHistory: z.array(messageSchema).optional().default([]),
     }))
     .mutation(async ({ input }) => {
-      // Cette procédure sera utilisée par l'API route pour le streaming
+      // Cette procédure peut être utilisée pour des tests ou des intégrations sans streaming
+      // Le vrai streaming se fait via l'API route /api/chat
       return {
         message: input.message,
         attachments: input.attachments,
         conversationHistory: input.conversationHistory,
+        info: "Pour le streaming en temps réel, utilisez l'API route /api/chat directement",
+      };
+    }),
+
+  // Procédure pour valider le format des messages de conversation
+  validateConversation: publicProcedure
+    .input(z.object({
+      conversationHistory: z.array(messageSchema),
+    }))
+    .query(({ input }) => {
+      return {
+        valid: true,
+        messageCount: input.conversationHistory.length,
       };
     }),
 });

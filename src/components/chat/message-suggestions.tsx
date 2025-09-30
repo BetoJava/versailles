@@ -2,32 +2,26 @@
 
 import { useChat } from "./chat-context";
 import { Button } from "~/components/ui/button";
-import { MessageCircle, Code, Lightbulb, HelpCircle } from "lucide-react";
+import { MapPin, Clock, Utensils, Camera, Crown, History } from "lucide-react";
 
 const suggestions = [
   {
-    icon: MessageCircle,
-    title: "Conversation générale",
-    message: "Bonjour ! Comment allez-vous aujourd'hui ?",
-    description: "Commencer une conversation amicale",
+    icon: MapPin,
+    title: "Planifier ma visite",
+    message: "Quelles sont les activités incontournables à voir au Château de Versailles ?",
+    description: "Découvrir les lieux essentiels",
   },
   {
-    icon: Code,
-    title: "Aide au développement",
-    message: "Peux-tu m'aider à résoudre un problème de code ?",
-    description: "Obtenir de l'aide pour programmer",
+    icon: Camera,
+    title: "Visite photo",
+    message: "Quels sont les plus beaux endroits pour prendre des photos ?",
+    description: "Capturer les meilleurs moments",
   },
   {
-    icon: Lightbulb,
-    title: "Brainstorming",
-    message: "J'ai besoin d'idées créatives pour mon projet",
-    description: "Générer des idées innovantes",
-  },
-  {
-    icon: HelpCircle,
-    title: "Explication",
-    message: "Peux-tu m'expliquer un concept complexe ?",
-    description: "Comprendre des sujets difficiles",
+    icon: Crown,
+    title: "Histoire royale",
+    message: "Peux-tu me raconter l'histoire de Louis XIV et de la cour ?",
+    description: "Découvrir l'histoire fascinante",
   },
 ];
 
@@ -44,7 +38,7 @@ export function MessageSuggestions() {
       <h3 className="mb-3 text-sm font-medium text-muted-foreground">
         Suggestions pour commencer
       </h3>
-      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
         {suggestions.map((suggestion, index) => {
           const Icon = suggestion.icon;
           return (

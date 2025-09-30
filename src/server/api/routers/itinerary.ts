@@ -17,7 +17,7 @@ const buildItineraryInputSchema = z.object({
   walkSpeed: z.number().min(0).max(100).default(50),
   maxActivities: z.number().min(1).max(20).default(10),
   alpha: z.number().default(1.0),
-  beta: z.number().default(0.4),
+  beta: z.number().default(0.8),
   gamma: z.number().default(0.5),
   delta: z.number().default(0.2),
 });

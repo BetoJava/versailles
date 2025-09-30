@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 import OpenAI from "openai";
 import activitiesData from "~/assets/data/activity_v2.json";
 import businessData from "~/assets/business_v2.json";
@@ -11,81 +11,94 @@ const client = new OpenAI({
 
 export async function POST(request: NextRequest) {
   try {
-    const { question } = await request.json();
+    const { message, conversationHistory = [] } = await request.json();
 
     if (!process.env.MISTRAL_API_KEY) {
       throw new Error("MISTRAL_API_KEY n'est pas configurée");
     }
 
-    if (!question || question.trim() === "") {
-      return NextResponse.json(
-        { error: "La question ne peut pas être vide" },
-        { status: 400 }
+    if (!message || message.trim() === "") {
+      return new Response(
+        JSON.stringify({ error: "Le message ne peut pas être vide" }),
+        { status: 400, headers: { "Content-Type": "application/json" } }
       );
     }
 
     // Construire le prompt avec les données
-    const prompt = buildChatPrompt(question, activitiesData, businessData);
+    const systemPrompt = buildSystemPrompt(activitiesData, businessData);
+    
+    // Construire l'historique des messages pour Mistral
+    const messages = [
+      {
+        role: "system" as const,
+        content: systemPrompt,
+      },
+      ...conversationHistory.map((msg: any) => ({
+        role: msg.role as "user" | "assistant",
+        content: cleanString(msg.content),
+      })),
+      {
+        role: "user" as const,
+        content: cleanString(message),
+      },
+    ];
 
-    // Appel à Mistral AI
-    const completion = await client.chat.completions.create({
-      model: "mistral-large-latest",
-      messages: [
-        {
-          role: "user",
-          content: prompt,
-        },
-      ],
-      temperature: 0.7,
-      max_tokens: 10000,
+    // Créer un encoder de texte pour le streaming
+    const encoder = new TextEncoder();
+
+    // Créer un ReadableStream pour le streaming
+    const stream = new ReadableStream({
+      async start(controller) {
+        try {
+          // Appel à Mistral AI avec streaming
+          const completion = await client.chat.completions.create({
+            model: "mistral-large-latest",
+            messages: messages,
+            temperature: 0.7,
+            max_tokens: 10000,
+            stream: true,
+          });
+
+          // Streamer les chunks
+          for await (const chunk of completion) {
+            const content = chunk.choices[0]?.delta?.content;
+            
+            if (content) {
+              const data = JSON.stringify({ content });
+              controller.enqueue(encoder.encode(`data: ${data}\n\n`));
+            }
+          }
+
+          // Envoyer le signal de fin
+          controller.enqueue(encoder.encode("data: [DONE]\n\n"));
+          controller.close();
+        } catch (error) {
+          console.error("Erreur streaming:", error);
+          const errorMessage = JSON.stringify({
+            error: error instanceof Error ? error.message : "Erreur inconnue",
+          });
+          controller.enqueue(encoder.encode(`data: ${errorMessage}\n\n`));
+          controller.close();
+        }
+      },
     });
 
-    const response = completion.choices[0]?.message?.content;
-
-    if (!response) {
-      throw new Error("Pas de réponse du LLM");
-    }
-
-    // Nettoyer la réponse du LLM
-    const cleanedResponse = cleanString(response);
-    
-    // Extraire le JSON de la réponse
-    const jsonMatch = cleanedResponse.match(/```json\s*([\s\S]*?)\s*```/);
-    if (!jsonMatch || !jsonMatch[1]) {
-      // Si pas de bloc json, essayer de parser directement
-      try {
-        const parsedResponse = JSON.parse(cleanedResponse);
-        return NextResponse.json(parsedResponse);
-      } catch (parseError) {
-        console.error("Erreur de parsing JSON direct:", parseError);
-        // Si ça échoue, retourner la réponse brute dans answer
-        return NextResponse.json({ answer: cleanedResponse });
-      }
-    }
-
-    // Nettoyer et parser le JSON
-    const jsonContent = cleanString(jsonMatch[1]);
-    const cleanedJson = jsonContent
-      .replace(/,(\s*[}\]])/g, '$1') // Supprimer les virgules avant } ou ]
-      .replace(/[\x00-\x1F\x7F-\x9F]/g, ''); // Supprimer tous les caractères de contrôle
-    
-    try {
-      const parsedResponse = JSON.parse(cleanedJson);
-      return NextResponse.json(parsedResponse);
-    } catch (parseError) {
-      console.error("Erreur de parsing JSON:", parseError);
-      console.error("JSON problématique (premiers 500 chars):", cleanedJson.substring(0, 500));
-      // En cas d'échec, retourner la réponse nettoyée comme texte
-      return NextResponse.json({ answer: cleanedResponse });
-    }
+    // Retourner la réponse avec les headers appropriés pour le streaming
+    return new Response(stream, {
+      headers: {
+        "Content-Type": "text/event-stream",
+        "Cache-Control": "no-cache",
+        Connection: "keep-alive",
+      },
+    });
   } catch (error) {
     console.error("Erreur API chat:", error);
-    return NextResponse.json(
-      { 
-        error: "Erreur interne du serveur", 
-        details: error instanceof Error ? error.message : "Erreur inconnue" 
-      },
-      { status: 500 }
+    return new Response(
+      JSON.stringify({
+        error: "Erreur interne du serveur",
+        details: error instanceof Error ? error.message : "Erreur inconnue",
+      }),
+      { status: 500, headers: { "Content-Type": "application/json" } }
     );
   }
 }
@@ -116,10 +129,9 @@ function safeJsonStringify(obj: any): string {
 }
 
 /**
- * Construit le prompt pour l'agent chatbot
+ * Construit le prompt système pour l'agent chatbot
  */
-function buildChatPrompt(
-  question: string,
+function buildSystemPrompt(
   activities: typeof activitiesData,
   businesses: typeof businessData
 ): string {
@@ -178,8 +190,7 @@ ${safeJsonStringify(businessFormatted)}
 2. Utilise les données fournies pour répondre aux questions sur les activités et services
 3. Si tu recommandes des activités, cite leur nom exact et donne des détails pertinents (durée, horaires, description)
 4. Si tu ne trouves pas d'information pertinente dans les données, dis-le clairement
-
-
-# Question du visiteur
-${cleanString(question)}`;
+5. N'hésite pas à proposer un passage en boutique
+6. Propose une visite guidée par journée si possible, et pas plus
+7. Réponds de manière conversationnelle et naturelle, en français`;
 }

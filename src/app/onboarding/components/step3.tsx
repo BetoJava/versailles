@@ -1,8 +1,10 @@
 "use client"
 
+import { useState } from "react"
 import { Button } from "~/components/ui/button"
 import { Label } from "~/components/ui/label"
 import { Textarea } from "~/components/ui/textarea"
+import { LoadingSpinner } from "~/components/ui/loading-spinner"
 import { HeartIcon, ChevronLeftIcon } from "lucide-react"
 
 interface VisitDay {
@@ -34,8 +36,22 @@ interface Step3Props {
 }
 
 export function Step3({ formData, setFormData, onBack, onFinish }: Step3Props) {
+  const [isLoading, setIsLoading] = useState(false)
+
+  const handleFinish = async () => {
+    setIsLoading(true)
+    // Le loader se fermera automatiquement après 12 secondes
+  }
+
+  const handleLoadingComplete = () => {
+    setIsLoading(false)
+    onFinish()
+  }
+
   return (
-    <div className="space-y-6 max-w-lg mx-auto">
+    <>
+      {isLoading && <LoadingSpinner onComplete={handleLoadingComplete} />}
+      <div className="space-y-6 max-w-lg mx-auto">
       <div className="">
         <h2 className="text-2xl font-bold text-foreground mb-2">
           3. Vos préférences
@@ -67,13 +83,15 @@ export function Step3({ formData, setFormData, onBack, onFinish }: Step3Props) {
           Précédent
         </Button>
         <Button
-          onClick={onFinish}
-          className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground"
+          onClick={handleFinish}
+          disabled={isLoading}
+          className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground disabled:opacity-50"
         >
           <HeartIcon className="mr-2 size-4" />
           Créer mon itinéraire
         </Button>
       </div>
-    </div>
+      </div>
+    </>
   )
 }
