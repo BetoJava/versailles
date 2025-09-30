@@ -58,6 +58,8 @@ Features :
 - récupérer la position pour définir automatiquement l'entrée et sortie
 
 
+- Ne pas filtrer avant de proposer le swipe
+- Ajouter un loader sur fin d'onboarding
  
 # Améliorations 
 - récupérer les bonnes images pour les bassins et fontaines depuis https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines

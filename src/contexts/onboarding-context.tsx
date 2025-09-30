@@ -31,6 +31,7 @@ interface OnboardingState {
   swipedActivities: string[]
   removedActivityIds: string[]
   swipeActivities: SwipeActivity[]
+  itinerary: Itinerary | null
   isLoading: boolean
   error: string | null
 }
@@ -47,11 +48,38 @@ export interface SwipeResult {
   like: boolean
 }
 
+export interface Itinerary {
+  departure_time: string
+  arrival_time: string
+  total_duration: number
+  total_activities: number
+  itinerary: ItineraryStep[]
+  stats: {
+    total_travel_time: number
+    total_visit_time: number
+    total_waiting_time: number
+  }
+}
+
+export interface ItineraryStep {
+  order: number
+  activity_id?: string
+  activity_name: string
+  arrival_time: string
+  departure_time: string
+  duration: number
+  waiting_time: number
+  travel_time_from_previous: number
+  composite_score?: number
+  recommendation_score?: number
+}
+
 type OnboardingAction =
   | { type: "SET_DATA"; payload: OnboardingData }
   | { type: "SET_ACTIVITIES"; payload: { activityIds: string[]; removedActivityIds: string[]; swipeActivities: SwipeActivity[] } }
   | { type: "SET_SWIPED_ACTIVITIES"; payload: string[] }
   | { type: "SET_SWIPE_RESULTS"; payload: SwipeResult[] }
+  | { type: "SET_ITINERARY"; payload: Itinerary }
   | { type: "SET_LOADING"; payload: boolean }
   | { type: "SET_ERROR"; payload: string | null }
   | { type: "RESET" }
@@ -62,6 +90,7 @@ const initialState: OnboardingState = {
   swipedActivities: [],
   removedActivityIds: [],
   swipeActivities: [],
+  itinerary: null,
   isLoading: false,
   error: null,
 }
@@ -93,6 +122,11 @@ function onboardingReducer(state: OnboardingState, action: OnboardingAction): On
         ...state,
         swipedActivities: action.payload.filter(r => r.like).map(r => r.activityId),
       }
+    case "SET_ITINERARY":
+      return {
+        ...state,
+        itinerary: action.payload,
+      }
     case "SET_LOADING":
       return {
         ...state,
@@ -117,6 +151,7 @@ interface OnboardingContextType {
   setData: (data: OnboardingData) => void
   setSwipedActivities: (activityIds: string[]) => void
   setSwipeResults: (results: SwipeResult[]) => void
+  setItinerary: (itinerary: Itinerary) => void
   processOnboarding: (data: OnboardingData) => Promise<void>
   reset: () => void
 }
@@ -162,6 +197,10 @@ export function OnboardingProvider({ children }: { children: ReactNode }) {
     dispatch({ type: "SET_SWIPE_RESULTS", payload: results })
   }
 
+  const setItinerary = (itinerary: Itinerary) => {
+    dispatch({ type: "SET_ITINERARY", payload: itinerary })
+  }
+
   const processOnboarding = async (data: OnboardingData) => {
     dispatch({ type: "SET_LOADING", payload: true })
     dispatch({ type: "SET_DATA", payload: data })
@@ -185,6 +224,7 @@ export function OnboardingProvider({ children }: { children: ReactNode }) {
         setData,
         setSwipedActivities,
         setSwipeResults,
+        setItinerary,
         processOnboarding,
         reset,
       }}
