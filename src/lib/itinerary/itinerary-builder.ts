@@ -37,6 +37,7 @@ export interface Itinerary {
     total_visit_time: number;
     total_waiting_time: number;
   };
+  description: string;
 }
 
 function timeToMinutes(timeStr: string): number {
@@ -285,5 +286,6 @@ export function buildItinerary(
       total_visit_time: totalVisit,
       total_waiting_time: totalWaiting,
     },
+    description: `Un parcours personnalisé de ${visited.size} activité${visited.size > 1 ? 's' : ''} à travers le Château de Versailles, d'une durée totale de ${Math.round((finalArrival - timeToMinutes(startTime)) / 60)}h${Math.round((finalArrival - timeToMinutes(startTime)) % 60)}.`,
   };
 }

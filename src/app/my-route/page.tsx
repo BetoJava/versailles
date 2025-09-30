@@ -17,7 +17,7 @@ interface TimelineItemProps {
         duration: number
         waiting_time: number
         travel_time_from_previous: number
-        description: string
+        description?: string
     }
     isLast: boolean
     isInView: boolean

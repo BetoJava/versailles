@@ -1,67 +1,111 @@
+# Versailles - Application de Visite Personnalisée
 
-## KPI
-- durée de la visite
-- satisfaction
+Une application web moderne en Next.js pour créer des itinéraires personnalisés au Château de Versailles, utilisant l'intelligence artificielle pour adapter les recommandations aux préférences des visiteurs.
 
-## Regrets
-- les visiteurs ne font qu'une infime partie du Chateau de Versailles
-- les visiteurs dans cet immensité, ne 
+## Application hébergée sur Vercel à :
+https://versailles-three.vercel.app
 
-## Importants
-- les familles
+Route POST configurée sur https://versailles-three.vercel.app/api/chat
 
 
+## 🏗️ Architecture et Choix Techniques
+
+### Stack Technologique
+
+- **Frontend** : Next.js 15 avec React 19, TypeScript
+- **Styling** : Tailwind CSS avec composants Radix UI
+- **Base de données** : Stockée dans un json
+- **IA** : Mistral AI pour le traitement du langage naturel
+- **API** : tRPC pour les appels type-safe
+
+### Architecture du Système
+
+```
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   Frontend      │    │   Backend       │    │   IA Services  │
+│   (Next.js)     │◄──►│   (tRPC API)    │◄──►│   (Mistral AI) │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+                                │
+                                │
+                                ▼
+                       ┌─────────────────┐
+                       │   File System   │
+                       │   (Assets)      │
+                       └─────────────────┘
+```
+
+### Fonctionnalités Clés
+
+1. **Onboarding Personnalisé** : Collecte des préférences utilisateur (enfants, mobilité, centres d'intérêt)
+2. **Système de Recommandation** : Algorithme de scoring basé sur l'IA pour filtrer et classer les activités
+3. **Génération d'Itinéraire** : Optimisation des parcours avec calcul des distances et temps de marche
+4. **Chat Assistant** : Interface conversationnelle pour obtenir des informations sur Versailles
+5. **Visualisation Cartographique** : Affichage interactif des itinéraires sur carte
+6. **Export PDF** : Génération d'itinéraires téléchargeables
+
+### Algorithmes de Recommandation
+
+- **Content-Based Filtering** : Analyse des centres d'intérêt des activités
+- **Scoring IA** : Utilisation de Mistral AI pour évaluer la pertinence des activités
+- **Optimisation de Parcours** : Algorithme de calcul d'itinéraire optimisé avec gestion des contraintes temporelles et spatiales
+
+## 🚀 Installation et Exécution
+
+### Prérequis
+
+- Node.js 18+ 
+- pnpm (gestionnaire de paquets)
+- Clé API Mistral AI
+
+### Configuration
 
 
-Données à récupérer :
-- age, mobilité, handicap, composition du groupe
-- temps de visite prévu, et horaires d'arrivée
-- position d'entrée
+1. **Installer les dépendances**
+```bash
+pnpm install
+```
 
-Données qu'on a :
-- météo, affluence (soutenue, moyenne, faible), 
+2. **Configuration de l'environnement**
+```bash
+# Copier le fichier d'exemple
+cp src/env.example.js .env
 
-
-Output
-- Lister les choses à visiter
-- Créer un itinéraire selon la durée
-
-
-Features :
-- Comment venir ? (dépend de la position d'entrée et départ)
+# Éditer .env.local avec vos valeurs
+DATABASE_URL="peu-importe-il-n-y-a-pas-de-db-finalement"
+MISTRAL_API_KEY="votre_cle_mistral"
+```
 
 
-à faire
-- [ ] pour chaque activité, passer un LLM pour générer une valeur entre 0 et 1 pour chaque dimension d'embedding
+### Démarrage de l'application
 
-- parcours utilisateur
-- 
+```bash
+pnpm dev
+```
 
-
-## y chapeau
-
-- 
+L'application sera accessible sur `http://localhost:3000`
 
 
-- LLM qui demande ce que la personne veut comme visite, il onboard le visiteur, en récupérant toutes les infos + les demandes spécifiques (must great photospot)
-- LLM en parallèle qui vont ajouter : un axe supplémentaire (valeur entre 0 et 1 si il devrait faire cette activité), la raison de son score de l'axe supplémentaire (pour explication de l'itinéraire) et un seuil pour shortlist
-- swipe 10
-- content base ranking -> ranking (dépend de l'axe supplémentaire)
-- trouver le meilleur itinéraire avec algo Traveling Salesman Problem (TSP) basé sur ranking, distance, et avec une pénalté sur le choix d'une activité similaire à la précédente
+## 📁 Structure du Projet
 
-- Description LLM basée sur les raisons de chaque acivité, et la requete principale
-- 
-
-
-
----
-- récupérer la position pour définir automatiquement l'entrée et sortie
-
-
-- Ne pas filtrer avant de proposer le swipe
-- Ajouter un loader sur fin d'onboarding
- 
-# Améliorations 
-- récupérer les bonnes images pour les bassins et fontaines depuis https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines
-
-- les top activités non sélectionnée seront quand même affichée sur la map à la fin
+```
+src/
+├── app/                    # Pages Next.js (App Router)
+│   ├── api/               # API Routes
+│   ├── chat/              # Interface de chat
+│   ├── onboarding/        # Processus d'onboarding
+│   ├── my-route/          # Affichage de l'itinéraire
+│   └── my-maps/           # Visualisation cartographique
+├── components/            # Composants réutilisables
+│   ├── chat/              # Composants de chat
+│   ├── onboarding/        # Composants d'onboarding
+│   └── ui/                # Composants UI de base
+├── lib/                   # Logique métier
+│   ├── itinerary/         # Algorithmes d'itinéraire
+│   └── activity-processing.ts
+├── server/                # Backend tRPC
+│   ├── api/               # Routers tRPC
+│   └── db/                # Schéma de base de données
+├── assets/                # Données statiques
+│   └── data/              # JSON des activités et commerces
+└── contexts/              # Contextes React globaux
+```
