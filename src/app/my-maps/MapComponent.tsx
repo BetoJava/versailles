@@ -59,10 +59,11 @@ export default function MapComponent({
     // Centre de Versailles
     const center: [number, number] = [48.8049, 2.1204]
 
-    // Icônes personnalisées
-    const createCustomIcon = (isSelected: boolean, isHovered: boolean) => {
+    // Icônes personnalisées avec numéro d'ordre
+    const createCustomIcon = (isSelected: boolean, isHovered: boolean, orderNumber: number) => {
         const size = isSelected ? 40 : isHovered ? 35 : 30
         const color = isSelected ? '#3b82f6' : isHovered ? '#60a5fa' : '#ef4444'
+        const fontSize = isSelected ? 16 : isHovered ? 14 : 12
         
         return L.divIcon({
             className: 'custom-marker',
@@ -81,12 +82,11 @@ export default function MapComponent({
                     transition: all 0.2s ease;
                 ">
                     <div style="
-                        width: 12px;
-                        height: 12px;
-                        background-color: white;
-                        border-radius: 50%;
+                        color: white;
+                        font-weight: bold;
+                        font-size: ${fontSize}px;
                         transform: rotate(45deg);
-                    "></div>
+                    ">${orderNumber}</div>
                 </div>
             `,
             iconSize: [size, size],
@@ -119,7 +119,7 @@ export default function MapComponent({
             
             <MapController selectedActivity={selectedActivity} />
 
-            {activities.map((activity) => {
+            {activities.map((activity, index) => {
                 const isSelected = selectedActivity?.activityId === activity.activityId
                 const isHovered = hoveredActivity === activity.activityId
 
@@ -127,7 +127,7 @@ export default function MapComponent({
                     <Marker
                         key={activity.activityId}
                         position={[activity.latitude, activity.longitude]}
-                        icon={createCustomIcon(isSelected, isHovered)}
+                        icon={createCustomIcon(isSelected, isHovered, index + 1)}
                         eventHandlers={{
                             click: () => {
                                 setSelectedActivity(activity)

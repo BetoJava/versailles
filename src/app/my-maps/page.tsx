@@ -1,12 +1,13 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import dynamic from "next/dynamic"
 import { ModeToggle } from "~/components/ui/mode-toggle"
 import { Button } from "~/components/ui/button"
 import { Card } from "~/components/ui/card"
-import { X, MapPin, Clock, Ticket, ExternalLink } from "lucide-react"
-import activityData from "~/assets/data/itinerary.json"
+import { X, Clock, Ticket, ExternalLink, Play, Pause, LoaderIcon } from "lucide-react"
+import { useOnboarding } from "~/contexts/onboarding-context"
+import allActivitiesData from "~/assets/data/activity_v2.json"
 
 interface Activity {
     activityId: string
@@ -45,10 +46,105 @@ const MapComponent = dynamic(
 )
 
 function MyMapsContent() {
+    const { state } = useOnboarding()
     const [selectedActivity, setSelectedActivity] = useState<Activity | null>(null)
     const [hoveredActivity, setHoveredActivity] = useState<string | null>(null)
-    
-    const activities = activityData as Activity[]
+    const [isPlaying, setIsPlaying] = useState(false)
+    const [currentIndex, setCurrentIndex] = useState(0)
+    const [activities, setActivities] = useState<Activity[]>([])
+    const [isLoading, setIsLoading] = useState(true)
+    const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+
+    // Charger les activités depuis le contexte ou le fichier JSON de fallback
+    useEffect(() => {
+        const loadActivities = async () => {
+            try {
+                const allActivities = allActivitiesData as Activity[]
+
+                if (state.itinerary?.itinerary && state.itinerary.itinerary.length > 0) {
+                    // Si l'itinéraire existe dans le contexte, utiliser les activity_id pour filtrer
+                    const orderedActivities = state.itinerary.itinerary
+                        .filter(step => step.activity_id)
+                        .map(step => {
+                            const activity = allActivities.find(a => a.activityId === step.activity_id)
+                            return activity
+                        })
+                        .filter((activity): activity is Activity => activity !== undefined)
+                    
+                    setActivities(orderedActivities)
+                } else {
+                    // Fallback: charger depuis itinerary.json
+                    const response = await fetch('/src/assets/data/itinerary.json')
+                    const fallbackData = await response.json()
+                    setActivities(fallbackData as Activity[])
+                }
+            } catch (error) {
+                console.error('Erreur lors du chargement des activités:', error)
+            } finally {
+                setIsLoading(false)
+            }
+        }
+
+        loadActivities()
+    }, [state.itinerary])
+
+    // Fonction pour démarrer/arrêter l'animation
+    const togglePlayItinerary = () => {
+        if (isPlaying) {
+            // Arrêter l'animation
+            setIsPlaying(false)
+            if (timeoutRef.current) {
+                clearTimeout(timeoutRef.current)
+                timeoutRef.current = null
+            }
+        } else {
+            // Démarrer l'animation
+            if (activities.length > 0) {
+                setIsPlaying(true)
+                setCurrentIndex(0)
+                setSelectedActivity(activities[0]!)
+            }
+        }
+    }
+
+    // Effet pour gérer le parcours automatique
+    useEffect(() => {
+        if (!isPlaying) return
+
+        if (currentIndex >= activities.length) {
+            // Fin de l'itinéraire
+            setIsPlaying(false)
+            setCurrentIndex(0)
+            return
+        }
+
+        // Sélectionner l'activité courante
+        const currentActivity = activities[currentIndex]
+        if (currentActivity) {
+            setSelectedActivity(currentActivity)
+        }
+
+        // Programmer la prochaine activité après 3 secondes
+        timeoutRef.current = setTimeout(() => {
+            setCurrentIndex(prev => prev + 1)
+        }, 3000)
+
+        // Cleanup
+        return () => {
+            if (timeoutRef.current) {
+                clearTimeout(timeoutRef.current)
+            }
+        }
+    }, [isPlaying, currentIndex, activities])
+
+    // Cleanup à la destruction du composant
+    useEffect(() => {
+        return () => {
+            if (timeoutRef.current) {
+                clearTimeout(timeoutRef.current)
+            }
+        }
+    }, [])
 
     const formatDuration = (hours: number) => {
         if (hours < 1) return `${Math.round(hours * 60)} min`
@@ -63,6 +159,41 @@ function MyMapsContent() {
         return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`
     }
 
+    // Fonction wrapper pour arrêter l'animation lors d'une sélection manuelle
+    const handleManualSelection = (activity: Activity | null) => {
+        if (isPlaying) {
+            setIsPlaying(false)
+            if (timeoutRef.current) {
+                clearTimeout(timeoutRef.current)
+                timeoutRef.current = null
+            }
+        }
+        setSelectedActivity(activity)
+    }
+
+    // Afficher un écran de chargement pendant le chargement des activités
+    if (isLoading) {
+        return (
+            <div className="relative h-screen w-screen overflow-hidden bg-background flex items-center justify-center">
+                <div className="text-center">
+                    <LoaderIcon className="size-8 text-muted-foreground mx-auto mb-4 animate-spin" />
+                    <p className="text-muted-foreground">Chargement de la carte...</p>
+                </div>
+            </div>
+        )
+    }
+
+    // Afficher un message si aucune activité n'est disponible
+    if (activities.length === 0) {
+        return (
+            <div className="relative h-screen w-screen overflow-hidden bg-background flex items-center justify-center">
+                <div className="text-center">
+                    <p className="text-muted-foreground">Aucune activité disponible pour l'itinéraire</p>
+                </div>
+            </div>
+        )
+    }
+
     return (
         <div className="relative h-screen w-screen overflow-hidden bg-background">
             {/* Carte */}
@@ -70,9 +201,31 @@ function MyMapsContent() {
                 <MapComponent
                     activities={activities}
                     selectedActivity={selectedActivity}
-                    setSelectedActivity={setSelectedActivity}
+                    setSelectedActivity={handleManualSelection}
                     hoveredActivity={hoveredActivity}
                 />
+            </div>
+
+            {/* Bouton de lecture de l'itinéraire (coin supérieur gauche) */}
+            <div className="absolute top-4 left-4 z-[1000] pointer-events-auto">
+                <Button
+                    onClick={togglePlayItinerary}
+                    variant="default"
+                    size="lg"
+                    className="gap-2 shadow-lg"
+                >
+                    {isPlaying ? (
+                        <>
+                            <Pause className="size-5" />
+                            Arrêter ({currentIndex + 1}/{activities.length})
+                        </>
+                    ) : (
+                        <>
+                            <Play className="size-5" />
+                            Parcourir l'itinéraire
+                        </>
+                    )}
+                </Button>
             </div>
 
             {/* Contrôle du mode (coin supérieur droit) */}
@@ -112,7 +265,17 @@ function MyMapsContent() {
                             <Button
                                 variant="ghost"
                                 size="icon"
-                                onClick={() => setSelectedActivity(null)}
+                                onClick={() => {
+                                    setSelectedActivity(null)
+                                    // Arrêter l'animation si elle est en cours
+                                    if (isPlaying) {
+                                        setIsPlaying(false)
+                                        if (timeoutRef.current) {
+                                            clearTimeout(timeoutRef.current)
+                                            timeoutRef.current = null
+                                        }
+                                    }
+                                }}
                                 className="flex-shrink-0"
                             >
                                 <X className="size-4" />

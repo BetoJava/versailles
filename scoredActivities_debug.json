@@ -22,7 +22,7 @@
     "closingTime": 17.5,
     "sectionId": "1",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/grande-ecurie/galerie-carrosses",
-    "score": 4
+    "score": 3
   },
   {
     "id": "2",
@@ -47,7 +47,7 @@
     "closingTime": 17.5,
     "sectionId": "1",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/grande-ecurie/campus-versailles",
-    "score": 2
+    "score": 0
   },
   {
     "id": "3",
@@ -97,7 +97,7 @@
     "closingTime": 20.5,
     "sectionId": "2",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/les-jardins-francaise",
-    "score": 3
+    "score": 4
   },
   {
     "id": "5",
@@ -147,7 +147,7 @@
     "closingTime": 20.5,
     "sectionId": "2",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/jardin-anglais",
-    "score": 5
+    "score": 4
   },
   {
     "id": "7",
@@ -172,7 +172,7 @@
     "closingTime": 18.5,
     "sectionId": "2",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/petit-trianon",
-    "score": 4
+    "score": 5
   },
   {
     "id": "8",
@@ -347,7 +347,7 @@
     "closingTime": 18.5,
     "sectionId": "3",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/grand-appartement-roi",
-    "score": 5
+    "score": 3
   },
   {
     "id": "15",
@@ -397,7 +397,7 @@
     "closingTime": 18.5,
     "sectionId": "3",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/chapelle-royale",
-    "score": 4
+    "score": 5
   },
   {
     "id": "17",
@@ -422,7 +422,7 @@
     "closingTime": 18.5,
     "sectionId": "3",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/grand-appartement-reine",
-    "score": 5
+    "score": 4
   },
   {
     "id": "18",
@@ -447,7 +447,7 @@
     "closingTime": 18.5,
     "sectionId": "3",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/galerie-batailles",
-    "score": 5
+    "score": 3
   },
   {
     "id": "19",
@@ -497,7 +497,7 @@
     "closingTime": 18.5,
     "sectionId": "3",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/appartement-dauphine",
-    "score": 4
+    "score": 3
   },
   {
     "id": "21",
@@ -547,7 +547,7 @@
     "closingTime": 18.5,
     "sectionId": "3",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/les-galeries-historiques",
-    "score": 5
+    "score": 3
   },
   {
     "id": "23",
@@ -672,7 +672,7 @@
     "closingTime": 18.5,
     "sectionId": "3",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/salles-empire",
-    "score": 5
+    "score": 2
   },
   {
     "id": "28",
@@ -697,7 +697,7 @@
     "closingTime": 18.5,
     "sectionId": "3",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/salles-afrique-crimee-italie",
-    "score": 4
+    "score": 3
   },
   {
     "id": "29",
@@ -722,7 +722,7 @@
     "closingTime": 18.5,
     "sectionId": "3",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/salle-1792",
-    "score": 4
+    "score": 3
   },
   {
     "id": "30",
@@ -922,7 +922,7 @@
     "closingTime": 18.5,
     "sectionId": "6",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/petite-ecurie/galerie-sculptures-moulages",
-    "score": 4
+    "score": 3
   },
   {
     "id": "43",
@@ -997,7 +997,7 @@
     "closingTime": 20.5,
     "sectionId": "5",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/parc",
-    "score": 3
+    "score": 2
   },
   {
     "id": "46",
@@ -1147,7 +1147,7 @@
     "closingTime": 20.5,
     "sectionId": "4",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines",
-    "score": 3
+    "score": 4
   },
   {
     "id": "53",
@@ -1172,7 +1172,7 @@
     "closingTime": 20.5,
     "sectionId": "4",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines",
-    "score": 3
+    "score": 4
   },
   {
     "id": "54",
@@ -1247,7 +1247,7 @@
     "closingTime": 20.5,
     "sectionId": "4",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines",
-    "score": 4
+    "score": 5
   },
   {
     "id": "57",
@@ -1347,7 +1347,7 @@
     "closingTime": 20.5,
     "sectionId": "4",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines",
-    "score": 5
+    "score": 4
   },
   {
     "id": "61",
@@ -1397,7 +1397,7 @@
     "closingTime": 20.5,
     "sectionId": "4",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
-    "score": 5
+    "score": 4
   },
   {
     "id": "63",
@@ -1447,7 +1447,7 @@
     "closingTime": 20.5,
     "sectionId": "4",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
-    "score": 4
+    "score": 3
   },
   {
     "id": "65",
@@ -1472,7 +1472,7 @@
     "closingTime": 20.5,
     "sectionId": "4",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
-    "score": 4
+    "score": 3
   },
   {
     "id": "66",
@@ -1497,7 +1497,7 @@
     "closingTime": 20.5,
     "sectionId": "4",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
-    "score": 4
+    "score": 3
   },
   {
     "id": "67",
@@ -1522,7 +1522,7 @@
     "closingTime": 20.5,
     "sectionId": "4",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
-    "score": 5
+    "score": 4
   },
   {
     "id": "68",
@@ -1547,7 +1547,7 @@
     "closingTime": 20.5,
     "sectionId": "4",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
-    "score": 4
+    "score": 3
   },
   {
     "id": "69",
@@ -1597,7 +1597,7 @@
     "closingTime": 20.5,
     "sectionId": "4",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
-    "score": 5
+    "score": 4
   },
   {
     "id": "71",
@@ -1622,7 +1622,7 @@
     "closingTime": 20.5,
     "sectionId": "4",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
-    "score": 3
+    "score": 2
   },
   {
     "id": "72",
@@ -1697,7 +1697,7 @@
     "closingTime": 20.5,
     "sectionId": "4",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
-    "score": 5
+    "score": 4
   },
   {
     "id": "75",
@@ -1747,7 +1747,7 @@
     "closingTime": 20.5,
     "sectionId": "4",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/jardins/parterres",
-    "score": 4
+    "score": 5
   },
   {
     "id": "77",
@@ -1797,7 +1797,7 @@
     "closingTime": 20.5,
     "sectionId": "4",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/jardins/parterres",
-    "score": 3
+    "score": 4
   },
   {
     "id": "79",
@@ -1922,7 +1922,7 @@
     "closingTime": 0,
     "sectionId": "0",
     "url": "",
-    "score": 2
+    "score": 3
   },
   {
     "id": "84",
@@ -1972,7 +1972,7 @@
     "closingTime": 18.5,
     "sectionId": "3",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/visite-guidee-royal-cauchemar",
-    "score": 4
+    "score": 3
   },
   {
     "id": "86",
@@ -1997,7 +1997,7 @@
     "closingTime": 18.5,
     "sectionId": "3",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/visite-guidee-versailles-fake-news",
-    "score": 5
+    "score": 4
   },
   {
     "id": "87",
@@ -2022,7 +2022,7 @@
     "closingTime": 18.5,
     "sectionId": "3",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/visite-guidee-marie-antoinette-prive",
-    "score": 5
+    "score": 4
   },
   {
     "id": "88",
@@ -2072,7 +2072,7 @@
     "closingTime": 18.5,
     "sectionId": "2",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/visite-guidee-fantomes-trianon",
-    "score": 3
+    "score": 2
   },
   {
     "id": "90",
@@ -2122,7 +2122,7 @@
     "closingTime": 18.5,
     "sectionId": "3",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/visite-guidee-chateau-rois-palais-republique",
-    "score": 4
+    "score": 5
   },
   {
     "id": "92",
