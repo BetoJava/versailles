@@ -1,4 +1,5 @@
 # Versailles - Application de Visite Personnalisée
+Team : Joueurs de paume
 
 Une application web moderne en Next.js pour créer des itinéraires personnalisés au Château de Versailles, utilisant l'intelligence artificielle pour adapter les recommandations aux préférences des visiteurs.
 
