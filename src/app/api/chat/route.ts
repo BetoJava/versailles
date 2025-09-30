@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
 import activitiesData from "~/assets/data/activity_v2.json";
-import businessData from "~/assets/business.json";
+import businessData from "~/assets/business_v2.json";
 
 // Configuration du client OpenAI avec l'URL de Mistral AI
 const client = new OpenAI({
@@ -46,21 +46,25 @@ export async function POST(request: NextRequest) {
       throw new Error("Pas de réponse du LLM");
     }
 
+    // Nettoyer la réponse du LLM
+    const cleanedResponse = cleanString(response);
+    
     // Extraire le JSON de la réponse
-    const jsonMatch = response.match(/```json\s*([\s\S]*?)\s*```/);
+    const jsonMatch = cleanedResponse.match(/```json\s*([\s\S]*?)\s*```/);
     if (!jsonMatch || !jsonMatch[1]) {
       // Si pas de bloc json, essayer de parser directement
       try {
-        const parsedResponse = JSON.parse(response);
+        const parsedResponse = JSON.parse(cleanedResponse);
         return NextResponse.json(parsedResponse);
       } catch {
         // Si ça échoue, retourner la réponse brute dans answer
-        return NextResponse.json({ answer: response });
+        return NextResponse.json({ answer: cleanedResponse });
       }
     }
 
     // Nettoyer et parser le JSON
-    const cleanedJson = jsonMatch[1].replace(/,(\s*[}\]])/g, '$1');
+    const jsonContent = cleanString(jsonMatch[1]);
+    const cleanedJson = jsonContent.replace(/,(\s*[}\]])/g, '$1');
     const parsedResponse = JSON.parse(cleanedJson);
 
     return NextResponse.json(parsedResponse);
@@ -77,6 +81,18 @@ export async function POST(request: NextRequest) {
 }
 
 /**
+ * Nettoie une chaîne de caractères en supprimant les caractères de contrôle
+ */
+function cleanString(str: string | null | undefined): string {
+  if (!str) return "";
+  return str
+    .replace(/[\x00-\x1F\x7F]/g, '') // Supprime les caractères de contrôle
+    .replace(/\r\n/g, '\n') // Normalise les retours à la ligne
+    .replace(/\r/g, '\n') // Normalise les retours chariot
+    .trim();
+}
+
+/**
  * Construit le prompt pour l'agent chatbot
  */
 function buildChatPrompt(
@@ -84,15 +100,15 @@ function buildChatPrompt(
   activities: typeof activitiesData,
   businesses: typeof businessData
 ): string {
-  // Formater les activités de manière concise
+  // Formater les activités de manière concise en nettoyant les chaînes
   const activitiesFormatted = activities.map(activity => ({
     id: activity.activityId,
-    name: activity.name,
-    description: activity.catchy_description || activity.reason || "",
+    name: cleanString(activity.name),
+    description: cleanString(activity.catchy_description || activity.reason || ""),
     duration: activity.duration,
     openingTime: activity.openingTime,
     closingTime: activity.closingTime,
-    url: activity.url,
+    url: cleanString(activity.url),
     interests: {
       architecture: activity["interests.architecture"],
       landscape: activity["interests.landscape"],
@@ -108,13 +124,13 @@ function buildChatPrompt(
 
   const businessFormatted = businesses.map(business => ({
     id: business.businessId,
-    name: business.name,
-    type: business.type,
+    name: cleanString(business.name),
+    type: cleanString(business.type),
     openingTime: business.openingTime,
     closingTime: business.closingTime,
     price: business.price,
-    phone: business.phone,
-    url: business.url,
+    phone: cleanString(business.phone),
+    url: cleanString(business.url),
   }));
 
   return `Tu es un expert du Château de Versailles et ton but est de fournir la meilleure expérience visiteur.
@@ -135,7 +151,7 @@ ${JSON.stringify(activitiesFormatted, null, 2)}
 ${JSON.stringify(businessFormatted, null, 2)}
 
 # Instructions importantes
-1. Réponds toujours en JSON avec au minimum une clé "answer" contenant ta réponse en français
+1. Réponds toujours en JSON avec au minimum une clé "answer" contenant ta réponse en français, avec des doubles quotes pour les keys et les strings
 2. Sois précis, informatif et amical dans tes réponses
 3. Utilise les données fournies pour répondre aux questions sur les activités et services
 4. Si tu recommandes des activités, cite leur nom exact et donne des détails pertinents (durée, horaires, description)
@@ -150,5 +166,5 @@ Réponds TOUJOURS dans ce format JSON :
 \`\`\`
 
 # Question du visiteur
-${question}`;
+${cleanString(question)}`;
 }
