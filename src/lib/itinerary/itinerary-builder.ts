@@ -145,7 +145,7 @@ export function buildItinerary(
   const endTimeMin = timeToMinutes(endTime);
   let currentLocation = startPoint;
   const visited = new Set<string>();
-  const cumulativeVector = new Array(9).fill(0);
+  const cumulativeVector = new Array(10).fill(0);
   const itinerary: ItineraryStep[] = [];
 
   itinerary.push({
@@ -210,7 +210,7 @@ export function buildItinerary(
 
     visited.add(bestActivity.activityId);
     const activityVector = extractInterestVector(bestActivity);
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < 10; i++) {
       cumulativeVector[i] += activityVector[i] ?? 0;
     }
     currentLocation = bestActivity.name;
