@@ -926,14 +926,14 @@
         "url": "https:\/\/www.chateauversailles.fr\/decouvrir\/domaine\/parc",
         "ticket": "chateau",
         "interests.architecture": 3,
-        "interests.landscape": 5,
-        "interests.politic": 3,
+        "interests.landscape": 4,
+        "interests.politic": 1,
         "interests.history": 4,
         "interests.courtlife": 4,
         "interests.art": 3,
         "interests.engineering": 4,
         "interests.spirituality": 2,
-        "interests.nature": 5
+        "interests.nature": 4
     },
     {
         "activityId": "46",

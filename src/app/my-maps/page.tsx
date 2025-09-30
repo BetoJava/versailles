@@ -5,8 +5,9 @@ import dynamic from "next/dynamic"
 import { ModeToggle } from "~/components/ui/mode-toggle"
 import { Button } from "~/components/ui/button"
 import { Card } from "~/components/ui/card"
-import { X, Clock, Ticket, ExternalLink, Play, Pause, LoaderIcon } from "lucide-react"
+import { X, Clock, Ticket, ExternalLink, Play, Pause, LoaderIcon, List } from "lucide-react"
 import { useOnboarding } from "~/contexts/onboarding-context"
+import { useRouter } from "next/navigation"
 import allActivitiesData from "~/assets/data/activity_v2.json"
 
 interface Activity {
@@ -47,6 +48,7 @@ const MapComponent = dynamic(
 
 function MyMapsContent() {
     const { state } = useOnboarding()
+    const router = useRouter()
     const [selectedActivity, setSelectedActivity] = useState<Activity | null>(null)
     const [hoveredActivity, setHoveredActivity] = useState<string | null>(null)
     const [isPlaying, setIsPlaying] = useState(false)
@@ -229,7 +231,15 @@ function MyMapsContent() {
             </div>
 
             {/* Contrôle du mode (coin supérieur droit) */}
-            <div className="absolute top-4 right-4 z-[1000] pointer-events-auto">
+            <div className="absolute top-4 right-4 z-[1000] pointer-events-auto flex gap-2">
+                <Button
+                    onClick={() => router.push('/my-route')}
+                    size="icon"
+                    variant="outline"
+                    className="bg-background/80 backdrop-blur-sm"
+                >
+                    <List className="size-4" />
+                </Button>
                 <ModeToggle />
             </div>
 

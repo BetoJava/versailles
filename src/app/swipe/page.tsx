@@ -315,7 +315,8 @@ function SwipePageContent() {
       alpha: 1.0,
       beta: 0.4,
       gamma: 0.5,
-      delta: 0.2
+      delta: 0.2,
+      epsilon: 1.5
     })
   }
 
@@ -457,7 +458,7 @@ function SwipePageContent() {
   }
 
   return (
-    <div className="h-dvh bg-gradient-to-br from-background to-muted p-2 sm:p-4 relative overflow-hidden">
+    <div className="h-dvh bg-gradient-to-br from-background to-muted p-3 sm:p-4 relative overflow-hidden">
       {/* SVG en arrière-plan */}
       <img 
         src="/chateau_min.svg" 
@@ -472,7 +473,7 @@ function SwipePageContent() {
 
       <div className="relative z-10 max-w-sm mx-auto pb-32">
         {/* Indicateur de progression */}
-        <div className="w-full bg-muted rounded-full mb-4">
+        <div className="w-full bg-muted rounded-full mb-4 mt-4">
           <div
             className="bg-primary h-2 rounded-full transition-all duration-300"
             style={{ width: `${((currentIndex + 1) / activities.length) * 100}%` }}

@@ -4,7 +4,8 @@ import { useState, useEffect, useRef } from "react"
 import { useOnboarding } from "~/contexts/onboarding-context"
 import { ModeToggle } from "~/components/ui/mode-toggle"
 import { Button } from "~/components/ui/button"
-import { ChevronDown, ChevronUp, Download, LoaderIcon } from "lucide-react"
+import { ChevronDown, ChevronUp, Download, LoaderIcon, Map } from "lucide-react"
+import { useRouter } from "next/navigation"
 
 interface TimelineItemProps {
     step: {
@@ -41,8 +42,8 @@ function TimelineItem({ step, isLast, isInView }: TimelineItemProps) {
                 <div className="flex flex-col items-center h-full">
                     <div
                         className={`w-4 h-4 rounded-full border-2 transition-all duration-300 ${isInView
-                                ? 'bg-primary border-primary'
-                                : 'bg-background border-muted-foreground'
+                            ? 'bg-primary border-primary'
+                            : 'bg-background border-muted-foreground'
                             }`}
                     />
                     {!isLast && (
@@ -110,25 +111,13 @@ function TimelineItem({ step, isLast, isInView }: TimelineItemProps) {
 }
 
 function MyRouteContent() {
-    const { state, setItinerary } = useOnboarding()
+    const { state } = useOnboarding()
     const [visibleItems, setVisibleItems] = useState<Set<number>>(new Set())
     const containerRef = useRef<HTMLDivElement>(null)
+    const router = useRouter()
 
-    // Charger l'itinéraire fictif au montage du composant
-    useEffect(() => {
-        if (!state.itinerary) {
-            // Charger l'itinéraire fictif depuis le fichier JSON
-            fetch('/src/assets/data/sample-itinerary.json')
-                .then(response => response.json())
-                .then(data => {
-                    setItinerary(data)
-                })
-                .catch(error => {
-                    console.error('Erreur lors du chargement de l\'itinéraire fictif:', error)
-                })
-        }
-    }, [state.itinerary, setItinerary])
-
+    // L'itinéraire vient directement du contexte
+    // Il est créé après le swipe des activités via l'API itinerary
     const itinerary = state.itinerary
 
     useEffect(() => {
@@ -165,8 +154,132 @@ function MyRouteContent() {
         return () => observer.disconnect()
     }, [itinerary])
 
-    const handleDownload = () => {
-        console.log("Téléchargement en cours...")
+    const handleDownload = async () => {
+        if (!itinerary) return
+
+        try {
+            // Importation dynamique de jsPDF
+            const { jsPDF } = await import('jspdf')
+
+            const doc = new jsPDF()
+            const pageWidth = doc.internal.pageSize.getWidth()
+            const margin = 20
+            let yPosition = margin
+
+            // Titre
+            doc.setFontSize(22)
+            doc.setFont('helvetica', 'bold')
+            doc.text('Votre visite de Versailles', margin, yPosition)
+            yPosition += 10
+
+            // Sous-titre
+            doc.setFontSize(12)
+            doc.setFont('helvetica', 'normal')
+            doc.text('Un parcours personnalisé à travers l\'histoire et la splendeur', margin, yPosition)
+            yPosition += 6
+            doc.text('du Château de Versailles', margin, yPosition)
+            yPosition += 12
+
+            // Informations générales
+            doc.setFontSize(10)
+            doc.setFont('helvetica', 'bold')
+            doc.text(`Départ: ${itinerary.departure_time}`, margin, yPosition)
+            doc.text(`Retour: ${itinerary.arrival_time}`, pageWidth / 2 + 10, yPosition)
+            yPosition += 6
+            doc.text(`${itinerary.total_activities} activité${itinerary.total_activities > 1 ? 's' : ''}`, margin, yPosition)
+            yPosition += 15
+
+            // Ligne de séparation
+            doc.setDrawColor(200, 200, 200)
+            doc.line(margin, yPosition, pageWidth - margin, yPosition)
+            yPosition += 10
+
+            // Itinéraire
+            doc.setFontSize(16)
+            doc.setFont('helvetica', 'bold')
+            doc.text('Itinéraire', margin, yPosition)
+            yPosition += 10
+
+            // Helper pour formater la durée
+            const formatDuration = (minutes: number) => {
+                if (minutes < 60) return `${Math.round(minutes)} min`
+                const hours = Math.floor(minutes / 60)
+                const mins = Math.round(minutes % 60)
+                return mins > 0 ? `${hours}h${mins}` : `${hours}h`
+            }
+
+            // Parcourir chaque étape
+            itinerary.itinerary.forEach((step, index) => {
+                // Vérifier si on doit ajouter une nouvelle page
+                if (yPosition > 270) {
+                    doc.addPage()
+                    yPosition = margin
+                }
+
+                doc.setFontSize(12)
+                doc.setFont('helvetica', 'bold')
+
+                // Numéro et heure
+                const stepNumber = step.order === 0 ? 'Départ' :
+                    step.duration === 0 ? 'Arrivée' :
+                        `Étape ${step.order}`
+                doc.text(`${stepNumber} - ${step.arrival_time}`, margin, yPosition)
+                yPosition += 6
+
+                // Nom de l'activité
+                doc.setFontSize(11)
+                doc.setFont('helvetica', 'normal')
+                const activityText = doc.splitTextToSize(step.activity_name, pageWidth - 2 * margin)
+                doc.text(activityText, margin + 5, yPosition)
+                yPosition += 6 * activityText.length
+
+                // Durée de visite
+                if (step.duration > 0) {
+                    doc.setFontSize(9)
+                    doc.setTextColor(100, 100, 100)
+                    doc.text(`Durée de visite: ${formatDuration(step.duration)}`, margin + 5, yPosition)
+                    yPosition += 5
+                }
+
+                // Temps de marche
+                if (step.travel_time_from_previous > 0) {
+                    doc.setFontSize(9)
+                    doc.setTextColor(100, 100, 100)
+                    doc.text(`🚶 ${formatDuration(step.travel_time_from_previous)} de marche`, margin + 5, yPosition)
+                    yPosition += 5
+                }
+
+                doc.setTextColor(0, 0, 0)
+                yPosition += 5
+
+                // Ligne de séparation légère entre les étapes
+                if (index < itinerary.itinerary.length - 1) {
+                    doc.setDrawColor(230, 230, 230)
+                    doc.line(margin + 5, yPosition, pageWidth - margin - 5, yPosition)
+                    yPosition += 8
+                }
+            })
+
+            // Pied de page sur chaque page
+            const totalPages = doc.getNumberOfPages()
+            for (let i = 1; i <= totalPages; i++) {
+                doc.setPage(i)
+                doc.setFontSize(8)
+                doc.setTextColor(150, 150, 150)
+                doc.text(
+                    `Généré le ${new Date().toLocaleDateString('fr-FR')} - Page ${i}/${totalPages}`,
+                    pageWidth / 2,
+                    doc.internal.pageSize.getHeight() - 10,
+                    { align: 'center' }
+                )
+            }
+
+            // Télécharger le PDF
+            doc.save(`itineraire-versailles-${new Date().toISOString().split('T')[0]}.pdf`)
+        } catch (error) {
+            console.error('Erreur lors de la génération du PDF:', error)
+            alert('Une erreur est survenue lors de la génération du PDF')
+        }
     }
 
     if (!itinerary) {
@@ -195,19 +308,26 @@ function MyRouteContent() {
                 style={{ width: 'full', minHeight: '50vh' }}
             />
 
-            <div className="absolute top-2 right-2 sm:top-4 sm:right-4">
+            <div className="absolute top-2 right-2 sm:top-4 sm:right-4 flex gap-2 z-100">
                 <ModeToggle />
             </div>
 
             <div className="relative z-10 max-w-xl mx-auto py-8 px-2 sm:px-4" ref={containerRef}>
                 {/* Header */}
                 <div className="mb-8">
-                    <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-3">
+                    <h1 className="text-3xl sm:text-4xl font-bold text-foreground mb-3 mt-8 sm:mt-0">
                         Votre visite de Versailles
                     </h1>
                     <p className="text-muted-foreground mb-4 max-w-2xl mx-auto">
                         Un parcours personnalisé à travers l'histoire et la splendeur du Château de Versailles, adapté à vos préférences.
                     </p>
+                    <Button
+                        onClick={() => router.push('/my-maps')}
+                        className="w-full mb-6"
+                    >
+                        <Map className="size-4" />
+                        Voir mon itinéraire
+                    </Button>
                     <div className="flex flex-col sm:flex-row items-start gap-2 text-sm text-muted-foreground">
                         <span className="font-medium">
                             Départ : {itinerary.departure_time}
@@ -268,6 +388,11 @@ function MyRouteContent() {
                         <Download className="size-5" />
                         Télécharger l'itinéraire (PDF)
                     </Button>
+                </div>
+                <div>
+                    <p className="text-muted-foreground mt-48 mb-6 text-xs">
+                        Application réalisée par l'équipe des joueurs de Paume, équipe championne du monde du jeu de paume 2015, aux JO Paris.
+                    </p>
                 </div>
             </div>
         </div>

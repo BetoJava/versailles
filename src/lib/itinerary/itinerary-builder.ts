@@ -96,17 +96,40 @@ function calculateCompositeScore(
   currentLocation: string,
   cumulativeVector: number[],
   distances: DistanceMatrix,
+  timeInCurrentZone: number,
   alpha = 1.0,
   beta = 0.4,
   gamma = 0.5,
-  delta = 0.2
+  delta = 0.2,
+  epsilon = 1.5
 ): number {
   const recScore = activity.recommendation_score;
 
+  // Distance penalty with exponential scaling
   const travelTime = distances[currentLocation]?.[activity.name] ?? 0;
-  const maxTravel = 35;
-  const travelPenalty = Math.min(travelTime / maxTravel, 1.0);
+  const normalizedDistance = travelTime / 30; // normalize by 30min reference
+  const exponentialPenalty = Math.pow(normalizedDistance, 2); // quadratic penalty
+  
+  // Zone change bonus: every 120-180 minutes, encourage zone changes
+  const zoneChangeThreshold = 120; // 2 hours
+  const zoneChangeWindow = 180; // 3 hours
+  let distanceBonusFactor = 0;
+  
+  if (timeInCurrentZone >= zoneChangeThreshold && timeInCurrentZone <= zoneChangeWindow) {
+    // Encourage far activities to change zones
+    if (travelTime > 15) {
+      distanceBonusFactor = 0.5 * ((timeInCurrentZone - zoneChangeThreshold) / (zoneChangeWindow - zoneChangeThreshold));
+    }
+  } else if (timeInCurrentZone > zoneChangeWindow) {
+    // Strong encouragement to change zones
+    if (travelTime > 15) {
+      distanceBonusFactor = 0.8;
+    }
+  }
+  
+  const travelPenalty = exponentialPenalty - distanceBonusFactor;
 
+  // Similarity penalty to visited activities
   const activityVector = extractInterestVector(activity);
   let similarityPenalty = 0;
   const cumulativeNorm = Math.sqrt(cumulativeVector.reduce((s, v) => s + v * v, 0));
@@ -114,12 +137,13 @@ function calculateCompositeScore(
     similarityPenalty = Math.max(0, cosineSimilarity(activityVector, cumulativeVector));
   }
 
+  // Timing bonus
   const arrivalTime = currentTime + travelTime;
   const openingTime = activity.openingTime * 60;
   const waitTime = Math.max(0, openingTime - arrivalTime);
   const timingBonus = 1.0 - Math.min(waitTime / 60, 1.0);
 
-  return alpha * recScore - beta * travelPenalty - gamma * similarityPenalty + delta * timingBonus;
+  return alpha * recScore - beta * epsilon * travelPenalty - gamma * similarityPenalty + delta * timingBonus;
 }
 
 export function buildItinerary(
@@ -134,7 +158,8 @@ export function buildItinerary(
   alpha = 1.0,
   beta = 0.4,
   gamma = 0.5,
-  delta = 0.2
+  delta = 0.2,
+  epsilon = 1.5
 ): Itinerary {
   const adjustedDistances = applyWalkSpeed(distances, walkSpeed);
 
@@ -147,6 +172,8 @@ export function buildItinerary(
   const visited = new Set<string>();
   const cumulativeVector = new Array(10).fill(0);
   const itinerary: ItineraryStep[] = [];
+  let timeInCurrentZone = 0; // Track time spent in current zone
+  let lastZoneChangeTime = currentTime;
 
   itinerary.push({
     order: 0,
@@ -175,10 +202,12 @@ export function buildItinerary(
         currentLocation,
         cumulativeVector,
         adjustedDistances,
+        timeInCurrentZone,
         alpha,
         beta,
         gamma,
-        delta
+        delta,
+        epsilon
       );
       return { activity: candidate, score };
     });
@@ -194,6 +223,14 @@ export function buildItinerary(
     const waitingTime = Math.max(0, openingTime - arrivalTime);
     const duration = bestActivity.duration * 60;
     const departureTime = actualStart + duration;
+    
+    // Track zone changes: if travel time > 15min, consider it a zone change
+    if (travelTime > 15) {
+      timeInCurrentZone = 0;
+      lastZoneChangeTime = currentTime;
+    } else {
+      timeInCurrentZone = currentTime - lastZoneChangeTime;
+    }
 
     itinerary.push({
       order: itinerary.length,

@@ -85,7 +85,7 @@ function OnboardingPageContent() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-muted p-1 sm:p-4 relative"
+    <div className="min-h-screen bg-gradient-to-br from-background to-muted p-3 sm:p-4 relative"
       style={{
         backgroundColor: 'var(--color-background)'
       }}>
@@ -129,7 +129,7 @@ function OnboardingPageContent() {
           </div>
         </div>
 
-        <div className="pt-4 sm:pt-8 overflow-hidden">
+        <div className="pt-4 px-2 sm:pt-8 overflow-hidden">
           <AnimatedStep
             step={1}
             currentStep={currentStep}

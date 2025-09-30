@@ -18,7 +18,7 @@ export default function Home() {
 
   return (
     <main 
-      className={`flex min-h-screen flex-col items-center justify-center text-foreground px-1 relative transition-all duration-300 ${
+      className={`flex min-h-screen flex-col items-center justify-center text-foreground px-3 relative transition-all duration-300 ${
         isTransitioning ? 'scale-110 opacity-0' : 'scale-100 opacity-100'
       }`}
       style={{

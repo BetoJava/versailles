@@ -20,6 +20,7 @@ const buildItineraryInputSchema = z.object({
   beta: z.number().default(0.8),
   gamma: z.number().default(0.5),
   delta: z.number().default(0.2),
+  epsilon: z.number().default(1.5),
 });
 
 const ALL_ACTIVITIES = activitiesV2 as Activity[];
@@ -43,7 +44,8 @@ export const itineraryRouter = createTRPCRouter({
         input.alpha,
         input.beta,
         input.gamma,
-        input.delta
+        input.delta,
+        input.epsilon
       );
 
       console.log(`Itinerary built: ${result.total_activities} activities`);
