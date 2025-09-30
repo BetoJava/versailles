@@ -1,7 +1,7 @@
 [
     {
         "sectionId": "1",
-        "name": "grande-ecurie"
+        "name": "entree"
     },
     {
         "sectionId": "2",
@@ -18,13 +18,5 @@
     {
         "sectionId": "5",
         "name": "parc"
-    },
-    {
-        "sectionId": "6",
-        "name": "petite-ecurie"
-    },
-    {
-        "sectionId": "7",
-        "name": "salle-jeu-paume"
     }
 ]
