@@ -23,6 +23,7 @@ export interface ItineraryStep {
   travel_time_from_previous: number;
   composite_score?: number;
   recommendation_score?: number;
+  description?: string;
 }
 
 export interface Itinerary {
@@ -243,6 +244,7 @@ export function buildItinerary(
       travel_time_from_previous: travelTime,
       composite_score: bestScore,
       recommendation_score: recScores.get(bestActivity.activityId) ?? 0,
+      description: bestActivity.description ?? "",
     });
 
     visited.add(bestActivity.activityId);
@@ -265,6 +267,7 @@ export function buildItinerary(
     duration: 0,
     waiting_time: 0,
     travel_time_from_previous: returnTravel,
+    description: startPoint,
   });
 
   const totalTravel = itinerary.reduce((sum, step) => sum + step.travel_time_from_previous, 0);

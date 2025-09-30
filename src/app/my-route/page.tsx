@@ -17,6 +17,7 @@ interface TimelineItemProps {
         duration: number
         waiting_time: number
         travel_time_from_previous: number
+        description: string
     }
     isLast: boolean
     isInView: boolean
@@ -91,18 +92,27 @@ function TimelineItem({ step, isLast, isInView }: TimelineItemProps) {
 
                     {/* Expanded Content */}
                     {isOpen && !isStartOrEnd && (
-                        <div className=" space-y-4 pl-3">
-                            {step.activity_id && !imageError && (
-                                <div className="mt-4 relative w-full h-48 sm:h-64 rounded-lg overflow-hidden">
-                                    <img
-                                        src={`/activity_images/${step.activity_id}.jpg`}
-                                        alt={step.activity_name}
-                                        className="w-full h-full object-cover"
-                                        onError={() => setImageError(true)}
-                                    />
-                                </div>
-                            )}
-                        </div>
+                        <>
+                            <div className=" space-y-4 pl-3">
+                                {step.activity_id && !imageError && (
+                                    <div className="mt-4 relative w-full h-48 sm:h-64 rounded-lg overflow-hidden">
+                                        <img
+                                            src={`/activity_images/${step.activity_id}.jpg`}
+                                            alt={step.activity_name}
+                                            className="w-full h-full object-cover"
+                                            onError={() => setImageError(true)}
+                                        />
+                                    </div>
+                                )}
+                            </div>
+                            <div>
+                                {step.description && (
+                                    <p className="text-sm text-muted-foreground leading-relaxed pl-3 py-2">
+                                        {step.description}
+                                    </p>
+                                )}
+                            </div>
+                        </>
                     )}
                 </div>
             </div>
@@ -295,7 +305,7 @@ function MyRouteContent() {
 
     return (
         <div
-            className="min-h-screen bg-background p-1 sm:p-4 relative"
+            className="min-h-screen bg-background p-3 sm:p-4 relative"
             style={{
                 backgroundColor: 'var(--color-background)'
             }}

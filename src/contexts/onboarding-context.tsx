@@ -59,6 +59,7 @@ export interface Itinerary {
     total_visit_time: number
     total_waiting_time: number
   }
+  description: string
 }
 
 export interface ItineraryStep {

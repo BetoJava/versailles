@@ -14,6 +14,7 @@ export interface Activity {
   "interests.spirituality": number;
   "interests.nature": number;
   llmScore?: number;
+  description?: string;
 }
 
 export interface LikeDislike {

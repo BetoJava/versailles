@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { ModeToggle } from "~/components/ui/mode-toggle"
+import { LoadingSpinner } from "~/components/ui/loading-spinner"
 import { Step1 } from "./components/step1"
 import { Step2 } from "./components/step2"
 import { Step3 } from "./components/step3"
@@ -85,20 +86,22 @@ function OnboardingPageContent() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-muted p-3 sm:p-4 relative"
-      style={{
-        backgroundColor: 'var(--color-background)'
-      }}>
-      {/* SVG en arrière-plan */}
-      <img 
-        src="/chateau_min.svg" 
-        alt="Château de Versailles" 
-        className="absolute bottom-0 left-1/2 transform -translate-x-1/2 min-h-[50vh] w-full object-cover"
-        style={{ width: 'full', minHeight: '50vh' }}
-      />
-      <div className="absolute top-2 right-2 sm:top-4 sm:right-4">
-        <ModeToggle />
-      </div>
+    <>
+      {state.isLoading && <LoadingSpinner />}
+      <div className="min-h-screen bg-gradient-to-br from-background to-muted p-3 sm:p-4 relative"
+        style={{
+          backgroundColor: 'var(--color-background)'
+        }}>
+        {/* SVG en arrière-plan */}
+        <img 
+          src="/chateau_min.svg" 
+          alt="Château de Versailles" 
+          className="absolute bottom-0 left-1/2 transform -translate-x-1/2 min-h-[50vh] w-full object-cover"
+          style={{ width: 'full', minHeight: '50vh' }}
+        />
+        <div className="absolute top-2 right-2 sm:top-4 sm:right-4">
+          <ModeToggle />
+        </div>
       <div className="relative z-10 max-w-2xl mx-auto">
         <div className="text-center mb-8">
 
@@ -169,7 +172,8 @@ function OnboardingPageContent() {
           </AnimatedStep>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   )
 }
 

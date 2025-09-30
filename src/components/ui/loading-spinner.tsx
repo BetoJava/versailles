@@ -3,46 +3,30 @@
 import { useEffect, useState } from "react"
 import { Loader2 } from "lucide-react"
 
-interface LoadingSpinnerProps {
-  onComplete?: () => void
-}
-
 const loadingMessages = [
   "Calcul de l'alignement des astres...",
   "Consultation des archives royales...",
   "Optimisation de la trajectoire des jardins...",
   "Synchronisation avec les esprits de Versailles...",
+  "Analyse des préférences de Louis XIV...",
   "Calcul des meilleurs angles de vue...",
   "Analyse des flux de visiteurs historiques...",
   "Préparation de l'itinéraire magique...",
-  "Finalisation de votre expérience unique..."
 ]
 
-export function LoadingSpinner({ onComplete }: LoadingSpinnerProps) {
+export function LoadingSpinner() {
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0)
-  const [isVisible, setIsVisible] = useState(true)
 
   useEffect(() => {
     const messageInterval = setInterval(() => {
       setCurrentMessageIndex((prev) => {
-        const nextIndex = prev + 1
-        if (nextIndex >= loadingMessages.length) {
-          clearInterval(messageInterval)
-          // Attendre un peu avant de déclencher onComplete
-          setTimeout(() => {
-            setIsVisible(false)
-            onComplete?.()
-          }, 1000)
-          return prev
-        }
-        return nextIndex
+        // Boucler sur les messages indéfiniment
+        return (prev + 1) % loadingMessages.length
       })
     }, 3000) // Change de message toutes les 3 secondes
 
     return () => clearInterval(messageInterval)
-  }, [onComplete])
-
-  if (!isVisible) return null
+  }, [])
 
   return (
     <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center">

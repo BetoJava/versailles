@@ -25,10 +25,10 @@ const onboardingDataSchema = z.object({
 });
 
 // Import des activités complètes et des infos de swipe
-import activitiesV2 from "~/assets/data/activity_v2.json"
+import activitiesV2 from "~/assets/data/activity_v2_clean.json"
 import swipeInfoClean from "~/assets/data/activity_swipe_info_clean.json"
 
-// Préparer les activités de activity_v2.json
+// Préparer les activités de activity_v2_clean.json
 const ALL_ACTIVITIES = activitiesV2.map(activity => ({
   id: activity.activityId,
   name: activity.name,
