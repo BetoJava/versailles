@@ -53,7 +53,7 @@ export const chatbotRouter = createTRPCRouter({
         message: input.message,
         attachments: input.attachments,
         conversationHistory: input.conversationHistory,
-        info: "Pour le streaming en temps réel, utilisez l'API route /api/chat directement",
+        info: "Pour le streaming en temps réel, utilisez l'API route /api/chat-interface directement",
       };
     }),
 

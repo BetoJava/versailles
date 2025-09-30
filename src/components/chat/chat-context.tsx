@@ -156,7 +156,7 @@ export function ChatProvider({ children }: { children: ReactNode }) {
       }));
 
       // Appel API avec streaming
-      const response = await fetch("/api/chat", {
+      const response = await fetch("/api/chat-interface", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
