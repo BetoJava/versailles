@@ -59,3 +59,7 @@ Features :
 
 
  
+# Améliorations 
+- récupérer les bonnes images pour les bassins et fontaines depuis https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines
+
+- les top activités non sélectionnée seront quand même affichée sur la map à la fin

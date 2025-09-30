@@ -1,61 +1,153 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import { OnboardingProvider, useOnboarding } from "~/contexts/onboarding-context"
 import { ModeToggle } from "~/components/ui/mode-toggle"
 import { Card } from "~/components/ui/card"
 import { Button } from "~/components/ui/button"
-import { Badge } from "~/components/ui/badge"
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "~/components/ui/dialog"
 import { api } from "~/trpc/react"
-import { HeartIcon, XIcon, MapPinIcon, ClockIcon } from "lucide-react"
+import { CircleQuestionMarkIcon, HeartIcon, Image, LoaderIcon, XIcon } from "lucide-react"
 
-function SwipePageContent() {
-  const { state } = useOnboarding()
-  const [currentActivityIndex, setCurrentActivityIndex] = useState(0)
-  const [likedActivities, setLikedActivities] = useState<string[]>([])
-  const [dislikedActivities, setDislikedActivities] = useState<string[]>([])
+interface ActivityImageProps {
+  activityId: string
+  alt: string
+  activityName: string
+}
 
-  // Récupérer les détails de l'activité actuelle
-  const { data: currentActivity, isLoading } = api.onboarding.getActivityDetails.useQuery(
-    { activityId: state.activityIds[currentActivityIndex] || "" },
-    { enabled: !!state.activityIds[currentActivityIndex] }
+function ActivityImage({ activityId, alt, activityName }: ActivityImageProps) {
+  const [hasError, setHasError] = useState(false)
+
+  const handleImageError = () => {
+    console.log(`Local image failed to load: /activity_images/${activityId}.jpg`)
+    setHasError(true)
+  }
+
+  if (hasError) {
+    return (
+      <div className="w-full h-full flex items-center justify-center bg-primary/10">
+        <div className="text-center">
+          <Image className="text-muted-foreground mx-auto mb-2" size={48} />
+          <p className="text-sm text-muted-foreground">Image non disponible</p>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <img
+      src={`/activity_images/${activityId}.jpg`}
+      alt={alt}
+      className="w-full h-full object-cover"
+      onError={handleImageError}
+    />
   )
+}
 
-  const handleLike = () => {
-    if (currentActivity) {
-      setLikedActivities(prev => [...prev, currentActivity.id])
-      setCurrentActivityIndex(prev => prev + 1)
+interface SwipeableCardProps {
+  activity: {
+    id: string
+    name: string
+    description: string
+    reason: string
+    category: string
+    duration: number
+  }
+  onSwipe: (direction: 'left' | 'right') => void
+  isTop: boolean
+}
+
+function SwipeableCard({ activity, onSwipe, isTop }: SwipeableCardProps) {
+  const cardRef = useRef<HTMLDivElement>(null)
+  const [isDragging, setIsDragging] = useState(false)
+  const [position, setPosition] = useState({ x: 0, y: 0 })
+  const [rotation, setRotation] = useState(0)
+  const [opacity, setOpacity] = useState(1)
+  const [isSwiped, setIsSwiped] = useState(false)
+  const dragStart = useRef({ x: 0, y: 0 })
+
+  // Réinitialiser les états quand l'activité change
+  useEffect(() => {
+    setPosition({ x: 0, y: 0 })
+    setRotation(0)
+    setOpacity(1)
+    setIsDragging(false)
+    setIsSwiped(false)
+  }, [activity.id])
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!isTop) return
+    setIsDragging(true)
+    dragStart.current = { x: e.clientX - position.x, y: e.clientY - position.y }
+  }
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (!isTop) return
+    setIsDragging(true)
+    const touch = e.touches[0]!
+    dragStart.current = { x: touch.clientX - position.x, y: touch.clientY - position.y }
+  }
+
+  const handleMove = (clientX: number, clientY: number) => {
+    if (!isDragging || !isTop) return
+
+    const newX = clientX - dragStart.current.x
+    const newY = clientY - dragStart.current.y
+
+    setPosition({ x: newX, y: newY })
+    setRotation(newX * 0.1)
+    setOpacity(1 - Math.abs(newX) / 300)
+  }
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    handleMove(e.clientX, e.clientY)
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    const touch = e.touches[0]!
+    handleMove(touch.clientX, touch.clientY)
+  }
+
+  const handleEnd = () => {
+    if (!isDragging || !isTop) return
+    setIsDragging(false)
+
+    const threshold = 100
+    if (Math.abs(position.x) > threshold) {
+      const direction = position.x > 0 ? 'right' : 'left'
+      // Masquer la carte immédiatement et appeler onSwipe
+      setIsSwiped(true)
+      setOpacity(0)
+      onSwipe(direction)
+    } else {
+      // Retour à la position initiale
+      setPosition({ x: 0, y: 0 })
+      setRotation(0)
+      setOpacity(1)
     }
   }
 
-  const handleDislike = () => {
-    if (currentActivity) {
-      setDislikedActivities(prev => [...prev, currentActivity.id])
-      setCurrentActivityIndex(prev => prev + 1)
-    }
-  }
+  useEffect(() => {
+    if (isDragging) {
+      const handleMouseMove = (e: MouseEvent) => handleMove(e.clientX, e.clientY)
+      const handleTouchMove = (e: TouchEvent) => {
+        const touch = e.touches[0]!
+        handleMove(touch.clientX, touch.clientY)
+      }
 
-  const handleSkip = () => {
-    setCurrentActivityIndex(prev => prev + 1)
-  }
+      document.addEventListener('mousemove', handleMouseMove)
+      document.addEventListener('touchmove', handleTouchMove)
+      document.addEventListener('mouseup', handleEnd)
+      document.addEventListener('touchend', handleEnd)
 
-  const getDifficultyColor = (difficulty: string) => {
-    switch (difficulty) {
-      case "easy": return "bg-green-100 text-green-800"
-      case "medium": return "bg-yellow-100 text-yellow-800"
-      case "hard": return "bg-red-100 text-red-800"
-      default: return "bg-gray-100 text-gray-800"
+      return () => {
+        document.removeEventListener('mousemove', handleMouseMove)
+        document.removeEventListener('touchmove', handleTouchMove)
+        document.removeEventListener('mouseup', handleEnd)
+        document.removeEventListener('touchend', handleEnd)
+      }
     }
-  }
-
-  const getDifficultyLabel = (difficulty: string) => {
-    switch (difficulty) {
-      case "easy": return "Facile"
-      case "medium": return "Modéré"
-      case "hard": return "Difficile"
-      default: return "Inconnu"
-    }
-  }
+  }, [isDragging, position])
 
   const getCategoryLabel = (category: string) => {
     switch (category) {
@@ -67,20 +159,187 @@ function SwipePageContent() {
     }
   }
 
-  if (state.isLoading) {
+  // Ne pas rendre la carte si elle a été swipée
+  if (isSwiped) {
+    return null
+  }
+
+  return (
+    <div
+      ref={cardRef}
+      className={`absolute w-full max-w-sm mx-auto cursor-grab active:cursor-grabbing select-none ${isTop ? 'z-20' : 'z-10'
+        }`}
+      style={{
+        transform: `translate(${position.x}px, ${position.y}px) rotate(${rotation}deg)`,
+        opacity: isTop ? opacity : 1,
+        transition: isDragging ? 'none' : 'all 0.3s ease-out',
+        scale: 1, // Toutes les cartes ont la même taille
+      }}
+      onMouseDown={handleMouseDown}
+      onTouchStart={handleTouchStart}
+    >
+      <Card className="h-[calc(100vh-8rem)] overflow-hidden shadow-2xl border-0 flex flex-col">
+        {/* Image */}
+        <div className="h-80 relative overflow-hidden">
+          <ActivityImage
+            activityId={activity.id}
+            alt={activity.name}
+            activityName={activity.name}
+          />
+        </div>
+
+        {/* Contenu */}
+        <div className="flex-1 p-4 sm:p-6 flex flex-col gap-6">
+          <div className="space-y-2">
+            <div>
+              <h2 className="text-2xl font-bold text-foreground leading-tight tracking-tight mb-2">
+                {activity.name}
+              </h2>
+            </div>
+
+            <p className="text-muted-foreground text-sm sm:text-base">
+              {activity.description}
+            </p>
+          </div>
+
+          <div className="">
+            <div className="flex items-center gap-2 mb-2">
+
+              <CircleQuestionMarkIcon className="size-4 text-muted-foreground" />
+              <h3 className="text-xs">Pourquoi y aller ?</h3>
+            </div>
+            <p className="text-xs text-muted-foreground sm:text-sm">
+              {activity.reason}
+            </p>
+          </div>
+        </div>
+      </Card>
+
+      {/* Indicateurs de swipe */}
+      {isTop && (
+        <>
+          <div
+            className={`absolute top-20 left-8 px-4 py-2 bg-red-500 text-white font-bold rounded-lg transform rotate-12 transition-opacity ${position.x < -50 ? 'opacity-100' : 'opacity-0'
+              }`}
+          >
+            PASSER
+          </div>
+          <div
+            className={`absolute top-20 right-8 px-4 py-2 bg-green-500 text-white font-bold rounded-lg transform -rotate-12 transition-opacity ${position.x > 50 ? 'opacity-100' : 'opacity-0'
+              }`}
+          >
+            J'AIME
+          </div>
+        </>
+      )}
+    </div>
+  )
+}
+
+function SwipePageContent() {
+  const { state } = useOnboarding()
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [likedActivities, setLikedActivities] = useState<string[]>([])
+  const [dislikedActivities, setDislikedActivities] = useState<string[]>([])
+  const [swipeCount, setSwipeCount] = useState(0)
+  const [showWelcomeDialog, setShowWelcomeDialog] = useState(true)
+
+  // Récupérer les activités
+  const { data: activities, isLoading } = api.onboarding.getAllActivities.useQuery()
+
+  const handleSwipe = (direction: 'left' | 'right') => {
+    if (!activities) return
+
+    const currentActivity = activities[currentIndex]
+    if (!currentActivity) return
+
+    if (direction === 'right') {
+      setLikedActivities(prev => [...prev, currentActivity.id])
+    } else {
+      setDislikedActivities(prev => [...prev, currentActivity.id])
+    }
+
+    setSwipeCount(prev => prev + 1)
+    setCurrentIndex(prev => prev + 1)
+  }
+
+  const handleButtonAction = (action: 'like' | 'dislike') => {
+    handleSwipe(action === 'like' ? 'right' : 'left')
+  }
+
+  const canContinue = swipeCount >= 10
+  const hasMoreCards = activities && currentIndex < activities.length
+
+  if (state.isLoading || isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-background to-muted p-4 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-background to-muted p-2 sm:p-4 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-muted-foreground">Génération de votre itinéraire personnalisé...</p>
+          <LoaderIcon className="size-8 text-muted-foreground mx-auto mb-4 animate-spin" />
+          <p className="text-muted-foreground">Chargement de vos activités...</p>
         </div>
       </div>
     )
   }
 
+  // Dialog d'explication
+  if (showWelcomeDialog) {
+    return (
+      <Dialog open={showWelcomeDialog} onOpenChange={setShowWelcomeDialog}>
+        <DialogContent className="max-w-md mx-auto">
+          <DialogHeader>
+            <DialogTitle className="text-center text-xl font-bold">
+              Personnalisez votre itinéraire
+            </DialogTitle>
+            <DialogDescription className="text-center text-base leading-relaxed">
+              Pour créer un itinéraire parfaitement adapté à vos goûts, nous allons vous proposer une sélection d'activités.
+            </DialogDescription>
+          </DialogHeader>
+          
+          <div className="space-y-4 py-4">
+            <div className="text-center">
+              <div className="flex justify-center items-center gap-4 mb-4">
+                <div className="flex flex-col items-center gap-2">
+                  <div className="w-12 h-12 bg-red-100 dark:bg-red-900/20 rounded-full flex items-center justify-center">
+                    <XIcon className="size-6 text-red-600" />
+                  </div>
+                  <span className="text-sm text-muted-foreground">Passer</span>
+                </div>
+                <div className="flex flex-col items-center gap-2">
+                  <div className="w-12 h-12 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center">
+                    <HeartIcon className="size-6 text-green-600" />
+                  </div>
+                  <span className="text-sm text-muted-foreground">J'aime</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-muted/50 p-4 rounded-lg">
+              <h4 className="font-semibold mb-2">Comment ça marche ?</h4>
+              <ul className="text-sm text-muted-foreground space-y-1">
+                <li>• Glissez les cartes vers la gauche ou la droite</li>
+                <li>• Ou utilisez les boutons en bas</li>
+                <li>• Vos préférences nous aident à personnaliser votre visite</li>
+                <li>• Votre itinéraire optimal sera généré après</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="flex justify-center">
+            <Button 
+              onClick={() => setShowWelcomeDialog(false)}
+              className="w-full"
+            >
+              Commencer la sélection
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+    )
+  }
+
   if (state.error) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-background to-muted p-4 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-background to-muted p-2 sm:p-4 flex items-center justify-center">
         <div className="text-center">
           <p className="text-red-600 mb-4">Erreur: {state.error}</p>
           <Button onClick={() => window.location.href = "/onboarding"}>
@@ -91,32 +350,50 @@ function SwipePageContent() {
     )
   }
 
-  if (!currentActivity || currentActivityIndex >= state.activityIds.length) {
+  if (!activities || activities.length === 0) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-background to-muted p-4 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-background to-muted p-2 sm:p-4 flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-muted-foreground mb-4">Aucune activité disponible</p>
+          <Button onClick={() => window.location.href = "/onboarding"}>
+            Retour à l'onboarding
+          </Button>
+        </div>
+      </div>
+    )
+  }
+
+  // Écran de fin ou option de continuer
+  if (!hasMoreCards || (canContinue && currentIndex >= activities.length)) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-background to-muted p-2 sm:p-4 flex items-center justify-center">
         <div className="text-center max-w-md">
           <HeartIcon className="h-16 w-16 text-primary mx-auto mb-4" />
           <h1 className="text-2xl font-bold text-foreground mb-2">
             Parfait !
           </h1>
           <p className="text-muted-foreground mb-6">
-            Vous avez parcouru toutes les activités. Voici votre sélection personnalisée.
+            Vous avez swipé {swipeCount} activités. Voici votre sélection personnalisée.
           </p>
           <div className="space-y-4">
-            <div>
-              <h3 className="font-semibold mb-2">Activités aimées ({likedActivities.length})</h3>
-              <p className="text-sm text-muted-foreground">
+            <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg">
+              <h3 className="font-semibold mb-2 text-green-800 dark:text-green-200">
+                Activités aimées ({likedActivities.length})
+              </h3>
+              <p className="text-sm text-green-600 dark:text-green-300">
                 Ces activités seront prioritaires dans votre itinéraire.
               </p>
             </div>
-            <div>
-              <h3 className="font-semibold mb-2">Activités passées ({dislikedActivities.length})</h3>
-              <p className="text-sm text-muted-foreground">
+            <div className="bg-red-50 dark:bg-red-900/20 p-4 rounded-lg">
+              <h3 className="font-semibold mb-2 text-red-800 dark:text-red-200">
+                Activités écartées ({dislikedActivities.length})
+              </h3>
+              <p className="text-sm text-red-600 dark:text-red-300">
                 Ces activités ne seront pas incluses dans votre itinéraire.
               </p>
             </div>
-            <Button className="w-full">
-              Créer mon itinéraire final
+            <Button className="w-full mt-6">
+              Itinéraire
             </Button>
           </div>
         </div>
@@ -125,83 +402,91 @@ function SwipePageContent() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-muted p-4 relative">
-      <div className="absolute top-4 right-4">
+    <div className="h-dvh bg-gradient-to-br from-background to-muted p-2 sm:p-4 relative overflow-hidden">
+      {/* SVG en arrière-plan */}
+      <img 
+        src="/chateau_min.svg" 
+        alt="Château de Versailles" 
+        className="absolute bottom-0 left-1/2 transform -translate-x-1/2 min-h-[50vh] w-full object-cover"
+        style={{ width: 'full', minHeight: '50vh' }}
+      />
+      
+      <div className="absolute top-4 right-4 z-30">
         <ModeToggle />
       </div>
-      
-      <div className="max-w-md mx-auto pt-16">
+
+      <div className="relative z-10 max-w-sm mx-auto pb-32">
         {/* Indicateur de progression */}
-        <div className="mb-6">
-          <div className="flex justify-between text-sm text-muted-foreground mb-2">
-            <span>Activité {currentActivityIndex + 1} sur {state.activityIds.length}</span>
-            <span>{Math.round(((currentActivityIndex + 1) / state.activityIds.length) * 100)}%</span>
-          </div>
-          <div className="w-full bg-muted rounded-full h-2">
-            <div 
-              className="bg-primary h-2 rounded-full transition-all duration-300"
-              style={{ width: `${((currentActivityIndex + 1) / state.activityIds.length) * 100}%` }}
-            />
-          </div>
+        <div className="w-full bg-muted rounded-full mb-4">
+          <div
+            className="bg-primary h-2 rounded-full transition-all duration-300"
+            style={{ width: `${((currentIndex + 1) / activities.length) * 100}%` }}
+          />
         </div>
 
-        {/* Carte d'activité */}
-        <Card className="p-6 mb-6 shadow-lg">
-          <div className="space-y-4">
-            <div className="flex items-start justify-between">
-              <h2 className="text-xl font-bold text-foreground">
-                {currentActivity.name}
-              </h2>
-              <Badge className={getDifficultyColor(currentActivity.difficulty)}>
-                {getDifficultyLabel(currentActivity.difficulty)}
-              </Badge>
-            </div>
+        {/* Pile de cartes */}
+        <div className="relative h-full mb-5 flex justify-center items-start">
+          {/* Carte suivante (arrière-plan) */}
+          {activities[currentIndex + 1] && (
+            <SwipeableCard
+              activity={activities[currentIndex + 1]!}
+              onSwipe={() => { }}
+              isTop={false}
+            />
+          )}
 
-            <div className="space-y-3">
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <MapPinIcon className="size-4" />
-                <span className="text-sm">{getCategoryLabel(currentActivity.category)}</span>
-              </div>
-              
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <ClockIcon className="size-4" />
-                <span className="text-sm">{currentActivity.duration} minutes</span>
-              </div>
-            </div>
-
-            <div className="pt-4">
-              <p className="text-muted-foreground text-sm">
-                Cette activité correspond à vos préférences et votre profil de visite.
-              </p>
-            </div>
-          </div>
-        </Card>
+          {/* Carte actuelle */}
+          {activities[currentIndex] && (
+            <SwipeableCard
+              activity={activities[currentIndex]!}
+              onSwipe={handleSwipe}
+              isTop={true}
+            />
+          )}
+        </div>
 
         {/* Boutons d'action */}
-        <div className="flex gap-4">
+        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 flex gap-4 z-30">
           <Button
             variant="outline"
-            onClick={handleDislike}
-            className="flex-1"
+            size="lg"
+            onClick={() => handleButtonAction('dislike')}
+            className="w-16 h-16 rounded-full border-2 border-red-500 hover:bg-red-500 hover:text-white transition-colors"
+            disabled={!hasMoreCards}
           >
-            <XIcon className="mr-2 size-4" />
-            Passer
+            <XIcon className="size-6" />
           </Button>
-          
+
+          {/* Bouton Itinéraire au centre */}
           <Button
-            variant="outline"
-            onClick={handleSkip}
-            className="flex-1"
+            variant="secondary"
+            size="lg"
+            onClick={() => {
+              // Créer un JSON avec activityId et like (boolean)
+              const activitiesData = activities?.map(activity => ({
+                activityId: activity.id,
+                like: likedActivities.includes(activity.id)
+              })) || []
+              
+              console.log(JSON.stringify(activitiesData, null, 2))
+            }}
+            className={`w-16 h-16 rounded-full transition-colors ${
+              canContinue 
+                ? 'bg-primary text-primary-foreground hover:bg-primary/90' 
+                : 'bg-muted text-muted-foreground cursor-not-allowed'
+            }`}
+            disabled={!canContinue}
           >
-            Plus tard
+            <span className="text-xs font-semibold">Itinéraire</span>
           </Button>
-          
+
           <Button
-            onClick={handleLike}
-            className="flex-1 bg-primary hover:bg-primary/90"
+            size="lg"
+            onClick={() => handleButtonAction('like')}
+            className="w-16 h-16 rounded-full bg-green-500 hover:bg-green-600 text-white transition-colors"
+            disabled={!hasMoreCards}
           >
-            <HeartIcon className="mr-2 size-4" />
-            J'aime
+            <HeartIcon className="size-6" />
           </Button>
         </div>
       </div>

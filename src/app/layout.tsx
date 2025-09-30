@@ -25,7 +25,7 @@ export default function RootLayout({
       suppressHydrationWarning
     // className={`${geist.variable}`}
     >
-      <body>
+      <body className="bg-background">
         <TRPCReactProvider>
           <ThemeProvider
             attribute="class"

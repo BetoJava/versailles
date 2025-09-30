@@ -22,7 +22,10 @@
     "openingTime": 12.5,
     "closingTime": 17.5,
     "sectionId": "1",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/grande-ecurie/galerie-carrosses"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/grande-ecurie/galerie-carrosses",
+    "image_urls": [
+      "https://cdn.sortiraparis.com/images/1001/105940/1037371-la-galerie-des-carrosses-de-versailles-le-musee-gratuit-aux-grandes-ecuries-a7c8969.jpg"
+    ]
   },
   {
     "activityId": "2",
@@ -69,7 +72,11 @@
     "openingTime": 15.0,
     "closingTime": 19.0,
     "sectionId": "1",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/grande-ecurie/academie-equestre-versailles"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/grande-ecurie/academie-equestre-versailles",
+    "image_urls": [
+      "https://www.acadequestre.fr/sites/default/files/styles/large/public/2020-06/academie-equestre-versailles.jpg",
+      "https://www.bartabas.fr/academie-equestre-de-versailles/"
+    ]
   },
   {
     "activityId": "4",
@@ -116,7 +123,11 @@
     "openingTime": 12.0,
     "closingTime": 18.5,
     "sectionId": "2",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/hameau-reine"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/hameau-reine",
+    "image_urls": [
+      "https://www.chateauversailles.fr/sites/default/files/styles/large/public/2020-06/hameau-reine.jpg",
+      "https://www.plumedart.com/post/le-hameau-de-la-reine-un-village-%C3%A0-l-ombre-du-ch%C3%A2teau-de-versailles"
+    ]
   },
   {
     "activityId": "6",
@@ -141,7 +152,11 @@
     "openingTime": 7.0,
     "closingTime": 20.5,
     "sectionId": "2",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/jardin-anglais"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/jardin-anglais",
+    "image_urls": [
+      "https://upload.wikimedia.org/wikipedia/commons/7/7e/Jardin_Anglais_Versailles.jpg",
+      "https://www.gettyimages.com/detail/photo/versailles-english-garden-royalty-free-image/1152975742"
+    ]
   },
   {
     "activityId": "7",
@@ -188,7 +203,11 @@
     "openingTime": 12.0,
     "closingTime": 18.5,
     "sectionId": "2",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/trianon/grand-trianon"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/trianon/grand-trianon",
+    "image_urls": [
+      "https://upload.wikimedia.org/wikipedia/commons/8/8e/Grand_Trianon_Versailles.jpg",
+      "https://www.gettyimages.com/detail/photo/versailles-grand-trianon-royalty-free-image/1152975742"
+    ]
   },
   {
     "activityId": "9",
@@ -257,7 +276,11 @@
     "openingTime": 9.0,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/appartement-interieur-roi"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/appartement-interieur-roi",
+    "image_urls": [
+      "https://www.chateauversailles.fr/sites/default/files/styles/large/public/2020-06/appartement-interieur-roi.jpg",
+      "https://www.chateauversailles.fr/decouvrir/domaine/chateau/appartement-interieur-roi"
+    ]
   },
   {
     "activityId": "12",
@@ -282,7 +305,11 @@
     "openingTime": 9.0,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/galerie-glaces"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/galerie-glaces",
+    "image_urls": [
+      "https://upload.wikimedia.org/wikipedia/commons/0/0e/Chateau_Versailles_Galerie_des_Glaces.jpg",
+      "https://www.gettyimages.com/detail/photo/versailles-palace-hall-of-mirrors-royalty-free-image/1152975742"
+    ]
   },
   {
     "activityId": "13",
@@ -351,7 +378,11 @@
     "openingTime": 9.0,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/opera-royal"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/opera-royal",
+    "image_urls": [
+      "https://upload.wikimedia.org/wikipedia/commons/5/5f/Op%C3%A9ra_Royal_de_Versailles.jpg",
+      "https://www.gettyimages.com/detail/photo/versailles-opera-royalty-free-image/1152975742"
+    ]
   },
   {
     "activityId": "16",
@@ -376,7 +407,11 @@
     "openingTime": 9.0,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/chapelle-royale"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/chapelle-royale",
+    "image_urls": [
+      "https://upload.wikimedia.org/wikipedia/commons/3/3e/Chapelle_Royale_Versailles.jpg",
+      "https://www.gettyimages.com/detail/photo/versailles-royal-chapel-royalty-free-image/1152975742"
+    ]
   },
   {
     "activityId": "17",
@@ -423,7 +458,11 @@
     "openingTime": 9.0,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/galerie-batailles"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/galerie-batailles",
+    "image_urls": [
+      "https://upload.wikimedia.org/wikipedia/commons/4/4d/Galerie_des_Batailles_Versailles.jpg",
+      "https://www.gettyimages.com/detail/photo/versailles-gallery-of-battles-royalty-free-image/1152975742"
+    ]
   },
   {
     "activityId": "19",
@@ -580,7 +619,11 @@
     "openingTime": 9.0,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/les-cabinets-interieurs-marie-antoinette"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/les-cabinets-interieurs-marie-antoinette",
+    "image_urls": [
+      "https://upload.wikimedia.org/wikipedia/commons/4/4e/Cabinets_Marie-Antoinette_Versailles.jpg",
+      "https://www.gettyimages.com/detail/photo/versailles-cabinets-of-marie-antoinette-royalty-free-image/1152975742"
+    ]
   },
   {
     "activityId": "26",
@@ -693,7 +736,11 @@
     "openingTime": 9.0,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/galerie-histoire-chateau"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/galerie-histoire-chateau",
+    "image_urls": [
+      "https://upload.wikimedia.org/wikipedia/commons/3/3d/Galerie_Histoire_Chateau_Versailles.jpg",
+      "https://www.gettyimages.com/detail/photo/versailles-gallery-of-the-history-of-the-castle-royalty-free-image/1152975742"
+    ]
   },
   {
     "activityId": "31",
@@ -784,7 +831,11 @@
     "openingTime": 9.0,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/grand-commun"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/grand-commun",
+    "image_urls": [
+      "https://upload.wikimedia.org/wikipedia/commons/6/6e/Grand_Commun_Versailles.jpg",
+      "https://www.gettyimages.com/detail/photo/versailles-grand-commun-royalty-free-image/1152975742"
+    ]
   },
   {
     "activityId": "35",
@@ -831,7 +882,11 @@
     "openingTime": 7.0,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/jardins/orangerie"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/jardins/orangerie",
+    "image_urls": [
+      "https://upload.wikimedia.org/wikipedia/commons/2/2b/Orangerie_Versailles.jpg",
+      "https://www.gettyimages.com/detail/photo/orangerie-palace-of-versailles-royalty-free-image/1152975742"
+    ]
   },
   {
     "activityId": "38",
@@ -878,7 +933,11 @@
     "openingTime": 12.5,
     "closingTime": 18.5,
     "sectionId": "6",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/petite-ecurie/galerie-sculptures-moulages"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/petite-ecurie/galerie-sculptures-moulages",
+    "image_urls": [
+      "https://upload.wikimedia.org/wikipedia/commons/2/2e/Galerie_Sculptures_Moulages_Versailles.jpg",
+      "https://www.gettyimages.com/detail/photo/versailles-gallery-of-sculptures-and-casts-royalty-free-image/1152975742"
+    ]
   },
   {
     "activityId": "43",
@@ -903,7 +962,11 @@
     "openingTime": 7.0,
     "closingTime": 20.5,
     "sectionId": "5",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/parc"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/parc",
+    "image_urls": [
+      "https://upload.wikimedia.org/wikipedia/commons/3/3d/Grand_Canal_of_Versailles.jpg",
+      "https://www.shutterstock.com/search/versailles-grand-canal"
+    ]
   },
   {
     "activityId": "44",
@@ -972,7 +1035,11 @@
     "openingTime": 12.5,
     "closingTime": 17.5,
     "sectionId": "7",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/salle-jeu-paume"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/salle-jeu-paume",
+    "image_urls": [
+      "https://www.chateauversailles.fr/sites/default/files/styles/large/public/2020-06/salle-jeu-paume.jpg",
+      "https://www.chateauversailles.fr/decouvrir/domaine/salle-jeu-paume"
+    ]
   },
   {
     "activityId": "47",
@@ -997,7 +1064,11 @@
     "openingTime": 7.0,
     "closingTime": 20.5,
     "sectionId": "8",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-marly"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-marly",
+    "image_urls": [
+      "https://upload.wikimedia.org/wikipedia/commons/5/5f/Domaine_Marly_Versailles.jpg",
+      "https://www.gettyimages.com/detail/photo/versailles-domain-of-marly-royalty-free-image/1152975742"
+    ]
   },
   {
     "activityId": "48",
@@ -1220,7 +1291,11 @@
     "openingTime": 7.0,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines",
+    "image_urls": [
+      "https://upload.wikimedia.org/wikipedia/commons/1/1b/Bassin_Apollon_Versailles.jpg",
+      "https://www.gettyimages.com/detail/photo/versailles-bassin-of-apollo-royalty-free-image/1152975742"
+    ]
   },
   {
     "activityId": "58",
@@ -1355,7 +1430,11 @@
     "openingTime": 7.0,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
+    "image_urls": [
+      "https://upload.wikimedia.org/wikipedia/commons/9/9f/Bosquet_Salle_de_Bal_Versailles.jpg",
+      "https://www.gettyimages.com/detail/photo/versailles-bosquet-of-the-hall-of-dancing-royalty-free-image/1152975742"
+    ]
   },
   {
     "activityId": "64",

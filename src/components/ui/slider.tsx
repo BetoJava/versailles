@@ -12,7 +12,7 @@ function Slider({
   return (
     <SliderPrimitive.Root
       className={cn(
-        "relative flex w-full touch-none select-none items-center",
+        "cursor-pointer relative flex w-full touch-none select-none items-center",
         className
       )}
       {...props}
