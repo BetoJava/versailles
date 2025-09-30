@@ -24,64 +24,36 @@ const onboardingDataSchema = z.object({
   preferences: z.string(),
 });
 
-// Import des vraies activités depuis le fichier JSON
-import activitiesData from "~/assets/activity.json"
+// Import des activités complètes et des infos de swipe
+import activitiesV2 from "~/assets/data/activity_v2.json"
+import swipeInfoClean from "~/assets/data/activity_swipe_info_clean.json"
 
-// Liste des IDs d'activités sélectionnées
-const SELECTED_ACTIVITY_IDS = [
-  "12", "5", "43", "15", "3", "46", "36", "11", "18", "6", 
-  "1", "16", "8", "63", "34", "25", "42", "57", "30"
-]
-
-// Filtrer les activités selon les IDs sélectionnés
-const ACTIVITIES_DB = activitiesData.filter(activity => 
-  SELECTED_ACTIVITY_IDS.includes(activity.activityId)
-).map(activity => ({
+// Préparer les activités de activity_v2.json
+const ALL_ACTIVITIES = activitiesV2.map(activity => ({
   id: activity.activityId,
-  name: activity.display_name || activity.name,
+  name: activity.name,
   description: activity.catchy_description || "",
   reason: activity.reason || "Une expérience unique vous attend dans ce lieu exceptionnel.",
-  category: getCategoryFromInterests(activity.interests),
-  difficulty: getDifficultyFromDuration(activity.duration),
   duration: Math.round(activity.duration * 60), // Convertir en minutes
-  interests: activity.interests,
+  interests: {
+    architecture: activity["interests.architecture"] ?? 0,
+    landscape: activity["interests.landscape"] ?? 0,
+    politic: activity["interests.politic"] ?? 0,
+    history: activity["interests.history"] ?? 0,
+    courtlife: activity["interests.courtlife"] ?? 0,
+    art: activity["interests.art"] ?? 0,
+    engineering: activity["interests.engineering"] ?? 0,
+    spirituality: activity["interests.spirituality"] ?? 0,
+    nature: activity["interests.nature"] ?? 0,
+  },
   latitude: activity.latitude,
   longitude: activity.longitude,
   openingTime: activity.openingTime,
   closingTime: activity.closingTime,
   sectionId: activity.sectionId,
   url: activity.url
-}))
+})) as Activity[]
 
-// Fonction pour déterminer la catégorie basée sur les intérêts
-function getCategoryFromInterests(interests: Record<string, number>): string {
-  const maxInterest = Object.entries(interests).reduce((max, [key, value]) => 
-    (value as number) > max.value ? { key, value: value as number } : max, 
-    { key: "architecture", value: 0 }
-  )
-  
-  switch (maxInterest.key) {
-    case "landscape":
-    case "nature":
-      return "nature"
-    case "art":
-    case "spirituality":
-      return "culture"
-    case "politic":
-    case "history":
-    case "courtlife":
-      return "architecture"
-    default:
-      return "architecture"
-  }
-}
-
-// Fonction pour déterminer la difficulté basée sur la durée
-function getDifficultyFromDuration(duration: number): string {
-  if (duration <= 1) return "easy"
-  if (duration <= 2) return "medium"
-  return "hard"
-}
 
 export const onboardingRouter = createTRPCRouter({
   processOnboarding: publicProcedure
@@ -90,16 +62,37 @@ export const onboardingRouter = createTRPCRouter({
       console.log("Données d'onboarding reçues:", input);
       
       // Étape 1 : Filtrer les activités selon les conditions
-      const filteredActivities = filterOnConditions(ACTIVITIES_DB as Activity[], input);
+      const filteredActivities = filterOnConditions(ALL_ACTIVITIES, input);
       console.log(`${filteredActivities.length} activités après filtrage sur conditions`);
       
       // Étape 2 : Traiter les activités avec le LLM pour obtenir les scores
       const scoredActivities = await processByLLM(filteredActivities, input);
       console.log(`${scoredActivities.length} activités après traitement LLM`);
       
+      // Calculer les IDs retirés
+      const allActivityIds = new Set(ALL_ACTIVITIES.map(a => a.id));
+      const scoredActivityIds = new Set(scoredActivities.map(a => a.id));
+      const removedActivityIds = Array.from(allActivityIds).filter(id => !scoredActivityIds.has(id));
+      
+      console.log(`${removedActivityIds.length} activités retirées au total`);
+      
+      // Filtrer activity_swipe_info_clean.json pour ne garder que les activités non retirées
+      const swipeActivities = swipeInfoClean
+        .filter(swipeInfo => !removedActivityIds.includes(swipeInfo.activityId))
+        .map(swipeInfo => ({
+          activityId: swipeInfo.activityId,
+          name: swipeInfo.name,
+          catchy_description: swipeInfo.catchy_description,
+          reason: swipeInfo.reason,
+        }));
+      
+      console.log(`${swipeActivities.length} activités disponibles pour le swipe`);
+      
       return {
         success: true,
         activityIds: scoredActivities.map(activity => activity.id),
+        removedActivityIds,
+        swipeActivities,
         totalActivities: scoredActivities.length,
         metadata: {
           hasChildren: input.hasChildren,
@@ -107,9 +100,10 @@ export const onboardingRouter = createTRPCRouter({
           handicaps: input.handicaps,
           visitDays: input.visitDays.length,
           preferences: input.preferences,
-          originalCount: ACTIVITIES_DB.length,
+          originalCount: ALL_ACTIVITIES.length,
           filteredCount: filteredActivities.length,
           finalCount: scoredActivities.length,
+          removedCount: removedActivityIds.length,
         }
       };
     }),
@@ -118,7 +112,7 @@ export const onboardingRouter = createTRPCRouter({
   getActivityDetails: publicProcedure
     .input(z.object({ activityId: z.string() }))
     .query(async ({ input }) => {
-      const activity = ACTIVITIES_DB.find(a => a.id === input.activityId);
+      const activity = ALL_ACTIVITIES.find(a => a.id === input.activityId);
       if (!activity) {
         throw new Error("Activité non trouvée");
       }
@@ -128,6 +122,6 @@ export const onboardingRouter = createTRPCRouter({
   // Procédure pour récupérer toutes les activités (pour debug)
   getAllActivities: publicProcedure
     .query(async () => {
-      return ACTIVITIES_DB;
+      return ALL_ACTIVITIES;
     }),
 });

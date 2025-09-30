@@ -1,7 +1,7 @@
 "use client"
 
 import { motion, AnimatePresence } from "framer-motion"
-import { ReactNode } from "react"
+import type { ReactNode } from "react"
 
 interface AnimatedStepProps {
   children: ReactNode
@@ -29,8 +29,8 @@ export function AnimatedStep({ children, step, currentStep, direction }: Animate
   }
 
   const transition = {
-    type: "tween",
-    ease: "easeInOut",
+    type: "tween" as const,
+    ease: "easeInOut" as const,
     duration: 0.4,
   }
 

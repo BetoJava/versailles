@@ -11,7 +11,7 @@ def create_user_preferences(likes_dislikes, df, scale_factor=0.1):
     # Mettre à jour les préférences de l'utilisateur en fonction des likes/dislikes
     for like_data in likes_dislikes:
         activity_id = like_data['activityId']
-        like_value = 1 if like_data['like'] else -0.5  # +1 pour like, -1 pour dislike
+        like_value = 1 if like_data['like'] else -0.5  
         activity = df[df['activityId'] == str(activity_id)].iloc[0]
         
         # Appliquer les ajustements sur les préférences
@@ -76,65 +76,6 @@ import numpy as np
 import json
 from datetime import timedelta
 
-def generate_optimized_route_with_travel(df, dist_df_walk, best_route, start_time_seconds, wants_to_see_chateau
-                                         ):
-    """
-    Génère l'itinéraire optimisé en tenant compte du plaisir, des déplacements et des horaires.
-    Affiche les informations de chaque activité avec les temps de trajet et de visite.
-    """
-
-    # Initialiser le temps actuel avec l'heure de départ
-    current_time = start_time_seconds
-    print("Meilleur itinéraire optimisé (en tenant compte du plaisir et des déplacements) :")
-
-    # Ajouter un retour à la statue de Louis XIV
-    best_route_with_return = list(best_route) + ['Retour à la Statue de Louis XIV']
-
-    # Boucle à travers les activités du meilleur itinéraire
-    for i, activity_name in enumerate(best_route_with_return):
-        # Vérifier si c'est le retour à la statue de Louis XIV
-        if activity_name == 'Retour à la Statue de Louis XIV':
-            prev_activity_name = best_route_with_return[i - 1]
-            travel_time = dist_df_walk.loc[prev_activity_name, 'La Statue de Louis XIV'] * 60  # en secondes
-            travel_time_h = travel_time // 3600
-            travel_time_m = (travel_time % 3600) // 60
-            print(f"Temps de trajet entre {prev_activity_name} et La Statue de Louis XIV: {travel_time_h}h {travel_time_m}m")
-
-            # Ajouter le temps de trajet au temps actuel
-            current_time += travel_time
-            print(f"Retour à la Statue de Louis XIV, Heure d'arrivée: {seconds_to_hm(current_time)}")
-
-        else:
-            # Trouver l'activité dans df
-            activity = df[df['name'] == activity_name].iloc[0]
-
-            # Si ce n'est pas la première activité, calculer le temps de trajet
-            if i > 0:
-                prev_activity_name = best_route_with_return[i - 1]
-                travel_time = dist_df_walk.loc[prev_activity_name, activity_name] * 60  # en secondes
-
-                # Afficher le temps de trajet
-                travel_time_h = travel_time // 3600
-                travel_time_m = (travel_time % 3600) // 60
-                print(f"Temps de trajet entre {prev_activity_name} et {activity_name}: {travel_time_h}h {travel_time_m}m")
-
-                # Ajouter le temps de trajet au temps actuel
-                current_time += travel_time
-
-            # Afficher les informations de l'activité
-            activity_start_time = current_time
-            activity_duration = int(activity['duration'])  # Durée de l'activité en secondes
-            activity_end_time = current_time + activity_duration
-
-            start_time_str = seconds_to_hm(activity_start_time)
-            end_time_str = seconds_to_hm(activity_end_time)
-
-            # Afficher les informations de l'activité
-            print(f"Activité: {activity['name']}, Début: {start_time_str}, Fin: {end_time_str}, Durée: {seconds_to_hm(activity_duration)}")
-
-            # Mettre à jour le temps actuel après l'activité
-            current_time = activity_end_time
-
 # Créer une fonction pour calculer le temps de trajet total pour un parcours
 def calculate_travel_time(route, dist_df_walk):
     total_time = 0
@@ -154,7 +95,6 @@ def generate_activity_graph(df, dist_df_walk):
     :param dist_df_walk: DataFrame des distances entre les activités
     :return: vertex_df (DataFrame des sommets), passage_matrix_df (DataFrame de la matrice de passage)
     """
-    print(df.shape)
     
     # Créer une liste pour les sommets et la matrice de passage
     vertex_data = []
@@ -199,3 +139,111 @@ def generate_activity_graph(df, dist_df_walk):
     # Retourner le DataFrame des sommets et la matrice de passage
     return vertex_df, passage_matrix_df
 
+def adjust_edge_weights_for_poles(passage_matrix_df, selected_section, df, total_time_in_pole, apply_penalty=True):
+    """
+    Ajuste les poids des arêtes entre le pôle sélectionné et les autres pôles en ajoutant 10 heures de poids
+    au début (avant 90 minutes de visite) et 10 heures de poids après 4 heures de visite dans le pôle.
+    
+    :param passage_matrix_df: DataFrame de la matrice de passage avec les poids des arêtes
+    :param selected_section: Section sélectionnée pour la visite
+    :param df: DataFrame des activités avec leurs informations
+    :param total_time_in_pole: Temps total passé dans le pôle sélectionné (en secondes)
+    :param apply_penalty: Booléen pour appliquer ou non les pénalités
+    :return: DataFrame de la matrice de passage ajustée
+    """
+    adjusted_passage_matrix = passage_matrix_df.copy()
+
+    # Récupérer les activités dans la section sélectionnée
+    selected_activities = df[df['sectionId'] == selected_section]
+
+    # Identifier les activités des autres sections, à l'exception de la statue
+    other_sections = df[~df['sectionId'].isin([selected_section, '0'])]  # Exclure la section 0 (la statue)
+    # Appliquer les pénalités si le paramètre apply_penalty est True
+    if apply_penalty:
+        # Si le temps passé dans le pôle est inférieur à 90 minutes, ajouter 10 h de poids
+        if total_time_in_pole < 90 * 60:
+            for _, row_from in selected_activities.iterrows():
+                from_name = row_from['name']
+                for _, row_to in other_sections.iterrows():
+                    to_name = row_to['name']
+
+                    if passage_matrix_df[(passage_matrix_df['from'] == from_name) & (passage_matrix_df['to'] == to_name)].empty:
+                        continue
+
+                    # Ajouter 10 h de temps de trajet
+                    adjusted_passage_matrix.loc[
+                        (adjusted_passage_matrix['from'] == from_name) & 
+                        (adjusted_passage_matrix['to'] == to_name), 
+                        'travel_time'] += 10 * 3600  # 10 h en secondes
+
+                    
+        
+        # Si le temps passé dans le pôle dépasse 4 heures, ajouter 10 heures de poids aux arêtes internes du pôle
+        elif total_time_in_pole >= 4 * 3600:
+            for _, row_from in selected_activities.iterrows():
+                from_name = row_from['name']
+                for _, row_to in selected_activities.iterrows():
+                    to_name = row_to['name']
+                    if from_name != to_name:
+                        # Ajouter 10 heures de temps de trajet
+                        adjusted_passage_matrix.loc[
+                            (adjusted_passage_matrix['from'] == from_name) & 
+                            (adjusted_passage_matrix['to'] == to_name), 
+                            'travel_time'] += 10 * 3600  # 10 heures en secondes
+
+    return adjusted_passage_matrix
+
+
+def select_activities_in_pole(df, selected_section, available_time, start_time):
+    """
+    Sélectionner les activités dans le pôle tout en respectant la logique de 90 minutes et 4 heures.
+    
+    :param df: DataFrame des activités
+    :param selected_section: Section sélectionnée pour la visite
+    :param available_time: Temps disponible pour la visite (en heures)
+    :param start_time: Heure de départ de la visite
+    :return: Activités sélectionnées et mise à jour de la matrice de passage
+    """
+    total_time_spent = 0  # Temps total passé dans le pôle (en secondes)
+    total_time_in_pole = 0
+    selected_activities = df[df['sectionId'] == selected_section].sort_values(by='interest_score', ascending=False)
+    route = []
+
+    for _, activity in selected_activities.iterrows():
+        activity_duration = int(activity['duration'])
+        # Vérifier si le temps total passé dans le pôle ne dépasse pas 4 heures
+        if total_time_spent + activity_duration <= available_time * 3600:
+            route.append(activity)
+            total_time_spent += activity_duration
+            total_time_in_pole += activity_duration
+        else:
+            break  # Arrêter la sélection si on dépasse le temps disponible
+
+    # Si le temps passé dans le pôle dépasse 90 minutes ou plus, ajuster les arêtes en conséquence
+    passage_matrix_df = adjust_edge_weights_for_poles(passage_matrix_df, selected_section, df, total_time_in_pole)
+
+    return route, passage_matrix_df
+
+def add_internal_pole_penalties(passage_matrix_df,selected_section, df):
+    """
+    Ajoute des pénalités de 10h aux arêtes internes du pôle si le temps passé dans ce pôle dépasse 4 heures.
+    """
+    adjusted_passage_matrix = passage_matrix_df.copy()
+    # Sélectionner les activités dans le pôle sélectionné
+    selected_activities = df[df['sectionId'] == selected_section]
+
+    penalty_time = 10 * 60  # Pénalité de 10 heures en secondes
+    
+    # Ajouter des pénalités aux arêtes internes du pôle
+    for _, row_from in selected_activities.iterrows():
+        from_name = row_from['name']
+        for _, row_to in selected_activities.iterrows():
+            to_name = row_to['name']
+            
+            if from_name != to_name and passage_matrix_df[(passage_matrix_df['from'] == from_name) & (passage_matrix_df['to'] == to_name)].empty:
+                continue
+            
+            # Ajouter 10h (en secondes) de pénalité pour les arêtes internes au pôle
+            adjusted_passage_matrix.loc[(adjusted_passage_matrix['from'] == from_name) & (adjusted_passage_matrix['to'] == to_name), 'travel_time'] += penalty_time
+
+    return adjusted_passage_matrix

@@ -5,6 +5,7 @@ import { type Metadata } from "next";
 
 import { TRPCReactProvider } from "~/trpc/react";
 import { ThemeProvider } from "~/components/theme-provider";
+import { OnboardingProvider } from "~/contexts/onboarding-context";
 
 export const metadata: Metadata = {
   title: "Versailles App",
@@ -33,7 +34,9 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <OnboardingProvider>
+              {children}
+            </OnboardingProvider>
           </ThemeProvider>
         </TRPCReactProvider>
       </body>
