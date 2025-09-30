@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { OnboardingProvider, useOnboarding } from "~/contexts/onboarding-context"
+import { useOnboarding } from "~/contexts/onboarding-context"
 import { ModeToggle } from "~/components/ui/mode-toggle"
 import { Button } from "~/components/ui/button"
 import { ChevronDown, ChevronUp, Download, LoaderIcon } from "lucide-react"
@@ -23,6 +23,7 @@ interface TimelineItemProps {
 
 function TimelineItem({ step, isLast, isInView }: TimelineItemProps) {
     const [isOpen, setIsOpen] = useState(false)
+    const [imageError, setImageError] = useState(false)
 
     const formatDuration = (minutes: number) => {
         if (minutes < 60) return `${Math.round(minutes)} min`
@@ -39,17 +40,15 @@ function TimelineItem({ step, isLast, isInView }: TimelineItemProps) {
                 {/* Timeline Point and Line */}
                 <div className="flex flex-col items-center h-full">
                     <div
-                        className={`w-4 h-4 rounded-full border-2 transition-all duration-300 ${
-                            isInView
+                        className={`w-4 h-4 rounded-full border-2 transition-all duration-300 ${isInView
                                 ? 'bg-primary border-primary'
                                 : 'bg-background border-muted-foreground'
-                        }`}
+                            }`}
                     />
                     {!isLast && (
                         <div
-                            className={`w-0.5 h-16 transition-all duration-300 ${
-                                isInView ? 'bg-primary' : 'bg-muted'
-                            }`}
+                            className={`w-0.5 h-16 transition-all duration-300 ${isInView ? 'bg-primary' : 'bg-muted-foreground'
+                                }`}
                         />
                     )}
                 </div>
@@ -91,21 +90,14 @@ function TimelineItem({ step, isLast, isInView }: TimelineItemProps) {
 
                     {/* Expanded Content */}
                     {isOpen && !isStartOrEnd && (
-                        <div className="mt-4 space-y-4 pl-3">
-                            {step.activity_id && (
-                                <div className="relative w-full h-48 sm:h-64 rounded-lg overflow-hidden">
+                        <div className=" space-y-4 pl-3">
+                            {step.activity_id && !imageError && (
+                                <div className="mt-4 relative w-full h-48 sm:h-64 rounded-lg overflow-hidden">
                                     <img
                                         src={`/activity_images/${step.activity_id}.jpg`}
                                         alt={step.activity_name}
                                         className="w-full h-full object-cover"
-                                        onError={(e) => {
-                                            const target = e.target as HTMLImageElement
-                                            target.style.display = 'none'
-                                            const parent = target.parentElement
-                                            if (parent) {
-                                                parent.innerHTML = '<div class="w-full h-full flex items-center justify-center bg-muted rounded-lg"><p class="text-muted-foreground">Image non disponible</p></div>'
-                                            }
-                                        }}
+                                        onError={() => setImageError(true)}
                                     />
                                 </div>
                             )}
@@ -232,7 +224,7 @@ function MyRouteContent() {
                 </div>
 
                 {/* Statistics */}
-                <div className="grid grid-cols-3 gap-4 mb-8">
+                {/* <div className="grid grid-cols-3 gap-4 mb-8">
                     <div className="bg-card rounded-lg p-4 text-center">
                         <p className="text-2xl font-bold text-foreground">
                             {Math.round(itinerary.stats.total_visit_time)}
@@ -251,7 +243,7 @@ function MyRouteContent() {
                         </p>
                         <p className="text-xs text-muted-foreground">min total</p>
                     </div>
-                </div>
+                </div> */}
 
                 {/* Timeline */}
                 <div className="space-y-0 mb-8">
@@ -283,9 +275,5 @@ function MyRouteContent() {
 }
 
 export default function MyRoutePage() {
-    return (
-        <OnboardingProvider>
-            <MyRouteContent />
-        </OnboardingProvider>
-    )
+    return <MyRouteContent />
 }
