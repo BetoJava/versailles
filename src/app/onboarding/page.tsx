@@ -6,7 +6,7 @@ import { Step1 } from "./components/step1"
 import { Step2 } from "./components/step2"
 import { Step3 } from "./components/step3"
 import { AnimatedStep } from "./components/animated-step"
-import { OnboardingProvider, useOnboarding } from "~/contexts/onboarding-context"
+import { useOnboarding } from "~/contexts/onboarding-context"
 
 interface VisitDay {
   id: string
@@ -174,9 +174,5 @@ function OnboardingPageContent() {
 }
 
 export default function OnboardingPage() {
-  return (
-    <OnboardingProvider>
-      <OnboardingPageContent />
-    </OnboardingProvider>
-  )
+  return <OnboardingPageContent />
 }

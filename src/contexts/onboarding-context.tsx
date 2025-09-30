@@ -29,14 +29,29 @@ interface OnboardingState {
   data: OnboardingData | null
   activityIds: string[]
   swipedActivities: string[]
+  removedActivityIds: string[]
+  swipeActivities: SwipeActivity[]
   isLoading: boolean
   error: string | null
 }
 
+export interface SwipeActivity {
+  activityId: string
+  name: string
+  catchy_description: string
+  reason: string
+}
+
+export interface SwipeResult {
+  activityId: string
+  like: boolean
+}
+
 type OnboardingAction =
   | { type: "SET_DATA"; payload: OnboardingData }
-  | { type: "SET_ACTIVITIES"; payload: string[] }
+  | { type: "SET_ACTIVITIES"; payload: { activityIds: string[]; removedActivityIds: string[]; swipeActivities: SwipeActivity[] } }
   | { type: "SET_SWIPED_ACTIVITIES"; payload: string[] }
+  | { type: "SET_SWIPE_RESULTS"; payload: SwipeResult[] }
   | { type: "SET_LOADING"; payload: boolean }
   | { type: "SET_ERROR"; payload: string | null }
   | { type: "RESET" }
@@ -45,6 +60,8 @@ const initialState: OnboardingState = {
   data: null,
   activityIds: [],
   swipedActivities: [],
+  removedActivityIds: [],
+  swipeActivities: [],
   isLoading: false,
   error: null,
 }
@@ -60,7 +77,9 @@ function onboardingReducer(state: OnboardingState, action: OnboardingAction): On
     case "SET_ACTIVITIES":
       return {
         ...state,
-        activityIds: action.payload,
+        activityIds: action.payload.activityIds,
+        removedActivityIds: action.payload.removedActivityIds,
+        swipeActivities: action.payload.swipeActivities,
         isLoading: false,
         error: null,
       }
@@ -68,6 +87,11 @@ function onboardingReducer(state: OnboardingState, action: OnboardingAction): On
       return {
         ...state,
         swipedActivities: action.payload,
+      }
+    case "SET_SWIPE_RESULTS":
+      return {
+        ...state,
+        swipedActivities: action.payload.filter(r => r.like).map(r => r.activityId),
       }
     case "SET_LOADING":
       return {
@@ -92,6 +116,7 @@ interface OnboardingContextType {
   state: OnboardingState
   setData: (data: OnboardingData) => void
   setSwipedActivities: (activityIds: string[]) => void
+  setSwipeResults: (results: SwipeResult[]) => void
   processOnboarding: (data: OnboardingData) => Promise<void>
   reset: () => void
 }
@@ -104,11 +129,23 @@ export function OnboardingProvider({ children }: { children: ReactNode }) {
   
   const processOnboardingMutation = api.onboarding.processOnboarding.useMutation({
     onSuccess: (result) => {
-      dispatch({ type: "SET_ACTIVITIES", payload: result.activityIds })
+      console.log("Résultat reçu du serveur:", result)
+      console.log("swipeActivities reçues:", result.swipeActivities)
+      console.log("Nombre d'activités swipe:", result.swipeActivities?.length)
+      
+      dispatch({ 
+        type: "SET_ACTIVITIES", 
+        payload: {
+          activityIds: result.activityIds,
+          removedActivityIds: result.removedActivityIds,
+          swipeActivities: result.swipeActivities,
+        }
+      })
       // Rediriger vers la page swipe après succès
       router.push("/swipe")
     },
     onError: (error) => {
+      console.error("Erreur lors du traitement:", error)
       dispatch({ type: "SET_ERROR", payload: error.message })
     },
   })
@@ -119,6 +156,10 @@ export function OnboardingProvider({ children }: { children: ReactNode }) {
 
   const setSwipedActivities = (activityIds: string[]) => {
     dispatch({ type: "SET_SWIPED_ACTIVITIES", payload: activityIds })
+  }
+
+  const setSwipeResults = (results: SwipeResult[]) => {
+    dispatch({ type: "SET_SWIPE_RESULTS", payload: results })
   }
 
   const processOnboarding = async (data: OnboardingData) => {
@@ -143,6 +184,7 @@ export function OnboardingProvider({ children }: { children: ReactNode }) {
         state,
         setData,
         setSwipedActivities,
+        setSwipeResults,
         processOnboarding,
         reset,
       }}

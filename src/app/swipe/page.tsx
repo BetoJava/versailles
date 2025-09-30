@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
-import { OnboardingProvider, useOnboarding } from "~/contexts/onboarding-context"
+import { useOnboarding } from "~/contexts/onboarding-context"
 import { ModeToggle } from "~/components/ui/mode-toggle"
 import { Card } from "~/components/ui/card"
 import { Button } from "~/components/ui/button"
@@ -46,12 +46,10 @@ function ActivityImage({ activityId, alt, activityName }: ActivityImageProps) {
 
 interface SwipeableCardProps {
   activity: {
-    id: string
+    activityId: string
     name: string
-    description: string
+    catchy_description: string
     reason: string
-    category: string
-    duration: number
   }
   onSwipe: (direction: 'left' | 'right') => void
   isTop: boolean
@@ -73,7 +71,7 @@ function SwipeableCard({ activity, onSwipe, isTop }: SwipeableCardProps) {
     setOpacity(1)
     setIsDragging(false)
     setIsSwiped(false)
-  }, [activity.id])
+  }, [activity.activityId])
 
   const handleMouseDown = (e: React.MouseEvent) => {
     if (!isTop) return
@@ -182,7 +180,7 @@ function SwipeableCard({ activity, onSwipe, isTop }: SwipeableCardProps) {
         {/* Image */}
         <div className="h-80 relative overflow-hidden">
           <ActivityImage
-            activityId={activity.id}
+            activityId={activity.activityId}
             alt={activity.name}
             activityName={activity.name}
           />
@@ -198,7 +196,7 @@ function SwipeableCard({ activity, onSwipe, isTop }: SwipeableCardProps) {
             </div>
 
             <p className="text-muted-foreground text-sm sm:text-base">
-              {activity.description}
+              {activity.catchy_description}
             </p>
           </div>
 
@@ -237,15 +235,23 @@ function SwipeableCard({ activity, onSwipe, isTop }: SwipeableCardProps) {
 }
 
 function SwipePageContent() {
-  const { state } = useOnboarding()
+  const { state, setSwipeResults } = useOnboarding()
   const [currentIndex, setCurrentIndex] = useState(0)
   const [likedActivities, setLikedActivities] = useState<string[]>([])
   const [dislikedActivities, setDislikedActivities] = useState<string[]>([])
   const [swipeCount, setSwipeCount] = useState(0)
   const [showWelcomeDialog, setShowWelcomeDialog] = useState(true)
 
-  // Récupérer les activités
-  const { data: activities, isLoading } = api.onboarding.getAllActivities.useQuery()
+  // Utiliser les activités du contexte (celles qui ont passé le filtrage)
+  const activities = state.swipeActivities
+  const isLoading = state.isLoading
+
+  // Debug logs
+  console.log("État du contexte dans SwipePageContent:", state)
+  console.log("swipeActivities:", state.swipeActivities)
+  console.log("Nombre d'activités:", state.swipeActivities?.length)
+  console.log("isLoading:", state.isLoading)
+  console.log("error:", state.error)
 
   const handleSwipe = (direction: 'left' | 'right') => {
     if (!activities) return
@@ -254,9 +260,9 @@ function SwipePageContent() {
     if (!currentActivity) return
 
     if (direction === 'right') {
-      setLikedActivities(prev => [...prev, currentActivity.id])
+      setLikedActivities(prev => [...prev, currentActivity.activityId])
     } else {
-      setDislikedActivities(prev => [...prev, currentActivity.id])
+      setDislikedActivities(prev => [...prev, currentActivity.activityId])
     }
 
     setSwipeCount(prev => prev + 1)
@@ -265,6 +271,21 @@ function SwipePageContent() {
 
   const handleButtonAction = (action: 'like' | 'dislike') => {
     handleSwipe(action === 'like' ? 'right' : 'left')
+  }
+
+  const handleItineraryClick = () => {
+    // Créer un JSON avec activityId et like (boolean)
+    const swipeResults = activities?.map(activity => ({
+      activityId: activity.activityId,
+      like: likedActivities.includes(activity.activityId)
+    })) || []
+    
+    // Sauvegarder dans le contexte
+    setSwipeResults(swipeResults)
+    
+    console.log(JSON.stringify(swipeResults, null, 2))
+    console.log("Likes:", likedActivities)
+    console.log("Dislikes:", dislikedActivities)
   }
 
   const canContinue = swipeCount >= 10
@@ -392,7 +413,10 @@ function SwipePageContent() {
                 Ces activités ne seront pas incluses dans votre itinéraire.
               </p>
             </div>
-            <Button className="w-full mt-6">
+            <Button 
+              className="w-full mt-6"
+              onClick={handleItineraryClick}
+            >
               Itinéraire
             </Button>
           </div>
@@ -461,15 +485,7 @@ function SwipePageContent() {
           <Button
             variant="secondary"
             size="lg"
-            onClick={() => {
-              // Créer un JSON avec activityId et like (boolean)
-              const activitiesData = activities?.map(activity => ({
-                activityId: activity.id,
-                like: likedActivities.includes(activity.id)
-              })) || []
-              
-              console.log(JSON.stringify(activitiesData, null, 2))
-            }}
+            onClick={handleItineraryClick}
             className={`w-16 h-16 rounded-full transition-colors ${
               canContinue 
                 ? 'bg-primary text-primary-foreground hover:bg-primary/90' 
@@ -495,9 +511,5 @@ function SwipePageContent() {
 }
 
 export default function SwipePage() {
-  return (
-    <OnboardingProvider>
-      <SwipePageContent />
-    </OnboardingProvider>
-  )
+  return <SwipePageContent />
 }
