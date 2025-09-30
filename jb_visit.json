@@ -1,0 +1,42 @@
+[
+  {
+    "activityId": "1",
+    "like": true
+  },
+  {
+    "activityId": "3",
+    "like": true
+  },
+  {
+    "activityId": "5",
+    "like": true
+  },
+  {
+    "activityId": "8",
+    "like": true
+  },
+  {
+    "activityId": "12",
+    "like": true
+  },
+  {
+    "activityId": "51",
+    "like": false
+  },
+  {
+    "activityId": "6",
+    "like": false
+  },
+  {
+    "activityId": "44",
+    "like": false
+  },
+  {
+    "activityId": "50",
+    "like": false
+  },
+  {
+    "activityId": "46",
+    "like": false
+  }
+]

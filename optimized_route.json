@@ -1,0 +1,230 @@
+{
+    "route": [
+        {
+            "name": "La Statue de Louis XIV",
+            "start_time": 36000,
+            "end_time": 36000,
+            "duration": 0,
+            "rating": 0,
+            "sectionId": "0"
+        },
+        {
+            "name": "L'Orangerie",
+            "start_time": 36000,
+            "end_time": 36001,
+            "duration": 1,
+            "rating": 46,
+            "sectionId": "4"
+        },
+        {
+            "name": "La Galerie des Glaces",
+            "start_time": 37801.0,
+            "end_time": 37802.0,
+            "duration": 1,
+            "rating": 45,
+            "sectionId": "3"
+        },
+        {
+            "name": "Le Jardin Anglais",
+            "start_time": 39602.0,
+            "end_time": 39603.0,
+            "duration": 1,
+            "rating": 44,
+            "sectionId": "2"
+        },
+        {
+            "name": "Le Parterre de Latone",
+            "start_time": 43137.0,
+            "end_time": 43138.0,
+            "duration": 1,
+            "rating": 41,
+            "sectionId": "4"
+        },
+        {
+            "name": "L'Allée Royale du Tapis Vert",
+            "start_time": 46776.0,
+            "end_time": 46777.0,
+            "duration": 1,
+            "rating": 41,
+            "sectionId": "4"
+        },
+        {
+            "name": "Le Bosquet des Bains d'Apollon",
+            "start_time": 46777.0,
+            "end_time": 46778.0,
+            "duration": 1,
+            "rating": 41,
+            "sectionId": "4"
+        },
+        {
+            "name": "Le Bosquet de la Colonnade",
+            "start_time": 46778.0,
+            "end_time": 46779.0,
+            "duration": 1,
+            "rating": 41,
+            "sectionId": "4"
+        },
+        {
+            "name": "La Galerie des Batailles",
+            "start_time": 46779.0,
+            "end_time": 46781.0,
+            "duration": 2,
+            "rating": 41,
+            "sectionId": "3"
+        },
+        {
+            "name": "Le Bosquet du Théâtre d'Eau",
+            "start_time": 48581.0,
+            "end_time": 48582.0,
+            "duration": 1,
+            "rating": 40,
+            "sectionId": "4"
+        },
+        {
+            "name": "Le Parterre d'Eau",
+            "start_time": 50382.0,
+            "end_time": 50383.0,
+            "duration": 1,
+            "rating": 40,
+            "sectionId": "4"
+        },
+        {
+            "name": "Le Bosquet de l'Arc de Triomphe",
+            "start_time": 50383.0,
+            "end_time": 50383.0,
+            "duration": 0,
+            "rating": 40,
+            "sectionId": "4"
+        },
+        {
+            "name": "Le Parterre Nord",
+            "start_time": 50383.0,
+            "end_time": 50384.0,
+            "duration": 1,
+            "rating": 39,
+            "sectionId": "4"
+        },
+        {
+            "name": "Le Bassin du Dragon",
+            "start_time": 50384.0,
+            "end_time": 50384.0,
+            "duration": 0,
+            "rating": 39,
+            "sectionId": "4"
+        },
+        {
+            "name": "Le Bassin de Neptune",
+            "start_time": 50384.0,
+            "end_time": 50385.0,
+            "duration": 1,
+            "rating": 39,
+            "sectionId": "4"
+        },
+        {
+            "name": "La Salle du Jeu de Paume",
+            "start_time": 50385.0,
+            "end_time": 50386.0,
+            "duration": 1,
+            "rating": 39,
+            "sectionId": "7"
+        },
+        {
+            "name": "L'Allée d'Eau des Marmousets",
+            "start_time": 52186.0,
+            "end_time": 52187.0,
+            "duration": 1,
+            "rating": 39,
+            "sectionId": "4"
+        },
+        {
+            "name": "Le Bosquet du Dôme",
+            "start_time": 53987.0,
+            "end_time": 53987.0,
+            "duration": 0,
+            "rating": 39,
+            "sectionId": "4"
+        },
+        {
+            "name": "Le Bosquet des Obélisques",
+            "start_time": 53987.0,
+            "end_time": 53987.0,
+            "duration": 0,
+            "rating": 39,
+            "sectionId": "4"
+        },
+        {
+            "name": "Le Bassin de Latone",
+            "start_time": 53987.0,
+            "end_time": 53987.0,
+            "duration": 0,
+            "rating": 38,
+            "sectionId": "4"
+        },
+        {
+            "name": "Le Bassin de la Pyramide",
+            "start_time": 53987.0,
+            "end_time": 53987.0,
+            "duration": 0,
+            "rating": 38,
+            "sectionId": "4"
+        },
+        {
+            "name": "Le Bosquet des Trois Fontaines",
+            "start_time": 53987.0,
+            "end_time": 53987.0,
+            "duration": 0,
+            "rating": 38,
+            "sectionId": "4"
+        },
+        {
+            "name": "Le Bosquet du Dauphin",
+            "start_time": 53987.0,
+            "end_time": 53987.0,
+            "duration": 0,
+            "rating": 38,
+            "sectionId": "4"
+        },
+        {
+            "name": "Le Bosquet de la Reine",
+            "start_time": 53987.0,
+            "end_time": 53988.0,
+            "duration": 1,
+            "rating": 38,
+            "sectionId": "4"
+        },
+        {
+            "name": "Le Bassin de Saturne (Hiver)",
+            "start_time": 53988.0,
+            "end_time": 53988.0,
+            "duration": 0,
+            "rating": 37,
+            "sectionId": "4"
+        },
+        {
+            "name": "Le Bosquet de la Montagne d'Eau",
+            "start_time": 53988.0,
+            "end_time": 53988.0,
+            "duration": 0,
+            "rating": 37,
+            "sectionId": "4"
+        },
+        {
+            "name": "Les Salles de Louis XIV",
+            "start_time": 53988.0,
+            "end_time": 53990.0,
+            "duration": 2,
+            "rating": 37,
+            "sectionId": "3"
+        },
+        {
+            "name": "La Statue de Louis XIV",
+            "start_time": 55790.0,
+            "end_time": 55790.0,
+            "duration": 0,
+            "rating": 0,
+            "sectionId": "0"
+        }
+    ],
+    "total_travel_time": 19772.0,
+    "total_visit_time": 18
+}
