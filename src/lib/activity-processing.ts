@@ -163,11 +163,11 @@ export async function processByLLM(
     const scoredActivities = scoredBatches.flat();
 
     // DEBUG: Sauvegarder scoredActivities avant le filtre
-    const fs = require('fs');
-    const path = require('path');
-    const debugPath = path.join(process.cwd(), 'scoredActivities_debug.json');
-    fs.writeFileSync(debugPath, JSON.stringify(scoredActivities, null, 2));
-    console.log(`DEBUG: scoredActivities sauvegardé dans ${debugPath}`);
+    // const fs = require('fs');
+    // const path = require('path');
+    // const debugPath = path.join(process.cwd(), 'scoredActivities_debug.json');
+    // fs.writeFileSync(debugPath, JSON.stringify(scoredActivities, null, 2));
+    // console.log(`DEBUG: scoredActivities sauvegardé dans ${debugPath}`);
 
     // Filtrer les activités avec un score de 0
     const filteredActivities = scoredActivities.filter((activity): activity is ScoredActivity =>
@@ -225,6 +225,7 @@ Ton but est d'analyser ces activités par rapport aux autres information donner 
 
 # Notes importantes
 - Réponds toujours un JSON correctement formatté : liste d'objet avec "id", "score"
+- Réponds toujours avec des double quote """ et pas de single quote ' pour les keys et strings
 - Réponds seulement avec le json dans une bloc \`\`\`json et \`\`\`
 
 ---

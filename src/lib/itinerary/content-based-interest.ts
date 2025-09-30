@@ -13,6 +13,7 @@ export interface Activity {
   "interests.engineering": number;
   "interests.spirituality": number;
   "interests.nature": number;
+  llmScore?: number;
 }
 
 export interface LikeDislike {
@@ -35,6 +36,7 @@ export function extractInterestVector(activity: Activity): number[] {
     activity["interests.engineering"] ?? 0,
     activity["interests.spirituality"] ?? 0,
     activity["interests.nature"] ?? 0,
+    activity.llmScore ?? 0,
   ];
 }
 
@@ -67,14 +69,14 @@ export function buildUserVector(
     activities.map(act => [act.activityId, act])
   );
 
-  const userVector = new Array(9).fill(0);
+  const userVector = new Array(10).fill(0);
 
   for (const swipe of likesDislikes) {
     const activity = activityLookup.get(swipe.activityId);
     if (!activity) continue;
 
     const activityVector = extractInterestVector(activity);
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < 10; i++) {
       if (swipe.like) {
         userVector[i] += activityVector[i] ?? 0;
       } else {
@@ -90,10 +92,17 @@ function calculateActivityScore(
   activity: Activity,
   userVector: number[],
   negativeActivities: Activity[],
+  hasUserPreferences: boolean,
   alpha = 1.0,
   beta = 0.5
 ): number {
   const activityVector = extractInterestVector(activity);
+  
+  // Si pas de préférences utilisateur, utiliser uniquement le llmScore
+  if (!hasUserPreferences) {
+    return activity.llmScore ?? 0;
+  }
+  
   const baseScore = cosineSimilarity(userVector, activityVector);
 
   let penalty = 0;
@@ -116,6 +125,7 @@ export function recommendActivities(
   beta = 0.5,
   excludeSeen = true
 ): ActivityWithScore[] {
+  const hasUserPreferences = likesDislikes.length > 0;
   const userVector = buildUserVector(likesDislikes, activities, true);
 
   const activityLookup = new Map(
@@ -140,6 +150,7 @@ export function recommendActivities(
       activity,
       userVector,
       negativeActivities,
+      hasUserPreferences,
       alpha,
       beta
     );
