@@ -1,9 +1,9 @@
 [
   {
     "activityId": "1",
-    "name": "galerie-carrosses",
+    "slug": "galerie-carrosses",
     "catchy_description": "Contemplez les somptueux carrosses des rois et empereurs, véritables trônes sur roues et chefs-d'œuvre d'artisanat.",
-    "display_name": "La Galerie des Carrosses",
+    "name": "La Galerie des Carrosses",
     "reason": "Thématique originale et peu commune (transport royal), différente des appartements et des peintures.",
     "latitude": 48.80378,
     "longitude": 2.12829,
@@ -23,13 +23,12 @@
     "closingTime": 17.5,
     "sectionId": "1",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/grande-ecurie/galerie-carrosses",
-    "image_urls": [
-      "https://cdn.sortiraparis.com/images/1001/105940/1037371-la-galerie-des-carrosses-de-versailles-le-musee-gratuit-aux-grandes-ecuries-a7c8969.jpg"
-    ]
+    "ticket": "chateau"
   },
   {
     "activityId": "2",
-    "name": "campus-versailles",
+    "slug": "campus-versailles",
+    "name": "Le Campus de Versailles",
     "latitude": 48.80378,
     "longitude": 2.12829,
     "duration": 1.5,
@@ -47,17 +46,18 @@
     "openingTime": 9.5,
     "closingTime": 17.5,
     "sectionId": "1",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/grande-ecurie/campus-versailles"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/grande-ecurie/campus-versailles",
+    "ticket": "chateau"
   },
   {
     "activityId": "3",
-    "name": "academie-equestre-versailles",
+    "slug": "academie-equestre-versailles",
     "catchy_description": "Assistez à un spectacle où l'art équestre rencontre la poésie dans le cadre magnifique des Grandes Écuries.",
-    "display_name": "L'Académie Équestre de Versailles",
+    "name": "L'Académie Équestre de Versailles",
     "reason": "Expérience vivante et artistique, unique en son genre et qui se distingue d'une visite de musée classique.",
     "latitude": 48.80378,
     "longitude": 2.12829,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 4,
       "landscape": 2,
@@ -69,18 +69,16 @@
       "spirituality": 2,
       "nature": 3
     },
-    "openingTime": 15.0,
-    "closingTime": 19.0,
+    "openingTime": 15,
+    "closingTime": 19,
     "sectionId": "1",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/grande-ecurie/academie-equestre-versailles",
-    "image_urls": [
-      "https://www.acadequestre.fr/sites/default/files/styles/large/public/2020-06/academie-equestre-versailles.jpg",
-      "https://www.bartabas.fr/academie-equestre-de-versailles/"
-    ]
+    "ticket": "chateau"
   },
   {
     "activityId": "4",
-    "name": "jardins-francaise-trianon",
+    "slug": "jardins-francaise-trianon",
+    "name": "Les Jardins à la Française du Trianon",
     "latitude": 48.81417,
     "longitude": 2.10556,
     "duration": 1.5,
@@ -95,20 +93,21 @@
       "spirituality": 2,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "2",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/les-jardins-francaise"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/les-jardins-francaise",
+    "ticket": "passeport"
   },
   {
     "activityId": "5",
-    "name": "hameau-reine",
+    "slug": "hameau-reine",
     "catchy_description": "Évadez-vous dans le village rustique et charmant créé pour Marie-Antoinette, loin de l'étiquette de la Cour.",
-    "display_name": "Le Hameau de la Reine",
+    "name": "Le Hameau de la Reine",
     "reason": "Contraste fort avec le château. Ambiance bucolique et histoire centrée sur la vie intime de la Reine.",
     "latitude": 48.81417,
     "longitude": 2.10556,
-    "duration": 2.0,
+    "duration": 2,
     "interests": {
       "architecture": 4,
       "landscape": 4,
@@ -120,20 +119,17 @@
       "spirituality": 1,
       "nature": 4
     },
-    "openingTime": 12.0,
+    "openingTime": 12,
     "closingTime": 18.5,
     "sectionId": "2",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/hameau-reine",
-    "image_urls": [
-      "https://www.chateauversailles.fr/sites/default/files/styles/large/public/2020-06/hameau-reine.jpg",
-      "https://www.plumedart.com/post/le-hameau-de-la-reine-un-village-%C3%A0-l-ombre-du-ch%C3%A2teau-de-versailles"
-    ]
+    "ticket": "passeport"
   },
   {
     "activityId": "6",
-    "name": "jardin-anglais",
+    "slug": "jardin-anglais",
     "catchy_description": "Perdez-vous dans un jardin romantique aux allées sinueuses, grottes et ruisseaux, à l'opposé des jardins à la française.",
-    "display_name": "Le Jardin Anglais",
+    "name": "Le Jardin Anglais",
     "reason": "Offre une alternative paysagère, pour les amateurs de nature plus sauvage et moins formelle.",
     "latitude": 48.81417,
     "longitude": 2.10556,
@@ -149,21 +145,19 @@
       "spirituality": 2,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "2",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/jardin-anglais",
-    "image_urls": [
-      "https://upload.wikimedia.org/wikipedia/commons/7/7e/Jardin_Anglais_Versailles.jpg",
-      "https://www.gettyimages.com/detail/photo/versailles-english-garden-royalty-free-image/1152975742"
-    ]
+    "ticket": "passeport"
   },
   {
     "activityId": "7",
-    "name": "petit-trianon",
+    "slug": "petit-trianon",
+    "name": "Le Petit Trianon",
     "latitude": 48.81417,
     "longitude": 2.10556,
-    "duration": 2.0,
+    "duration": 2,
     "interests": {
       "architecture": 5,
       "landscape": 4,
@@ -175,20 +169,21 @@
       "spirituality": 2,
       "nature": 3
     },
-    "openingTime": 12.0,
+    "openingTime": 12,
     "closingTime": 18.5,
     "sectionId": "2",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/petit-trianon"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/petit-trianon",
+    "ticket": "passeport"
   },
   {
     "activityId": "8",
-    "name": "grand-trianon",
+    "slug": "grand-trianon",
     "catchy_description": "Visitez ce palais de marbre rose et de jardins, refuge intime des rois pour échapper à la foule de Versailles.",
-    "display_name": "Le Grand Trianon",
+    "name": "Le Grand Trianon",
     "reason": "Architecture distincte et plus intime, représente une autre facette de la vie royale et de son évolution.",
     "latitude": 48.81417,
     "longitude": 2.10556,
-    "duration": 2.0,
+    "duration": 2,
     "interests": {
       "architecture": 5,
       "landscape": 4,
@@ -200,18 +195,16 @@
       "spirituality": 2,
       "nature": 4
     },
-    "openingTime": 12.0,
+    "openingTime": 12,
     "closingTime": 18.5,
     "sectionId": "2",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/trianon/grand-trianon",
-    "image_urls": [
-      "https://upload.wikimedia.org/wikipedia/commons/8/8e/Grand_Trianon_Versailles.jpg",
-      "https://www.gettyimages.com/detail/photo/versailles-grand-trianon-royalty-free-image/1152975742"
-    ]
+    "ticket": "passeport"
   },
   {
     "activityId": "9",
-    "name": "theatre-reine",
+    "slug": "theatre-reine",
+    "name": "Le Théâtre de la Reine",
     "latitude": 48.81417,
     "longitude": 2.10556,
     "duration": 1.5,
@@ -226,14 +219,16 @@
       "spirituality": 1,
       "nature": 2
     },
-    "openingTime": 12.0,
+    "openingTime": 12,
     "closingTime": 18.5,
     "sectionId": "2",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/theatre-reine"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/theatre-reine",
+    "ticket": "passeport"
   },
   {
     "activityId": "10",
-    "name": "jardin-francais-petit-trianon",
+    "slug": "jardin-francais-petit-trianon",
+    "name": "Le Jardin Français du Petit Trianon",
     "latitude": 48.81417,
     "longitude": 2.10556,
     "duration": 1.5,
@@ -248,16 +243,17 @@
       "spirituality": 1,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "2",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/jardin-francais-petit-trianon"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/jardin-francais-petit-trianon",
+    "ticket": "passeport"
   },
   {
     "activityId": "11",
-    "name": "appartement-interieur-roi",
+    "slug": "appartement-interieur-roi",
     "catchy_description": "Pénétrez dans les pièces secrètes où le roi travaillait, se détendait et menait sa vie privée, loin des regards.",
-    "display_name": "L'Appartement intérieur du Roi",
+    "name": "L'Appartement intérieur du Roi",
     "reason": "Plongée dans l'intimité du pouvoir et la vie quotidienne du monarque, au-delà des salles d'apparat.",
     "latitude": 48.80486,
     "longitude": 2.12036,
@@ -273,24 +269,21 @@
       "spirituality": 2,
       "nature": 1
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/appartement-interieur-roi",
-    "image_urls": [
-      "https://www.chateauversailles.fr/sites/default/files/styles/large/public/2020-06/appartement-interieur-roi.jpg",
-      "https://www.chateauversailles.fr/decouvrir/domaine/chateau/appartement-interieur-roi"
-    ]
+    "ticket": "chateau"
   },
   {
     "activityId": "12",
-    "name": "galerie-glaces",
+    "slug": "galerie-glaces",
     "catchy_description": "Marchez dans les pas des rois et des reines dans la plus éblouissante et emblématique galerie du monde.",
-    "display_name": "La Galerie des Glaces",
+    "name": "La Galerie des Glaces",
     "reason": "Incontournable absolu. Représente le faste, l'histoire et la puissance politique du château.",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 5,
       "landscape": 3,
@@ -302,18 +295,16 @@
       "spirituality": 2,
       "nature": 1
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/galerie-glaces",
-    "image_urls": [
-      "https://upload.wikimedia.org/wikipedia/commons/0/0e/Chateau_Versailles_Galerie_des_Glaces.jpg",
-      "https://www.gettyimages.com/detail/photo/versailles-palace-hall-of-mirrors-royalty-free-image/1152975742"
-    ]
+    "ticket": "chateau"
   },
   {
     "activityId": "13",
-    "name": "appartement-roi",
+    "slug": "appartement-roi",
+    "name": "L'Appartement du Roi",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 1.5,
@@ -328,17 +319,19 @@
       "spirituality": 2,
       "nature": 1
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/appartement-roi"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/appartement-roi",
+    "ticket": "chateau"
   },
   {
     "activityId": "14",
-    "name": "grand-appartement-roi",
+    "slug": "grand-appartement-roi",
+    "name": "Le Grand Appartement du Roi",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 2.0,
+    "duration": 2,
     "interests": {
       "architecture": 5,
       "landscape": 2,
@@ -350,16 +343,17 @@
       "spirituality": 2,
       "nature": 1
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/grand-appartement-roi"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/grand-appartement-roi",
+    "ticket": "chateau"
   },
   {
     "activityId": "15",
-    "name": "opera-royal",
+    "slug": "opera-royal",
     "catchy_description": "Découvrez ce joyau caché de bois et d'or, une merveille d'acoustique et de décoration théâtrale.",
-    "display_name": "L'Opéra Royal",
+    "name": "L'Opéra Royal",
     "reason": "Met en avant l'ingénierie, l'art de la scène et la vie culturelle de la Cour, un aspect différent des appartements.",
     "latitude": 48.80486,
     "longitude": 2.12036,
@@ -375,24 +369,21 @@
       "spirituality": 2,
       "nature": 1
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/opera-royal",
-    "image_urls": [
-      "https://upload.wikimedia.org/wikipedia/commons/5/5f/Op%C3%A9ra_Royal_de_Versailles.jpg",
-      "https://www.gettyimages.com/detail/photo/versailles-opera-royalty-free-image/1152975742"
-    ]
+    "ticket": "chateau"
   },
   {
     "activityId": "16",
-    "name": "chapelle-royale",
+    "slug": "chapelle-royale",
     "catchy_description": "Levez les yeux vers les voûtes dorées de ce chef-d'œuvre d'art sacré où la musique céleste résonnait pour le Roi.",
-    "display_name": "La Chapelle Royale",
+    "name": "La Chapelle Royale",
     "reason": "Forte dimension spirituelle et un sommet de l'architecture baroque, un lieu à l'atmosphère unique.",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 5,
       "landscape": 2,
@@ -404,18 +395,16 @@
       "spirituality": 5,
       "nature": 1
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/chapelle-royale",
-    "image_urls": [
-      "https://upload.wikimedia.org/wikipedia/commons/3/3e/Chapelle_Royale_Versailles.jpg",
-      "https://www.gettyimages.com/detail/photo/versailles-royal-chapel-royalty-free-image/1152975742"
-    ]
+    "ticket": "chateau"
   },
   {
     "activityId": "17",
-    "name": "grand-appartement-reine",
+    "slug": "grand-appartement-reine",
+    "name": "Le Grand Appartement de la Reine",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 1.5,
@@ -430,20 +419,21 @@
       "spirituality": 2,
       "nature": 1
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/grand-appartement-reine"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/grand-appartement-reine",
+    "ticket": "chateau"
   },
   {
     "activityId": "18",
-    "name": "galerie-batailles",
+    "slug": "galerie-batailles",
     "catchy_description": "Revivez les plus grandes victoires militaires françaises à travers une galerie de peintures monumentales.",
-    "display_name": "La Galerie des Batailles",
+    "name": "La Galerie des Batailles",
     "reason": "Thématique militaire et historique forte, qui contraste avec les scènes de vie de cour.",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 2.0,
+    "duration": 2,
     "interests": {
       "architecture": 5,
       "landscape": 2,
@@ -455,18 +445,16 @@
       "spirituality": 2,
       "nature": 1
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/galerie-batailles",
-    "image_urls": [
-      "https://upload.wikimedia.org/wikipedia/commons/4/4d/Galerie_des_Batailles_Versailles.jpg",
-      "https://www.gettyimages.com/detail/photo/versailles-gallery-of-battles-royalty-free-image/1152975742"
-    ]
+    "ticket": "chateau"
   },
   {
     "activityId": "19",
-    "name": "appartement-madame-pompadour",
+    "slug": "appartement-madame-pompadour",
+    "name": "L'Appartement de Madame de Pompadour",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 1.25,
@@ -481,14 +469,16 @@
       "spirituality": 1,
       "nature": 2
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/appartement-madame-pompadour"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/appartement-madame-pompadour",
+    "ticket": "chateau"
   },
   {
     "activityId": "20",
-    "name": "appartement-dauphine",
+    "slug": "appartement-dauphine",
+    "name": "L'Appartement de la Dauphine",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 1.5,
@@ -503,14 +493,16 @@
       "spirituality": 2,
       "nature": 2
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/appartement-dauphine"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/appartement-dauphine",
+    "ticket": "chateau"
   },
   {
     "activityId": "21",
-    "name": "appartements-filles-louis-xv",
+    "slug": "appartements-filles-louis-xv",
+    "name": "Les Appartements des Filles de Louis XV",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 1.5,
@@ -525,14 +517,16 @@
       "spirituality": 2,
       "nature": 2
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/les-appartements-filles-louis-xv"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/les-appartements-filles-louis-xv",
+    "ticket": "chateau"
   },
   {
     "activityId": "22",
-    "name": "galeries-historiques",
+    "slug": "galeries-historiques",
+    "name": "Les Galeries Historiques",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 2.5,
@@ -547,17 +541,19 @@
       "spirituality": 2,
       "nature": 1
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/les-galeries-historiques"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/les-galeries-historiques",
+    "ticket": "chateau"
   },
   {
     "activityId": "23",
-    "name": "salle-congres",
+    "slug": "salle-congres",
+    "name": "La Salle du Congrès",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 4,
       "landscape": 2,
@@ -569,14 +565,16 @@
       "spirituality": 1,
       "nature": 1
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/salle-congres"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/salle-congres",
+    "ticket": "chateau"
   },
   {
     "activityId": "24",
-    "name": "salles-croisades",
+    "slug": "salles-croisades",
+    "name": "Les Salles des Croisades",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 1.5,
@@ -591,16 +589,17 @@
       "spirituality": 4,
       "nature": 1
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/salles-croisades"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/salles-croisades",
+    "ticket": "chateau"
   },
   {
     "activityId": "25",
-    "name": "cabinets-interieurs-marie-antoinette",
+    "slug": "cabinets-interieurs-marie-antoinette",
     "catchy_description": "Entrez dans le refuge personnel de Marie-Antoinette, des bibliothèques aux boudoirs où elle exprimait son goût unique.",
-    "display_name": "Les Cabinets intérieurs de Marie-Antoinette",
+    "name": "Les Cabinets intérieurs de Marie-Antoinette",
     "reason": "Focus sur un personnage féminin emblématique, son intimité et son influence sur les arts décoratifs.",
     "latitude": 48.80486,
     "longitude": 2.12036,
@@ -616,21 +615,19 @@
       "spirituality": 2,
       "nature": 2
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/les-cabinets-interieurs-marie-antoinette",
-    "image_urls": [
-      "https://upload.wikimedia.org/wikipedia/commons/4/4e/Cabinets_Marie-Antoinette_Versailles.jpg",
-      "https://www.gettyimages.com/detail/photo/versailles-cabinets-of-marie-antoinette-royalty-free-image/1152975742"
-    ]
+    "ticket": "chateau"
   },
   {
     "activityId": "26",
-    "name": "salle-sacre",
+    "slug": "salle-sacre",
+    "name": "La Salle du Sacre",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 4,
       "landscape": 2,
@@ -642,14 +639,16 @@
       "spirituality": 2,
       "nature": 1
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/salle-sacre"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/salle-sacre",
+    "ticket": "chateau"
   },
   {
     "activityId": "27",
-    "name": "salles-empire",
+    "slug": "salles-empire",
+    "name": "Les Salles de l'Empire",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 2.5,
@@ -664,17 +663,19 @@
       "spirituality": 2,
       "nature": 1
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/salles-empire"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/salles-empire",
+    "ticket": "chateau"
   },
   {
     "activityId": "28",
-    "name": "salles-afrique-crimee-italie",
+    "slug": "salles-afrique-crimee-italie",
+    "name": "Les Salles d'Afrique, de Crimée et d'Italie",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 2.0,
+    "duration": 2,
     "interests": {
       "architecture": 4,
       "landscape": 2,
@@ -686,14 +687,16 @@
       "spirituality": 2,
       "nature": 1
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/salles-afrique-crimee-italie"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/salles-afrique-crimee-italie",
+    "ticket": "chateau"
   },
   {
     "activityId": "29",
-    "name": "salle-1792",
+    "slug": "salle-1792",
+    "name": "La Salle de 1792",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 1.5,
@@ -708,20 +711,21 @@
       "spirituality": 2,
       "nature": 1
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/salle-1792"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/salle-1792",
+    "ticket": "chateau"
   },
   {
     "activityId": "30",
-    "name": "galerie-histoire-chateau",
+    "slug": "galerie-histoire-chateau",
     "catchy_description": "Commencez votre visite par une introduction multimédia et immersive pour comprendre l'histoire et la construction du Château.",
-    "display_name": "La Galerie de l'Histoire du Château",
+    "name": "La Galerie de l'Histoire du Château",
     "reason": "Activité à caractère éducatif et introductif, parfaite pour contextualiser la visite pour un nouvel arrivant.",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 2.0,
+    "duration": 2,
     "interests": {
       "architecture": 5,
       "landscape": 4,
@@ -733,18 +737,16 @@
       "spirituality": 3,
       "nature": 3
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/galerie-histoire-chateau",
-    "image_urls": [
-      "https://upload.wikimedia.org/wikipedia/commons/3/3d/Galerie_Histoire_Chateau_Versailles.jpg",
-      "https://www.gettyimages.com/detail/photo/versailles-gallery-of-the-history-of-the-castle-royalty-free-image/1152975742"
-    ]
+    "ticket": "chateau"
   },
   {
     "activityId": "31",
-    "name": "salles-louis-xiv",
+    "slug": "salles-louis-xiv",
+    "name": "Les Salles de Louis XIV",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 2.5,
@@ -759,14 +761,16 @@
       "spirituality": 3,
       "nature": 2
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/salles-louis-xiv"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/salles-louis-xiv",
+    "ticket": "chateau"
   },
   {
     "activityId": "32",
-    "name": "appartement-dauphin",
+    "slug": "appartement-dauphin",
+    "name": "L'Appartement du Dauphin",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 1.5,
@@ -781,14 +785,16 @@
       "spirituality": 2,
       "nature": 2
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/appartement-dauphin"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/appartement-dauphin",
+    "ticket": "chateau"
   },
   {
     "activityId": "33",
-    "name": "appartement-madame-du-barry",
+    "slug": "appartement-madame-du-barry",
+    "name": "L'Appartement de Madame du Barry",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 1.5,
@@ -803,20 +809,21 @@
       "spirituality": 2,
       "nature": 2
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/appartement-madame-barry"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/appartement-madame-barry",
+    "ticket": "chateau"
   },
   {
     "activityId": "34",
-    "name": "grand-commun",
+    "slug": "grand-commun",
     "catchy_description": "Explorez les coulisses du Château en découvrant l'immense bâtiment qui abritait les cuisines et les serviteurs de la Cour.",
-    "display_name": "Le Grand Commun",
+    "name": "Le Grand Commun",
     "reason": "Met en lumière la logistique et la vie des 'gens de service', un angle méconnu et fascinant du château.",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 5,
       "landscape": 2,
@@ -828,18 +835,16 @@
       "spirituality": 2,
       "nature": 1
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/grand-commun",
-    "image_urls": [
-      "https://upload.wikimedia.org/wikipedia/commons/6/6e/Grand_Commun_Versailles.jpg",
-      "https://www.gettyimages.com/detail/photo/versailles-grand-commun-royalty-free-image/1152975742"
-    ]
+    "ticket": "chateau"
   },
   {
     "activityId": "35",
-    "name": "attique-chimay",
+    "slug": "attique-chimay",
+    "name": "L'Attique Chimay",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 1.5,
@@ -854,16 +859,17 @@
       "spirituality": 2,
       "nature": 1
     },
-    "openingTime": 9.0,
+    "openingTime": 9,
     "closingTime": 18.5,
     "sectionId": "3",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/attique-chimay"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/attique-chimay",
+    "ticket": "chateau"
   },
   {
     "activityId": "36",
-    "name": "orangerie",
+    "slug": "orangerie",
     "catchy_description": "Admirez cette impressionnante cathédrale de verre et de pierre conçue pour protéger les fragiles orangers du Roi-Soleil.",
-    "display_name": "L'Orangerie",
+    "name": "L'Orangerie",
     "reason": "Alliance unique entre nature, architecture monumentale et prouesse technique horticole.",
     "latitude": 48.80486,
     "longitude": 2.12036,
@@ -879,42 +885,17 @@
       "spirituality": 2,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/jardins/orangerie",
-    "image_urls": [
-      "https://upload.wikimedia.org/wikipedia/commons/2/2b/Orangerie_Versailles.jpg",
-      "https://www.gettyimages.com/detail/photo/orangerie-palace-of-versailles-royalty-free-image/1152975742"
-    ]
-  },
-  {
-    "activityId": "38",
-    "name": "sculptures",
-    "latitude": 48.80486,
-    "longitude": 2.12036,
-    "duration": 2.5,
-    "interests": {
-      "architecture": 3,
-      "landscape": 4,
-      "politic": 4,
-      "history": 5,
-      "courtlife": 4,
-      "art": 5,
-      "engineering": 3,
-      "spirituality": 3,
-      "nature": 4
-    },
-    "openingTime": 7.0,
-    "closingTime": 20.5,
-    "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-sculptures"
+    "ticket": "passeport"
   },
   {
     "activityId": "42",
-    "name": "galerie-sculptures-moulages",
+    "slug": "galerie-sculptures-moulages",
     "catchy_description": "Flânez parmi les copies parfaites des plus grandes sculptures de l'Antiquité, comme le faisaient les artistes du roi.",
-    "display_name": "La Galerie des Sculptures et des Moulages",
+    "name": "La Galerie des Sculptures et des Moulages",
     "reason": "Centrée sur la sculpture et la formation artistique, une vision de l'art différente de celle des galeries de peinture.",
     "latitude": 48.80486,
     "longitude": 2.12036,
@@ -934,20 +915,17 @@
     "closingTime": 18.5,
     "sectionId": "6",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/petite-ecurie/galerie-sculptures-moulages",
-    "image_urls": [
-      "https://upload.wikimedia.org/wikipedia/commons/2/2e/Galerie_Sculptures_Moulages_Versailles.jpg",
-      "https://www.gettyimages.com/detail/photo/versailles-gallery-of-sculptures-and-casts-royalty-free-image/1152975742"
-    ]
+    "ticket": "chateau"
   },
   {
     "activityId": "43",
-    "name": "grand-canal",
+    "slug": "grand-canal",
     "catchy_description": "Naviguez ou flânez le long de cette majestueuse perspective d'eau, cœur battant des jardins de Le Nôtre.",
-    "display_name": "Le Grand Canal",
+    "name": "Le Grand Canal",
     "reason": "Activité en extérieur emblématique, mêlant nature, ingénierie et loisirs royaux.",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 2.0,
+    "duration": 2,
     "interests": {
       "architecture": 4,
       "landscape": 5,
@@ -959,18 +937,16 @@
       "spirituality": 2,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "5",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/parc",
-    "image_urls": [
-      "https://upload.wikimedia.org/wikipedia/commons/3/3d/Grand_Canal_of_Versailles.jpg",
-      "https://www.shutterstock.com/search/versailles-grand-canal"
-    ]
+    "ticket": "chateau"
   },
   {
     "activityId": "44",
-    "name": "piece-eau-suisses",
+    "slug": "piece-eau-suisses",
+    "name": "La Pièce d'Eau des Suisses",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 1.5,
@@ -985,17 +961,19 @@
       "spirituality": 2,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "5",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/parc"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/parc",
+    "ticket": "chateau"
   },
   {
     "activityId": "45",
-    "name": "ru-gally",
+    "slug": "ru-gally",
+    "name": "Le Rû Gally",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 2,
       "landscape": 4,
@@ -1007,20 +985,21 @@
       "spirituality": 2,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "5",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/parc"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/parc",
+    "ticket": "chateau"
   },
   {
     "activityId": "46",
-    "name": "salle-jeu-paume",
+    "slug": "salle-jeu-paume",
     "catchy_description": "Entrez dans le lieu où un serment fondateur a changé le cours de l'Histoire de France pour toujours.",
-    "display_name": "La Salle du Jeu de Paume",
+    "name": "La Salle du Jeu de Paume",
     "reason": "Haut lieu de l'histoire politique française, focus sur la Révolution plutôt que sur la monarchie.",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 4,
       "landscape": 2,
@@ -1036,43 +1015,12 @@
     "closingTime": 17.5,
     "sectionId": "7",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/salle-jeu-paume",
-    "image_urls": [
-      "https://www.chateauversailles.fr/sites/default/files/styles/large/public/2020-06/salle-jeu-paume.jpg",
-      "https://www.chateauversailles.fr/decouvrir/domaine/salle-jeu-paume"
-    ]
-  },
-  {
-    "activityId": "47",
-    "name": "domaine-marly",
-    "catchy_description": "Partez à la découverte d'un domaine royal aujourd'hui disparu mais dont le parc conserve une atmosphère unique et paisible.",
-    "display_name": "Le Domaine de Marly",
-    "reason": "Propose une excursion hors des sentiers battus, pour ceux qui veulent explorer l'histoire au-delà du site principal.",
-    "latitude": 48.80486,
-    "longitude": 2.12036,
-    "duration": 2.5,
-    "interests": {
-      "architecture": 5,
-      "landscape": 5,
-      "politic": 4,
-      "history": 5,
-      "courtlife": 5,
-      "art": 4,
-      "engineering": 4,
-      "spirituality": 3,
-      "nature": 5
-    },
-    "openingTime": 7.0,
-    "closingTime": 20.5,
-    "sectionId": "8",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-marly",
-    "image_urls": [
-      "https://upload.wikimedia.org/wikipedia/commons/5/5f/Domaine_Marly_Versailles.jpg",
-      "https://www.gettyimages.com/detail/photo/versailles-domain-of-marly-royalty-free-image/1152975742"
-    ]
+    "ticket": "chateau"
   },
   {
     "activityId": "48",
-    "name": "bassin-flore-printemps",
+    "slug": "bassin-flore-printemps",
+    "name": "Le Bassin de Flore (Printemps)",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 0.5,
@@ -1087,14 +1035,16 @@
       "spirituality": 3,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines",
+    "ticket": "passeport"
   },
   {
     "activityId": "49",
-    "name": "bassin-ceres-ete",
+    "slug": "bassin-ceres-ete",
+    "name": "Le Bassin de Cérès (Été)",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 0.5,
@@ -1109,14 +1059,16 @@
       "spirituality": 3,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines",
+    "ticket": "passeport"
   },
   {
     "activityId": "50",
-    "name": "bassin-bacchus-automne",
+    "slug": "bassin-bacchus-automne",
+    "name": "Le Bassin de Bacchus (Automne)",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 0.5,
@@ -1131,14 +1083,16 @@
       "spirituality": 3,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines",
+    "ticket": "passeport"
   },
   {
     "activityId": "51",
-    "name": "bassin-saturne-hiver",
+    "slug": "bassin-saturne-hiver",
+    "name": "Le Bassin de Saturne (Hiver)",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 0.5,
@@ -1153,14 +1107,16 @@
       "spirituality": 3,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines",
+    "ticket": "passeport"
   },
   {
     "activityId": "52",
-    "name": "cabinet-diane-soir",
+    "slug": "cabinet-diane-soir",
+    "name": "Le Cabinet de Diane (Soir)",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 0.5,
@@ -1175,14 +1131,16 @@
       "spirituality": 2,
       "nature": 3
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines",
+    "ticket": "passeport"
   },
   {
     "activityId": "53",
-    "name": "cabinet-point-jour",
+    "slug": "cabinet-point-jour",
+    "name": "Le Cabinet du Point du Jour",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 0.5,
@@ -1197,14 +1155,16 @@
       "spirituality": 2,
       "nature": 3
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines",
+    "ticket": "passeport"
   },
   {
     "activityId": "54",
-    "name": "bassin-dragon",
+    "slug": "bassin-dragon",
+    "name": "Le Bassin du Dragon",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 0.5,
@@ -1219,17 +1179,19 @@
       "spirituality": 3,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines",
+    "ticket": "passeport"
   },
   {
     "activityId": "55",
-    "name": "bassin-neptune",
+    "slug": "bassin-neptune",
+    "name": "Le Bassin de Neptune",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 4,
       "landscape": 5,
@@ -1241,14 +1203,16 @@
       "spirituality": 3,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines",
+    "ticket": "passeport"
   },
   {
     "activityId": "56",
-    "name": "bassin-latone",
+    "slug": "bassin-latone",
+    "name": "Le Bassin de Latone",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 0.5,
@@ -1263,16 +1227,17 @@
       "spirituality": 3,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines",
+    "ticket": "passeport"
   },
   {
     "activityId": "57",
-    "name": "bassin-apollon",
+    "slug": "bassin-apollon",
     "catchy_description": "Admirez le spectaculaire char du dieu soleil émergeant des eaux, pièce maîtresse de la perspective des jardins.",
-    "display_name": "Le Bassin d'Apollon",
+    "name": "Le Bassin d'Apollon",
     "reason": "Point de repère iconique. Condense la mythologie, la symbolique du pouvoir et l'art de la fontainerie.",
     "latitude": 48.80486,
     "longitude": 2.12036,
@@ -1288,18 +1253,16 @@
       "spirituality": 3,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines",
-    "image_urls": [
-      "https://upload.wikimedia.org/wikipedia/commons/1/1b/Bassin_Apollon_Versailles.jpg",
-      "https://www.gettyimages.com/detail/photo/versailles-bassin-of-apollo-royalty-free-image/1152975742"
-    ]
+    "ticket": "passeport"
   },
   {
     "activityId": "58",
-    "name": "bassin-miroir",
+    "slug": "bassin-miroir",
+    "name": "Le Bassin du Miroir",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 0.5,
@@ -1314,14 +1277,16 @@
       "spirituality": 2,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines",
+    "ticket": "passeport"
   },
   {
     "activityId": "59",
-    "name": "bain-nymphes",
+    "slug": "bain-nymphes",
+    "name": "Le Bain des Nymphes",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 0.5,
@@ -1336,14 +1301,16 @@
       "spirituality": 3,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines",
+    "ticket": "passeport"
   },
   {
     "activityId": "60",
-    "name": "bassin-pyramide",
+    "slug": "bassin-pyramide",
+    "name": "Le Bassin de la Pyramide",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 0.5,
@@ -1358,14 +1325,16 @@
       "spirituality": 3,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines",
+    "ticket": "passeport"
   },
   {
     "activityId": "61",
-    "name": "bassin-enfants-dores",
+    "slug": "bassin-enfants-dores",
+    "name": "Le Bassin des Enfants Dorés",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 0.5,
@@ -1380,17 +1349,19 @@
       "spirituality": 2,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bassins-les-fontaines",
+    "ticket": "passeport"
   },
   {
     "activityId": "62",
-    "name": "bosquet-reine",
+    "slug": "bosquet-reine",
+    "name": "Le Bosquet de la Reine",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 4,
       "landscape": 5,
@@ -1402,43 +1373,42 @@
       "spirituality": 2,
       "nature": 5
     },
-    "openingTime": 7.0,
-    "closingTime": 20.5,
-    "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets"
-  },
-  {
-    "activityId": "63",
-    "name": "bosquet-salle-bal",
-    "catchy_description": "Dansez avec l'histoire dans cet incroyable théâtre de verdure et de cascades, une salle de bal à ciel ouvert.",
-    "display_name": "Le Bosquet de la Salle de Bal",
-    "reason": "Concept original et surprenant, fusion parfaite entre nature, fête et architecture de jardin.",
-    "latitude": 48.80486,
-    "longitude": 2.12036,
-    "duration": 1.0,
-    "interests": {
-      "architecture": 5,
-      "landscape": 5,
-      "politic": 4,
-      "history": 5,
-      "courtlife": 5,
-      "art": 5,
-      "engineering": 5,
-      "spirituality": 2,
-      "nature": 4
-    },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
     "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
-    "image_urls": [
-      "https://upload.wikimedia.org/wikipedia/commons/9/9f/Bosquet_Salle_de_Bal_Versailles.jpg",
-      "https://www.gettyimages.com/detail/photo/versailles-bosquet-of-the-hall-of-dancing-royalty-free-image/1152975742"
-    ]
+    "ticket": "passeport"
+  },
+  {
+    "activityId": "63",
+    "slug": "bosquet-salle-bal",
+    "catchy_description": "Dansez avec l'histoire dans cet incroyable théâtre de verdure et de cascades, une salle de bal à ciel ouvert.",
+    "name": "Le Bosquet de la Salle de Bal",
+    "reason": "Concept original et surprenant, fusion parfaite entre nature, fête et architecture de jardin.",
+    "latitude": 48.80486,
+    "longitude": 2.12036,
+    "duration": 1,
+    "interests": {
+      "architecture": 5,
+      "landscape": 5,
+      "politic": 4,
+      "history": 5,
+      "courtlife": 5,
+      "art": 5,
+      "engineering": 5,
+      "spirituality": 2,
+      "nature": 4
+    },
+    "openingTime": 7,
+    "closingTime": 20.5,
+    "sectionId": "4",
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
+    "ticket": "passeport"
   },
   {
     "activityId": "64",
-    "name": "bosquet-girandole",
+    "slug": "bosquet-girandole",
+    "name": "Le Bosquet de la Girandole",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 0.5,
@@ -1453,14 +1423,16 @@
       "spirituality": 2,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
+    "ticket": "passeport"
   },
   {
     "activityId": "65",
-    "name": "bosquet-montagne-eau",
+    "slug": "bosquet-montagne-eau",
+    "name": "Le Bosquet de la Montagne d'Eau",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 0.5,
@@ -1475,14 +1447,16 @@
       "spirituality": 2,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
+    "ticket": "passeport"
   },
   {
     "activityId": "66",
-    "name": "bosquet-dauphin",
+    "slug": "bosquet-dauphin",
+    "name": "Le Bosquet du Dauphin",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 0.5,
@@ -1497,17 +1471,19 @@
       "spirituality": 3,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
+    "ticket": "passeport"
   },
   {
     "activityId": "67",
-    "name": "bosquet-theatre-eau",
+    "slug": "bosquet-theatre-eau",
+    "name": "Le Bosquet du Théâtre d'Eau",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 5,
       "landscape": 5,
@@ -1519,14 +1495,16 @@
       "spirituality": 2,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
+    "ticket": "passeport"
   },
   {
     "activityId": "68",
-    "name": "bosquet-trois-fontaines",
+    "slug": "bosquet-trois-fontaines",
+    "name": "Le Bosquet des Trois Fontaines",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 0.5,
@@ -1541,14 +1519,16 @@
       "spirituality": 2,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
+    "ticket": "passeport"
   },
   {
     "activityId": "69",
-    "name": "bosquet-arc-triomphe",
+    "slug": "bosquet-arc-triomphe",
+    "name": "Le Bosquet de l'Arc de Triomphe",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 0.5,
@@ -1563,17 +1543,19 @@
       "spirituality": 2,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
+    "ticket": "passeport"
   },
   {
     "activityId": "70",
-    "name": "bosquet-colonnade",
+    "slug": "bosquet-colonnade",
+    "name": "Le Bosquet de la Colonnade",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 5,
       "landscape": 5,
@@ -1585,14 +1567,16 @@
       "spirituality": 3,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
+    "ticket": "passeport"
   },
   {
     "activityId": "71",
-    "name": "bosquet-marronnier",
+    "slug": "bosquet-marronnier",
+    "name": "Le Bosquet du Marronnier",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 0.5,
@@ -1607,14 +1591,16 @@
       "spirituality": 2,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
+    "ticket": "passeport"
   },
   {
     "activityId": "72",
-    "name": "bosquet-dome",
+    "slug": "bosquet-dome",
+    "name": "Le Bosquet du Dôme",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 0.5,
@@ -1629,14 +1615,16 @@
       "spirituality": 3,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
+    "ticket": "passeport"
   },
   {
     "activityId": "73",
-    "name": "bosquet-encelade",
+    "slug": "bosquet-encelade",
+    "name": "Le Bosquet d'Encelade",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 0.5,
@@ -1651,14 +1639,16 @@
       "spirituality": 3,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
+    "ticket": "passeport"
   },
   {
     "activityId": "74",
-    "name": "bosquet-obelisques",
+    "slug": "bosquet-obelisques",
+    "name": "Le Bosquet des Obélisques",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 0.5,
@@ -1673,17 +1663,19 @@
       "spirituality": 3,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
+    "ticket": "passeport"
   },
   {
     "activityId": "75",
-    "name": "bosquet-bains-apollon",
+    "slug": "bosquet-bains-apollon",
+    "name": "Le Bosquet des Bains d'Apollon",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 5,
       "landscape": 5,
@@ -1695,17 +1687,19 @@
       "spirituality": 3,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/les-jardins/les-bosquets",
+    "ticket": "passeport"
   },
   {
     "activityId": "76",
-    "name": "parterre-eau",
+    "slug": "parterre-eau",
+    "name": "Le Parterre d'Eau",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 5,
       "landscape": 5,
@@ -1717,17 +1711,19 @@
       "spirituality": 2,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/jardins/parterres"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/jardins/parterres",
+    "ticket": "passeport"
   },
   {
     "activityId": "77",
-    "name": "parterre-nord",
+    "slug": "parterre-nord",
+    "name": "Le Parterre Nord",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 4,
       "landscape": 5,
@@ -1739,17 +1735,19 @@
       "spirituality": 2,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/jardins/parterres"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/jardins/parterres",
+    "ticket": "passeport"
   },
   {
     "activityId": "78",
-    "name": "parterre-midi",
+    "slug": "parterre-midi",
+    "name": "Le Parterre du Midi",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 4,
       "landscape": 5,
@@ -1761,14 +1759,16 @@
       "spirituality": 2,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/jardins/parterres"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/jardins/parterres",
+    "ticket": "passeport"
   },
   {
     "activityId": "79",
-    "name": "parterre-latone",
+    "slug": "parterre-latone",
+    "name": "Le Parterre de Latone",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 1.5,
@@ -1783,17 +1783,19 @@
       "spirituality": 3,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/jardins/parterres"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/jardins/parterres",
+    "ticket": "passeport"
   },
   {
     "activityId": "80",
-    "name": "allee-eau-marmousets",
+    "slug": "allee-eau-marmousets",
+    "name": "L'Allée d'Eau des Marmousets",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 5,
       "landscape": 5,
@@ -1805,14 +1807,16 @@
       "spirituality": 2,
       "nature": 4
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/jardins/allees"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/jardins/allees",
+    "ticket": "passeport"
   },
   {
     "activityId": "81",
-    "name": "allee-royale-tapis-vert",
+    "slug": "allee-royale-tapis-vert",
+    "name": "L'Allée Royale du Tapis Vert",
     "latitude": 48.80486,
     "longitude": 2.12036,
     "duration": 1.5,
@@ -1827,17 +1831,19 @@
       "spirituality": 2,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/jardins/allees"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/jardins/allees",
+    "ticket": "passeport"
   },
   {
     "activityId": "82",
-    "name": "jardin-roi",
+    "slug": "jardin-roi",
+    "name": "Le Jardin du Roi",
     "latitude": 48.80486,
     "longitude": 2.12036,
-    "duration": 1.0,
+    "duration": 1,
     "interests": {
       "architecture": 4,
       "landscape": 5,
@@ -1849,9 +1855,424 @@
       "spirituality": 2,
       "nature": 5
     },
-    "openingTime": 7.0,
+    "openingTime": 7,
     "closingTime": 20.5,
     "sectionId": "4",
-    "url": "https://www.chateauversailles.fr/decouvrir/domaine/jardins/allees"
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/jardins/allees",
+    "ticket": "passeport"
+  },
+  {
+    "activityId": "83",
+    "slug": "statue-louis-xiv",
+    "name": "La Statue de Louis XIV",
+    "latitude": 48.80486,
+    "longitude": 2.12036,
+    "duration": 0.1,
+    "interests": {
+      "architecture": 3,
+      "landscape": 2,
+      "politic": 5,
+      "history": 5,
+      "courtlife": 4,
+      "art": 4,
+      "engineering": 2,
+      "spirituality": 1,
+      "nature": 1
+    },
+    "openingTime": 0,
+    "closingTime": 0,
+    "sectionId": "0",
+    "url": "",
+    "ticket": ""
+  },
+  {
+    "activityId": "84",
+    "slug": "visite-guidee-service-majeste",
+    "catchy_description": "Découvrez les réseaux d'espions et d'informateurs secrets qui surveillaient Versailles, de la poste au Secret du Roi.",
+    "name": "Visite guidée - Au service de sa majesté",
+    "reason": "Thématique unique sur l'espionnage et la sécurité à Versailles, révélant les coulisses du pouvoir et de la surveillance.",
+    "latitude": 48.80486,
+    "longitude": 2.12036,
+    "duration": 1.5,
+    "interests": {
+      "architecture": 3,
+      "landscape": 1,
+      "politic": 5,
+      "history": 5,
+      "courtlife": 5,
+      "art": 2,
+      "engineering": 2,
+      "spirituality": 1,
+      "nature": 1
+    },
+    "openingTime": 9,
+    "closingTime": 18.5,
+    "sectionId": "3",
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/visite-guidee-service-majeste",
+    "ticket": "visite"
+  },
+  {
+    "activityId": "85",
+    "slug": "visite-guidee-royal-cauchemar",
+    "catchy_description": "Plongez dans les heures sombres de l'histoire de France : morts violentes, maladies et massacres qui ont marqué la Cour et la famille royale.",
+    "name": "Visite guidée - Royal cauchemar",
+    "reason": "Thématique unique sur les aspects sombres et lugubres de l'histoire de Versailles, révélant les épisodes les plus sinistres des XVIIe et XVIIIe siècles.",
+    "latitude": 48.80486,
+    "longitude": 2.12036,
+    "duration": 1.5,
+    "interests": {
+      "architecture": 3,
+      "landscape": 1,
+      "politic": 4,
+      "history": 5,
+      "courtlife": 5,
+      "art": 2,
+      "engineering": 1,
+      "spirituality": 3,
+      "nature": 1
+    },
+    "openingTime": 9,
+    "closingTime": 18.5,
+    "sectionId": "3",
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/visite-guidee-royal-cauchemar",
+    "ticket": "visite"
+  },
+  {
+    "activityId": "86",
+    "slug": "visite-guidee-versailles-fake-news",
+    "catchy_description": "Démêlez le vrai du faux sur Versailles ! Découvrez la réalité derrière les légendes et mythes qui entourent le château, de l'hygiène à la célèbre phrase de Marie-Antoinette.",
+    "name": "Visite guidée - Versailles fake news",
+    "reason": "Approche ludique et interactive pour démystifier les idées fausses sur Versailles, révélant la réalité derrière les légendes populaires.",
+    "latitude": 48.80486,
+    "longitude": 2.12036,
+    "duration": 1.5,
+    "interests": {
+      "architecture": 4,
+      "landscape": 2,
+      "politic": 4,
+      "history": 5,
+      "courtlife": 5,
+      "art": 3,
+      "engineering": 2,
+      "spirituality": 1,
+      "nature": 1
+    },
+    "openingTime": 9,
+    "closingTime": 18.5,
+    "sectionId": "3",
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/visite-guidee-versailles-fake-news",
+    "ticket": "visite"
+  },
+  {
+    "activityId": "87",
+    "slug": "visite-guidee-marie-antoinette-prive",
+    "catchy_description": "Découvrez les cabinets intérieurs de Marie-Antoinette, récemment rouverts après des années de travaux. Explorez l'intimité de la reine à travers ses meubles précieux, tableaux et objets d'art.",
+    "name": "Visite guidée - Marie-Antoinette en privé",
+    "reason": "Accès privilégié aux appartements privés de Marie-Antoinette, révélant sa personnalité, son goût pour la décoration, les arts et la mode.",
+    "latitude": 48.80486,
+    "longitude": 2.12036,
+    "duration": 1.5,
+    "interests": {
+      "architecture": 5,
+      "landscape": 2,
+      "politic": 3,
+      "history": 5,
+      "courtlife": 5,
+      "art": 5,
+      "engineering": 2,
+      "spirituality": 2,
+      "nature": 2
+    },
+    "openingTime": 9,
+    "closingTime": 18.5,
+    "sectionId": "3",
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/visite-guidee-marie-antoinette-prive",
+    "ticket": "visite"
+  },
+  {
+    "activityId": "88",
+    "slug": "visite-guidee-grand-trianon-chateau-campagne",
+    "catchy_description": "Découvrez le Grand Trianon comme lieu de villégiature où les résidents pouvaient s'extraire des contraintes de la vie officielle et réorganiser les espaces selon leurs goûts.",
+    "name": "Visite guidée - Le Grand Trianon : château de campagne",
+    "reason": "Focus sur l'utilisation du Grand Trianon comme résidence de campagne, révélant comment chaque résident a adapté les espaces tout en préservant l'esprit de Louis XIV.",
+    "latitude": 48.81417,
+    "longitude": 2.10556,
+    "duration": 1.5,
+    "interests": {
+      "architecture": 5,
+      "landscape": 4,
+      "politic": 3,
+      "history": 5,
+      "courtlife": 5,
+      "art": 5,
+      "engineering": 3,
+      "spirituality": 2,
+      "nature": 4
+    },
+    "openingTime": 9,
+    "closingTime": 18.5,
+    "sectionId": "2",
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/visite-guidee-grand-trianon-chateau-campagne",
+    "ticket": "visite"
+  },
+  {
+    "activityId": "89",
+    "slug": "visite-guidee-fantomes-trianon",
+    "catchy_description": "Découvrez l'étrange expérience paranormale vécue par deux Anglaises en 1901 dans les jardins du Petit Trianon, qui contribua à la légende de Marie-Antoinette.",
+    "name": "Visite guidée - Les fantômes de Trianon",
+    "reason": "Thématique unique sur les légendes paranormales et l'histoire mystérieuse du Petit Trianon, révélant une facette surnaturelle de Versailles.",
+    "latitude": 48.81417,
+    "longitude": 2.10556,
+    "duration": 1.5,
+    "interests": {
+      "architecture": 4,
+      "landscape": 5,
+      "politic": 2,
+      "history": 5,
+      "courtlife": 4,
+      "art": 3,
+      "engineering": 2,
+      "spirituality": 5,
+      "nature": 5
+    },
+    "openingTime": 9,
+    "closingTime": 18.5,
+    "sectionId": "2",
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/visite-guidee-fantomes-trianon",
+    "ticket": "visite"
+  },
+  {
+    "activityId": "90",
+    "slug": "visite-guidee-effets-sceniques-theatre-reine",
+    "catchy_description": "Découvrez les mécanismes anciens miraculeusement conservés du Théâtre de la Reine, l'un des plus beaux théâtres de société d'Europe, dissimulé dans la verdure du jardin de Trianon.",
+    "name": "Visite guidée - Les effets scéniques au théâtre de la Reine",
+    "reason": "Focus unique sur l'ingénierie théâtrale et les mécanismes de scène du XVIIIe siècle, révélant les techniques de spectacle de l'époque.",
+    "latitude": 48.81417,
+    "longitude": 2.10556,
+    "duration": 1.5,
+    "interests": {
+      "architecture": 5,
+      "landscape": 4,
+      "politic": 2,
+      "history": 5,
+      "courtlife": 5,
+      "art": 5,
+      "engineering": 5,
+      "spirituality": 2,
+      "nature": 4
+    },
+    "openingTime": 9,
+    "closingTime": 18.5,
+    "sectionId": "2",
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/visite-guidee-effets-sceniques-theatre-reine",
+    "ticket": "visite"
+  },
+  {
+    "activityId": "91",
+    "slug": "visite-guidee-chateau-rois-palais-republique",
+    "catchy_description": "Découvrez Versailles dans ses facettes les plus diverses : résidence royale, palais de la République, musée de l'Histoire de France et lieu de création contemporaine.",
+    "name": "Visite guidée - Du château des rois au palais de la République",
+    "reason": "Parcours complet retraçant l'évolution de Versailles à travers les siècles, révélant ses multiples fonctions et transformations historiques.",
+    "latitude": 48.80486,
+    "longitude": 2.12036,
+    "duration": 1.5,
+    "interests": {
+      "architecture": 5,
+      "landscape": 3,
+      "politic": 5,
+      "history": 5,
+      "courtlife": 4,
+      "art": 4,
+      "engineering": 3,
+      "spirituality": 2,
+      "nature": 2
+    },
+    "openingTime": 9,
+    "closingTime": 18.5,
+    "sectionId": "3",
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/visite-guidee-chateau-rois-palais-republique",
+    "ticket": "visite"
+  },
+  {
+    "activityId": "92",
+    "slug": "visite-guidee-petit-trianon-marie-antoinette",
+    "catchy_description": "Découvrez le domaine personnel de Marie-Antoinette, offert par Louis XVI en 1774, où la reine créa un monde libéré de l'étiquette, à l'image de sa personnalité.",
+    "name": "Visite guidée - Le Petit Trianon de Marie-Antoinette",
+    "reason": "Focus sur l'intimité et la personnalité de Marie-Antoinette à travers son domaine privé, révélant son goût et son mode de vie libéré des contraintes de cour.",
+    "latitude": 48.81417,
+    "longitude": 2.10556,
+    "duration": 1.5,
+    "interests": {
+      "architecture": 5,
+      "landscape": 5,
+      "politic": 3,
+      "history": 5,
+      "courtlife": 5,
+      "art": 5,
+      "engineering": 3,
+      "spirituality": 2,
+      "nature": 5
+    },
+    "openingTime": 9,
+    "closingTime": 18.5,
+    "sectionId": "2",
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/visite-guidee-petit-trianon-marie-antoinette",
+    "ticket": "visite"
+  },
+  {
+    "activityId": "93",
+    "slug": "visite-guidee-louis-philippe-famille-trianon",
+    "catchy_description": "Découvrez comment Louis-Philippe, dernier souverain à aménager le Grand Trianon, y installa sa nombreuse famille et modernisa les lieux pour plus de confort et d'intimité.",
+    "name": "Visite guidée - Louis-Philippe en famille à Trianon",
+    "reason": "Focus sur l'évolution des modes de vie au XIXe siècle à travers l'aménagement familial de Louis-Philippe, révélant les changements dans les goûts et le confort domestique.",
+    "latitude": 48.81417,
+    "longitude": 2.10556,
+    "duration": 1.5,
+    "interests": {
+      "architecture": 5,
+      "landscape": 4,
+      "politic": 4,
+      "history": 5,
+      "courtlife": 5,
+      "art": 4,
+      "engineering": 3,
+      "spirituality": 2,
+      "nature": 4
+    },
+    "openingTime": 9,
+    "closingTime": 18.5,
+    "sectionId": "2",
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/visite-guidee-louis-philippe-famille-trianon",
+    "ticket": "visite"
+  },
+  {
+    "activityId": "94",
+    "slug": "visite-guidee-favorites-roi",
+    "catchy_description": "Découvrez les luxueux logements des favorites royales, Madame de Pompadour et Madame Du Barry, qui ont marqué l'histoire et la légende de Versailles.",
+    "name": "Visite guidée - Chez les favorites du Roi",
+    "reason": "Thématique unique sur l'influence des favorites royales et leur vie privée, révélant un aspect méconnu de la vie de cour au XVIIIe siècle.",
+    "latitude": 48.80486,
+    "longitude": 2.12036,
+    "duration": 1.25,
+    "interests": {
+      "architecture": 5,
+      "landscape": 2,
+      "politic": 4,
+      "history": 5,
+      "courtlife": 5,
+      "art": 5,
+      "engineering": 3,
+      "spirituality": 2,
+      "nature": 2
+    },
+    "openingTime": 9,
+    "closingTime": 18.5,
+    "sectionId": "3",
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/visite-guidee-favorites-roi",
+    "ticket": "visite"
+  },
+  {
+    "activityId": "95",
+    "slug": "visite-guidee-hameau-marie-antoinette-marie-louise",
+    "catchy_description": "Découvrez les chaumières du hameau construit par Richard Mique pour Marie-Antoinette, survivantes d'une époque brillante, avec leurs intérieurs raffinés contrastant avec leur aspect rustique.",
+    "name": "Visite guidée - Le Hameau de Marie-Antoinette à Marie-Louise",
+    "reason": "Focus sur l'évolution du hameau à travers les époques, révélant le goût de Marie-Antoinette pour la vie champêtre et les contrastes entre rusticité extérieure et raffinement intérieur.",
+    "latitude": 48.81417,
+    "longitude": 2.10556,
+    "duration": 1.5,
+    "interests": {
+      "architecture": 5,
+      "landscape": 5,
+      "politic": 3,
+      "history": 5,
+      "courtlife": 5,
+      "art": 5,
+      "engineering": 3,
+      "spirituality": 2,
+      "nature": 5
+    },
+    "openingTime": 9,
+    "closingTime": 18.5,
+    "sectionId": "2",
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/visite-guidee-hameau-marie-antoinette-marie-louise",
+    "ticket": "visite"
+  },
+  {
+    "activityId": "96",
+    "slug": "visite-guidee-appartements-prives-rois",
+    "catchy_description": "Découvrez l'atmosphère intime et le décor raffiné des appartements privés des rois, cachés derrière les murs des Grands Appartements : salle à manger, cabinet de la Pendule et salon de jeux.",
+    "name": "Visite guidée - Appartements privés des Rois",
+    "reason": "Accès privilégié aux espaces intimes des rois, révélant leur vie quotidienne et leurs goûts personnels au-delà de l'étiquette officielle.",
+    "latitude": 48.80486,
+    "longitude": 2.12036,
+    "duration": 1.5,
+    "interests": {
+      "architecture": 5,
+      "landscape": 2,
+      "politic": 4,
+      "history": 5,
+      "courtlife": 5,
+      "art": 5,
+      "engineering": 3,
+      "spirituality": 2,
+      "nature": 2
+    },
+    "openingTime": 9,
+    "closingTime": 18.5,
+    "sectionId": "3",
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/visite-guidee-appartements-prives-rois",
+    "ticket": "visite"
+  },
+  {
+    "activityId": "97",
+    "slug": "visite-guidee-president-chez-roi",
+    "catchy_description": "Découvrez comment le Grand Trianon fut transformé en palais de la République sous de Gaulle, accueillant présidents et chefs d'État comme Richard Nixon et la reine Élisabeth d'Angleterre.",
+    "name": "Visite guidée - Un président chez le roi",
+    "reason": "Focus unique sur la transformation du Grand Trianon en résidence présidentielle moderne, révélant l'évolution de Versailles du XVIIIe siècle à la Ve République.",
+    "latitude": 48.81417,
+    "longitude": 2.10556,
+    "duration": 1.5,
+    "interests": {
+      "architecture": 5,
+      "landscape": 4,
+      "politic": 5,
+      "history": 5,
+      "courtlife": 4,
+      "art": 4,
+      "engineering": 3,
+      "spirituality": 2,
+      "nature": 3
+    },
+    "openingTime": 9,
+    "closingTime": 18.5,
+    "sectionId": "2",
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/domaine-trianon/visite-guidee-president-chez-roi",
+    "ticket": "visite"
+  },
+  {
+    "activityId": "98",
+    "slug": "visite-guidee-lieux-caches",
+    "catchy_description": "Découvrez les portes dérobées, petits passages et appartements très privés où les souverains se retiraient pour échapper aux pesanteurs de la Cour.",
+    "name": "Visite guidée - Lieux cachés",
+    "reason": "Accès exclusif aux espaces secrets et méconnus de Versailles, révélant une histoire intime et surprenante du château.",
+    "latitude": 48.80486,
+    "longitude": 2.12036,
+    "duration": 1.5,
+    "interests": {
+      "architecture": 5,
+      "landscape": 2,
+      "politic": 4,
+      "history": 5,
+      "courtlife": 5,
+      "art": 4,
+      "engineering": 4,
+      "spirituality": 3,
+      "nature": 2
+    },
+    "openingTime": 9,
+    "closingTime": 18.5,
+    "sectionId": "3",
+    "url": "https://www.chateauversailles.fr/decouvrir/domaine/chateau/visite-guidee-lieux-caches",
+    "ticket": "visite"
   }
 ]
