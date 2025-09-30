@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
+import { filterOnConditions, processByLLM, type Activity } from "~/lib/activity-processing";
 
 // Schémas de validation pour les données d'onboarding
 const handicapsSchema = z.object({
@@ -23,96 +24,92 @@ const onboardingDataSchema = z.object({
   preferences: z.string(),
 });
 
-// Simulation d'activités (sera remplacée par une vraie base de données)
-const ACTIVITIES_DB = [
-  { id: "1", name: "Visite des Grands Appartements", category: "architecture", difficulty: "easy", duration: 60 },
-  { id: "2", name: "Jardins de Versailles", category: "nature", difficulty: "medium", duration: 90 },
-  { id: "3", name: "Galerie des Glaces", category: "architecture", difficulty: "easy", duration: 45 },
-  { id: "4", name: "Chapelle Royale", category: "religion", difficulty: "easy", duration: 30 },
-  { id: "5", name: "Opéra Royal", category: "culture", difficulty: "medium", duration: 60 },
-  { id: "6", name: "Petit Trianon", category: "architecture", difficulty: "medium", duration: 75 },
-  { id: "7", name: "Grand Trianon", category: "architecture", difficulty: "medium", duration: 90 },
-  { id: "8", name: "Hameau de la Reine", category: "nature", difficulty: "easy", duration: 45 },
-  { id: "9", name: "Musée de l'Histoire de France", category: "culture", difficulty: "hard", duration: 120 },
-  { id: "10", name: "Appartements de Mesdames", category: "architecture", difficulty: "easy", duration: 30 },
-  { id: "11", name: "Salle des Gardes", category: "architecture", difficulty: "easy", duration: 20 },
-  { id: "12", name: "Escalier des Ambassadeurs", category: "architecture", difficulty: "medium", duration: 30 },
-  { id: "13", name: "Salle du Trône", category: "architecture", difficulty: "easy", duration: 25 },
-  { id: "14", name: "Chambre du Roi", category: "architecture", difficulty: "easy", duration: 35 },
-  { id: "15", name: "Salon de la Guerre", category: "architecture", difficulty: "easy", duration: 20 },
-  { id: "16", name: "Salon de la Paix", category: "architecture", difficulty: "easy", duration: 20 },
-  { id: "17", name: "Galerie des Batailles", category: "culture", difficulty: "hard", duration: 90 },
-  { id: "18", name: "Appartements de l'Empereur", category: "architecture", difficulty: "medium", duration: 60 },
-  { id: "19", name: "Salle des Machines", category: "culture", difficulty: "medium", duration: 45 },
-  { id: "20", name: "Orangerie", category: "nature", difficulty: "easy", duration: 30 },
-];
+// Import des vraies activités depuis le fichier JSON
+import activitiesData from "~/assets/activity.json"
+
+// Liste des IDs d'activités sélectionnées
+const SELECTED_ACTIVITY_IDS = [
+  "12", "5", "43", "15", "3", "46", "36", "11", "18", "6", 
+  "1", "16", "8", "63", "34", "25", "42", "57", "30"
+]
+
+// Filtrer les activités selon les IDs sélectionnés
+const ACTIVITIES_DB = activitiesData.filter(activity => 
+  SELECTED_ACTIVITY_IDS.includes(activity.activityId)
+).map(activity => ({
+  id: activity.activityId,
+  name: activity.display_name || activity.name,
+  description: activity.catchy_description || "",
+  reason: activity.reason || "Une expérience unique vous attend dans ce lieu exceptionnel.",
+  category: getCategoryFromInterests(activity.interests),
+  difficulty: getDifficultyFromDuration(activity.duration),
+  duration: Math.round(activity.duration * 60), // Convertir en minutes
+  interests: activity.interests,
+  latitude: activity.latitude,
+  longitude: activity.longitude,
+  openingTime: activity.openingTime,
+  closingTime: activity.closingTime,
+  sectionId: activity.sectionId,
+  url: activity.url
+}))
+
+// Fonction pour déterminer la catégorie basée sur les intérêts
+function getCategoryFromInterests(interests: Record<string, number>): string {
+  const maxInterest = Object.entries(interests).reduce((max, [key, value]) => 
+    (value as number) > max.value ? { key, value: value as number } : max, 
+    { key: "architecture", value: 0 }
+  )
+  
+  switch (maxInterest.key) {
+    case "landscape":
+    case "nature":
+      return "nature"
+    case "art":
+    case "spirituality":
+      return "culture"
+    case "politic":
+    case "history":
+    case "courtlife":
+      return "architecture"
+    default:
+      return "architecture"
+  }
+}
+
+// Fonction pour déterminer la difficulté basée sur la durée
+function getDifficultyFromDuration(duration: number): string {
+  if (duration <= 1) return "easy"
+  if (duration <= 2) return "medium"
+  return "hard"
+}
 
 export const onboardingRouter = createTRPCRouter({
   processOnboarding: publicProcedure
     .input(onboardingDataSchema)
     .mutation(async ({ input }) => {
-      // Simulation d'un algorithme de sélection d'activités
-      // Plus tard, ceci sera remplacé par une vraie logique métier
+      console.log("Données d'onboarding reçues:", input);
       
-      let selectedActivities = [...ACTIVITIES_DB];
+      // Étape 1 : Filtrer les activités selon les conditions
+      const filteredActivities = filterOnConditions(ACTIVITIES_DB as Activity[], input);
+      console.log(`${filteredActivities.length} activités après filtrage sur conditions`);
       
-      // Filtrage basé sur les handicaps
-      if (input.handicaps.mobilite) {
-        // Privilégier les activités avec peu de marche
-        selectedActivities = selectedActivities.filter(activity => 
-          activity.difficulty === "easy" || activity.difficulty === "medium"
-        );
-      }
+      // Étape 2 : Traiter les activités avec le LLM pour obtenir les scores
+      const scoredActivities = await processByLLM(filteredActivities, input);
+      console.log(`${scoredActivities.length} activités après traitement LLM`);
       
-      // Filtrage basé sur le niveau de marche
-      if (input.walkingLevel < 17) {
-        // Peu de marche - activités courtes et faciles
-        selectedActivities = selectedActivities.filter(activity => 
-          activity.difficulty === "easy" && activity.duration <= 60
-        );
-      } else if (input.walkingLevel > 33) {
-        // Beaucoup de marche - activités plus longues
-        selectedActivities = selectedActivities.filter(activity => 
-          activity.duration >= 60
-        );
-      }
-      
-      // Filtrage basé sur la présence d'enfants
-      if (input.hasChildren) {
-        // Privilégier les activités adaptées aux enfants
-        selectedActivities = selectedActivities.filter(activity => 
-          activity.difficulty === "easy" && activity.duration <= 90
-        );
-      }
-      
-      // Filtrage basé sur les préférences (mots-clés simples)
-      const preferences = input.preferences.toLowerCase();
-      if (preferences.includes("jardin") || preferences.includes("nature")) {
-        selectedActivities = selectedActivities.filter(activity => 
-          activity.category === "nature"
-        );
-      }
-      if (preferences.includes("histoire") || preferences.includes("culture")) {
-        selectedActivities = selectedActivities.filter(activity => 
-          activity.category === "culture" || activity.category === "architecture"
-        );
-      }
-      
-      // Sélectionner 15 activités maximum
-      const shuffled = selectedActivities.sort(() => 0.5 - Math.random());
-      const finalSelection = shuffled.slice(0, 15);
-      
-      // Retourner les IDs des activités sélectionnées
       return {
         success: true,
-        activityIds: finalSelection.map(activity => activity.id),
-        totalActivities: finalSelection.length,
+        activityIds: scoredActivities.map(activity => activity.id),
+        totalActivities: scoredActivities.length,
         metadata: {
           hasChildren: input.hasChildren,
           walkingLevel: input.walkingLevel,
           handicaps: input.handicaps,
           visitDays: input.visitDays.length,
           preferences: input.preferences,
+          originalCount: ACTIVITIES_DB.length,
+          filteredCount: filteredActivities.length,
+          finalCount: scoredActivities.length,
         }
       };
     }),

@@ -15,15 +15,15 @@ export function AnimatedStep({ children, step, currentStep, direction }: Animate
 
   const slideVariants = {
     enter: (direction: "forward" | "backward") => ({
-      x: direction === "forward" ? 300 : -300,
+      y: direction === "forward" ? 100 : -100,
       opacity: 0,
     }),
     center: {
-      x: 0,
+      y: 0,
       opacity: 1,
     },
     exit: (direction: "forward" | "backward") => ({
-      x: direction === "forward" ? -300 : 300,
+      y: direction === "forward" ? -100 : 100,
       opacity: 0,
     }),
   }

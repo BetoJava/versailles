@@ -26,10 +26,10 @@ interface FormData {
   hasChildren: boolean
   walkingLevel: number
   handicaps: Handicaps
-  
+
   // Étape 2
   visitDays: VisitDay[]
-  
+
   // Étape 3
   preferences: string
 }
@@ -37,7 +37,7 @@ interface FormData {
 
 function OnboardingPageContent() {
   const { processOnboarding, state } = useOnboarding()
-  
+
   const getCurrentDate = () => {
     return new Date().toISOString().split('T')[0] || ""
   }
@@ -85,34 +85,42 @@ function OnboardingPageContent() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-muted p-1 sm:p-4 relative">
+    <div className="min-h-screen bg-gradient-to-br from-background to-muted p-1 sm:p-4 relative"
+      style={{
+        backgroundColor: 'var(--color-background)'
+      }}>
+      {/* SVG en arrière-plan */}
+      <img 
+        src="/chateau_min.svg" 
+        alt="Château de Versailles" 
+        className="absolute bottom-0 left-1/2 transform -translate-x-1/2 min-h-[50vh] w-full object-cover"
+        style={{ width: 'full', minHeight: '50vh' }}
+      />
       <div className="absolute top-2 right-2 sm:top-4 sm:right-4">
         <ModeToggle />
       </div>
-      <div className="max-w-2xl mx-auto">
+      <div className="relative z-10 max-w-2xl mx-auto">
         <div className="text-center mb-8">
-          
+
           {/* Indicateur d'étapes */}
           <div className="flex justify-center mt-6">
             <div className="flex items-center space-x-4">
               {[1, 2, 3].map((step) => (
                 <div key={step} className="flex items-center">
                   <div
-                    className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
-                      step === currentStep
+                    className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${step === currentStep
                         ? "bg-primary text-primary-foreground"
                         : step < currentStep
-                        ? "bg-accent text-accent-foreground"
-                        : "bg-muted text-muted-foreground"
-                    }`}
+                          ? "bg-accent text-accent-foreground"
+                          : "bg-muted text-muted-foreground"
+                      }`}
                   >
                     {step}
                   </div>
                   {step < 3 && (
                     <div
-                      className={`w-12 h-0.5 mx-2 ${
-                        step < currentStep ? "bg-accent" : "bg-muted"
-                      }`}
+                      className={`w-12 h-0.5 mx-2 ${step < currentStep ? "bg-accent" : "bg-muted"
+                        }`}
                     />
                   )}
                 </div>
@@ -133,7 +141,7 @@ function OnboardingPageContent() {
               onNext={handleNext}
             />
           </AnimatedStep>
-          
+
           <AnimatedStep
             step={2}
             currentStep={currentStep}
@@ -146,7 +154,7 @@ function OnboardingPageContent() {
               onBack={handleBack}
             />
           </AnimatedStep>
-          
+
           <AnimatedStep
             step={3}
             currentStep={currentStep}

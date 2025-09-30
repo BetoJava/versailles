@@ -4,20 +4,20 @@ import React, { createContext, useContext, useReducer, type ReactNode } from "re
 import { api } from "~/trpc/react"
 import { useRouter } from "next/navigation"
 
-interface VisitDay {
+export interface VisitDay {
   id: string
   date: string
   startTime: string
   endTime: string
 }
 
-interface Handicaps {
+export interface Handicaps {
   mobilite: boolean
   vision: boolean
   audition: boolean
 }
 
-interface OnboardingData {
+export interface OnboardingData {
   hasChildren: boolean
   walkingLevel: number
   handicaps: Handicaps
@@ -28,6 +28,7 @@ interface OnboardingData {
 interface OnboardingState {
   data: OnboardingData | null
   activityIds: string[]
+  swipedActivities: string[]
   isLoading: boolean
   error: string | null
 }
@@ -35,6 +36,7 @@ interface OnboardingState {
 type OnboardingAction =
   | { type: "SET_DATA"; payload: OnboardingData }
   | { type: "SET_ACTIVITIES"; payload: string[] }
+  | { type: "SET_SWIPED_ACTIVITIES"; payload: string[] }
   | { type: "SET_LOADING"; payload: boolean }
   | { type: "SET_ERROR"; payload: string | null }
   | { type: "RESET" }
@@ -42,6 +44,7 @@ type OnboardingAction =
 const initialState: OnboardingState = {
   data: null,
   activityIds: [],
+  swipedActivities: [],
   isLoading: false,
   error: null,
 }
@@ -60,6 +63,11 @@ function onboardingReducer(state: OnboardingState, action: OnboardingAction): On
         activityIds: action.payload,
         isLoading: false,
         error: null,
+      }
+    case "SET_SWIPED_ACTIVITIES":
+      return {
+        ...state,
+        swipedActivities: action.payload,
       }
     case "SET_LOADING":
       return {
@@ -83,6 +91,7 @@ function onboardingReducer(state: OnboardingState, action: OnboardingAction): On
 interface OnboardingContextType {
   state: OnboardingState
   setData: (data: OnboardingData) => void
+  setSwipedActivities: (activityIds: string[]) => void
   processOnboarding: (data: OnboardingData) => Promise<void>
   reset: () => void
 }
@@ -108,6 +117,10 @@ export function OnboardingProvider({ children }: { children: ReactNode }) {
     dispatch({ type: "SET_DATA", payload: data })
   }
 
+  const setSwipedActivities = (activityIds: string[]) => {
+    dispatch({ type: "SET_SWIPED_ACTIVITIES", payload: activityIds })
+  }
+
   const processOnboarding = async (data: OnboardingData) => {
     dispatch({ type: "SET_LOADING", payload: true })
     dispatch({ type: "SET_DATA", payload: data })
@@ -129,6 +142,7 @@ export function OnboardingProvider({ children }: { children: ReactNode }) {
       value={{
         state,
         setData,
+        setSwipedActivities,
         processOnboarding,
         reset,
       }}

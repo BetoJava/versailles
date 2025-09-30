@@ -4,7 +4,7 @@ import { Button } from "~/components/ui/button"
 import { Label } from "~/components/ui/label"
 import { Checkbox } from "~/components/ui/checkbox"
 import { Slider } from "~/components/ui/slider"
-import { AccessibilityIcon, ChevronRightIcon, FootprintsIcon } from "lucide-react"
+import { AccessibilityIcon, ChevronRightIcon, FootprintsIcon, Rabbit, Snail, Turtle } from "lucide-react"
 
 interface Handicaps {
   mobilite: boolean
@@ -28,8 +28,9 @@ interface FormData {
 }
 
 const WALKING_LEVELS = {
-  min: "Peu de marche",
-  max: "Beaucoup de marche"
+  min: <Snail />,
+  middle: <Turtle />,
+  max: <Rabbit />,
 }
 
 interface Step1Props {
@@ -89,7 +90,7 @@ export function Step1({ formData, setFormData, onNext }: Step1Props) {
         <div className="space-y-4">
           <div className="flex items-center gap-2">
             <FootprintsIcon className="size-5 text-green-600" />
-            <Label className="text-lg">Niveau de marche souhaité</Label>
+            <Label className="text-lg">Votre vitesse de marche</Label>
           </div>
           <div className="px-3">
             <Slider
@@ -104,9 +105,9 @@ export function Step1({ formData, setFormData, onNext }: Step1Props) {
               <span>{WALKING_LEVELS.min}</span>
               <span>{WALKING_LEVELS.max}</span>
             </div>
-            <div className="text-center mt-2">
+            <div className="flex items-center justify-center mt-2">
               <span className="text-sm font-medium">
-                {formData.walkingLevel}% - {formData.walkingLevel < 17 ? WALKING_LEVELS.min : formData.walkingLevel < 33 ? "Marche modérée" : WALKING_LEVELS.max}
+                {formData.walkingLevel < 17 ? WALKING_LEVELS.min : formData.walkingLevel < 33 ? WALKING_LEVELS.middle : WALKING_LEVELS.max}
               </span>
             </div>
           </div>
