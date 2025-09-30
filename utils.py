@@ -134,3 +134,68 @@ def generate_optimized_route_with_travel(df, dist_df_walk, best_route, start_tim
 
             # Mettre à jour le temps actuel après l'activité
             current_time = activity_end_time
+
+# Créer une fonction pour calculer le temps de trajet total pour un parcours
+def calculate_travel_time(route, dist_df_walk):
+    total_time = 0
+    for i in range(1, len(route)):
+        prev_activity = route[i-1]
+        curr_activity = route[i]
+
+        total_time += dist_df_walk.loc[prev_activity, curr_activity] * 60  # Temps en secondes
+    return total_time
+
+def generate_activity_graph(df, dist_df_walk):
+    """
+    Génère un tableau des sommets avec les informations (name, section, coordonnées)
+    et un tableau de la matrice de passage (temps de déplacement entre les activités).
+    
+    :param df: DataFrame des activités
+    :param dist_df_walk: DataFrame des distances entre les activités
+    :return: vertex_df (DataFrame des sommets), passage_matrix_df (DataFrame de la matrice de passage)
+    """
+    print(df.shape)
+    
+    # Créer une liste pour les sommets et la matrice de passage
+    vertex_data = []
+    passage_data = []
+
+    # Ajouter les sommets dans le tableau
+    for _, row in df.iterrows():
+        activity_id = row['activityId']
+        name = row['name']
+        section = row['sectionId']
+        latitude = row['latitude']
+        longitude = row['longitude']
+        
+        # Ajouter l'entrée dans le tableau des sommets
+        vertex_data.append({
+            'name': name,
+            'section': section,
+            'coordinates': (latitude, longitude)
+        })
+
+    # Créer le DataFrame des sommets
+    vertex_df = pd.DataFrame(vertex_data)
+
+    # Calculer la matrice de passage (temps de déplacement entre les activités)
+    for _, row_from in df.iterrows():
+        from_name = row_from['name']
+        for _, row_to in df.iterrows():
+            to_name = row_to['name']
+            if from_name != to_name:
+                # Récupérer le temps de trajet de dist_df_walk
+                travel_time = dist_df_walk.loc[from_name, to_name] * 60  # En secondes
+                # Ajouter l'information dans la matrice de passage
+                passage_data.append({
+                    'from': from_name,
+                    'to': to_name,
+                    'travel_time': travel_time
+                })
+
+    # Créer le DataFrame de la matrice de passage
+    passage_matrix_df = pd.DataFrame(passage_data)
+
+    # Retourner le DataFrame des sommets et la matrice de passage
+    return vertex_df, passage_matrix_df
+
