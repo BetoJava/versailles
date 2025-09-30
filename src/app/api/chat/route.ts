@@ -56,7 +56,8 @@ export async function POST(request: NextRequest) {
       try {
         const parsedResponse = JSON.parse(cleanedResponse);
         return NextResponse.json(parsedResponse);
-      } catch {
+      } catch (parseError) {
+        console.error("Erreur de parsing JSON direct:", parseError);
         // Si ça échoue, retourner la réponse brute dans answer
         return NextResponse.json({ answer: cleanedResponse });
       }
@@ -64,10 +65,19 @@ export async function POST(request: NextRequest) {
 
     // Nettoyer et parser le JSON
     const jsonContent = cleanString(jsonMatch[1]);
-    const cleanedJson = jsonContent.replace(/,(\s*[}\]])/g, '$1');
-    const parsedResponse = JSON.parse(cleanedJson);
-
-    return NextResponse.json(parsedResponse);
+    const cleanedJson = jsonContent
+      .replace(/,(\s*[}\]])/g, '$1') // Supprimer les virgules avant } ou ]
+      .replace(/[\x00-\x1F\x7F-\x9F]/g, ''); // Supprimer tous les caractères de contrôle
+    
+    try {
+      const parsedResponse = JSON.parse(cleanedJson);
+      return NextResponse.json(parsedResponse);
+    } catch (parseError) {
+      console.error("Erreur de parsing JSON:", parseError);
+      console.error("JSON problématique (premiers 500 chars):", cleanedJson.substring(0, 500));
+      // En cas d'échec, retourner la réponse nettoyée comme texte
+      return NextResponse.json({ answer: cleanedResponse });
+    }
   } catch (error) {
     console.error("Erreur API chat:", error);
     return NextResponse.json(
@@ -82,14 +92,27 @@ export async function POST(request: NextRequest) {
 
 /**
  * Nettoie une chaîne de caractères en supprimant les caractères de contrôle
+ * et en échappant les caractères spéciaux JSON
  */
 function cleanString(str: string | null | undefined): string {
   if (!str) return "";
   return str
-    .replace(/[\x00-\x1F\x7F]/g, '') // Supprime les caractères de contrôle
+    .replace(/[\x00-\x1F\x7F-\x9F]/g, '') // Supprime les caractères de contrôle
     .replace(/\r\n/g, '\n') // Normalise les retours à la ligne
     .replace(/\r/g, '\n') // Normalise les retours chariot
     .trim();
+}
+
+/**
+ * Convertit de manière sûre un objet en JSON pour l'inclure dans un prompt
+ */
+function safeJsonStringify(obj: any): string {
+  return JSON.stringify(obj, (key, value) => {
+    if (typeof value === 'string') {
+      return cleanString(value);
+    }
+    return value;
+  }, 2);
 }
 
 /**
@@ -145,25 +168,17 @@ Tu es un assistant conversationnel qui aide les visiteurs du Château de Versail
 # Données disponibles
 
 ## Activités disponibles (${activities.length} activités) :
-${JSON.stringify(activitiesFormatted, null, 2)}
+${safeJsonStringify(activitiesFormatted)}
 
 ## Services et commerces disponibles (${businesses.length} établissements) :
-${JSON.stringify(businessFormatted, null, 2)}
+${safeJsonStringify(businessFormatted)}
 
 # Instructions importantes
-1. Réponds toujours en JSON avec au minimum une clé "answer" contenant ta réponse en français, avec des doubles quotes pour les keys et les strings
-2. Sois précis, informatif et amical dans tes réponses
-3. Utilise les données fournies pour répondre aux questions sur les activités et services
-4. Si tu recommandes des activités, cite leur nom exact et donne des détails pertinents (durée, horaires, description)
-5. Si tu ne trouves pas d'information pertinente dans les données, dis-le clairement
+1. Sois précis, informatif et amical dans tes réponses
+2. Utilise les données fournies pour répondre aux questions sur les activités et services
+3. Si tu recommandes des activités, cite leur nom exact et donne des détails pertinents (durée, horaires, description)
+4. Si tu ne trouves pas d'information pertinente dans les données, dis-le clairement
 
-# Format de réponse
-Réponds TOUJOURS dans ce format JSON :
-\`\`\`json
-{
-  "answer": "Ta réponse complète et détaillée ici"
-}
-\`\`\`
 
 # Question du visiteur
 ${cleanString(question)}`;
