@@ -1,0 +1,206 @@
+[
+    {
+        "activityId": "1",
+        "name": "La Galerie des Carrosses",
+        "catchy_description": "Contemplez les somptueux carrosses des rois et empereurs, véritables trônes sur roues et chefs-d'œuvre d'artisanat.",
+        "reason": "Thématique originale et peu commune (transport royal), différente des appartements et des peintures."
+    },
+    {
+        "activityId": "3",
+        "name": "L'Académie Équestre de Versailles",
+        "catchy_description": "Assistez à un spectacle où l'art équestre rencontre la poésie dans le cadre magnifique des Grandes Écuries.",
+        "reason": "Expérience vivante et artistique, unique en son genre et qui se distingue d'une visite de musée classique."
+    },
+    {
+        "activityId": "5",
+        "name": "Le Hameau de la Reine",
+        "catchy_description": "Évadez-vous dans le village rustique et charmant créé pour Marie-Antoinette, loin de l'étiquette de la Cour.",
+        "reason": "Contraste fort avec le château. Ambiance bucolique et histoire centrée sur la vie intime de la Reine."
+    },
+    {
+        "activityId": "6",
+        "name": "Le Jardin Anglais",
+        "catchy_description": "Perdez-vous dans un jardin romantique aux allées sinueuses, grottes et ruisseaux, à l'opposé des jardins à la française.",
+        "reason": "Offre une alternative paysagère, pour les amateurs de nature plus sauvage et moins formelle."
+    },
+    {
+        "activityId": "8",
+        "name": "Le Grand Trianon",
+        "catchy_description": "Visitez ce palais de marbre rose et de jardins, refuge intime des rois pour échapper à la foule de Versailles.",
+        "reason": "Architecture distincte et plus intime, représente une autre facette de la vie royale et de son évolution."
+    },
+    {
+        "activityId": "11",
+        "name": "L'Appartement intérieur du Roi",
+        "catchy_description": "Pénétrez dans les pièces secrètes où le roi travaillait, se détendait et menait sa vie privée, loin des regards.",
+        "reason": "Plongée dans l'intimité du pouvoir et la vie quotidienne du monarque, au-delà des salles d'apparat."
+    },
+    {
+        "activityId": "12",
+        "name": "La Galerie des Glaces",
+        "catchy_description": "Marchez dans les pas des rois et des reines dans la plus éblouissante et emblématique galerie du monde.",
+        "reason": "Incontournable absolu. Représente le faste, l'histoire et la puissance politique du château."
+    },
+    {
+        "activityId": "15",
+        "name": "L'Opéra Royal",
+        "catchy_description": "Découvrez ce joyau caché de bois et d'or, une merveille d'acoustique et de décoration théâtrale.",
+        "reason": "Met en avant l'ingénierie, l'art de la scène et la vie culturelle de la Cour, un aspect différent des appartements."
+    },
+    {
+        "activityId": "16",
+        "name": "La Chapelle Royale",
+        "catchy_description": "Levez les yeux vers les voûtes dorées de ce chef-d'œuvre d'art sacré où la musique céleste résonnait pour le Roi.",
+        "reason": "Forte dimension spirituelle et un sommet de l'architecture baroque, un lieu à l'atmosphère unique."
+    },
+    {
+        "activityId": "18",
+        "name": "La Galerie des Batailles",
+        "catchy_description": "Revivez les plus grandes victoires militaires françaises à travers une galerie de peintures monumentales.",
+        "reason": "Thématique militaire et historique forte, qui contraste avec les scènes de vie de cour."
+    },
+    {
+        "activityId": "25",
+        "name": "Les Cabinets intérieurs de Marie-Antoinette",
+        "catchy_description": "Entrez dans le refuge personnel de Marie-Antoinette, des bibliothèques aux boudoirs où elle exprimait son goût unique.",
+        "reason": "Focus sur un personnage féminin emblématique, son intimité et son influence sur les arts décoratifs."
+    },
+    {
+        "activityId": "30",
+        "name": "La Galerie de l'Histoire du Château",
+        "catchy_description": "Commencez votre visite par une introduction multimédia et immersive pour comprendre l'histoire et la construction du Château.",
+        "reason": "Activité à caractère éducatif et introductif, parfaite pour contextualiser la visite pour un nouvel arrivant."
+    },
+    {
+        "activityId": "34",
+        "name": "Le Grand Commun",
+        "catchy_description": "Explorez les coulisses du Château en découvrant l'immense bâtiment qui abritait les cuisines et les serviteurs de la Cour.",
+        "reason": "Met en lumière la logistique et la vie des 'gens de service', un angle méconnu et fascinant du château."
+    },
+    {
+        "activityId": "36",
+        "name": "L'Orangerie",
+        "catchy_description": "Admirez cette impressionnante cathédrale de verre et de pierre conçue pour protéger les fragiles orangers du Roi-Soleil.",
+        "reason": "Alliance unique entre nature, architecture monumentale et prouesse technique horticole."
+    },
+    {
+        "activityId": "42",
+        "name": "La Galerie des Sculptures et des Moulages",
+        "catchy_description": "Flânez parmi les copies parfaites des plus grandes sculptures de l'Antiquité, comme le faisaient les artistes du roi.",
+        "reason": "Centrée sur la sculpture et la formation artistique, une vision de l'art différente de celle des galeries de peinture."
+    },
+    {
+        "activityId": "43",
+        "name": "Le Grand Canal",
+        "catchy_description": "Naviguez ou flânez le long de cette majestueuse perspective d'eau, cœur battant des jardins de Le Nôtre.",
+        "reason": "Activité en extérieur emblématique, mêlant nature, ingénierie et loisirs royaux."
+    },
+    {
+        "activityId": "46",
+        "name": "La Salle du Jeu de Paume",
+        "catchy_description": "Entrez dans le lieu où un serment fondateur a changé le cours de l'Histoire de France pour toujours.",
+        "reason": "Haut lieu de l'histoire politique française, focus sur la Révolution plutôt que sur la monarchie."
+    },
+    {
+        "activityId": "57",
+        "name": "Le Bassin d'Apollon",
+        "catchy_description": "Admirez le spectaculaire char du dieu soleil émergeant des eaux, pièce maîtresse de la perspective des jardins.",
+        "reason": "Point de repère iconique. Condense la mythologie, la symbolique du pouvoir et l'art de la fontainerie."
+    },
+    {
+        "activityId": "63",
+        "name": "Le Bosquet de la Salle de Bal",
+        "catchy_description": "Dansez avec l'histoire dans cet incroyable théâtre de verdure et de cascades, une salle de bal à ciel ouvert.",
+        "reason": "Concept original et surprenant, fusion parfaite entre nature, fête et architecture de jardin."
+    },
+    {
+        "activityId": "84",
+        "name": "Visite guidée - Au service de sa majesté",
+        "catchy_description": "Découvrez les réseaux d'espions et d'informateurs secrets qui surveillaient Versailles, de la poste au Secret du Roi.",
+        "reason": "Thématique unique sur l'espionnage et la sécurité à Versailles, révélant les coulisses du pouvoir et de la surveillance."
+    },
+    {
+        "activityId": "85",
+        "name": "Visite guidée - Royal cauchemar",
+        "catchy_description": "Plongez dans les heures sombres de l'histoire de France : morts violentes, maladies et massacres qui ont marqué la Cour et la famille royale.",
+        "reason": "Thématique unique sur les aspects sombres et lugubres de l'histoire de Versailles, révélant les épisodes les plus sinistres des XVIIe et XVIIIe siècles."
+    },
+    {
+        "activityId": "86",
+        "name": "Visite guidée - Versailles fake news",
+        "catchy_description": "Démêlez le vrai du faux sur Versailles ! Découvrez la réalité derrière les légendes et mythes qui entourent le château, de l'hygiène à la célèbre phrase de Marie-Antoinette.",
+        "reason": "Approche ludique et interactive pour démystifier les idées fausses sur Versailles, révélant la réalité derrière les légendes populaires."
+    },
+    {
+        "activityId": "87",
+        "name": "Visite guidée - Marie-Antoinette en privé",
+        "catchy_description": "Découvrez les cabinets intérieurs de Marie-Antoinette, récemment rouverts après des années de travaux. Explorez l'intimité de la reine à travers ses meubles précieux, tableaux et objets d'art.",
+        "reason": "Accès privilégié aux appartements privés de Marie-Antoinette, révélant sa personnalité, son goût pour la décoration, les arts et la mode."
+    },
+    {
+        "activityId": "88",
+        "name": "Visite guidée - Le Grand Trianon : château de campagne",
+        "catchy_description": "Découvrez le Grand Trianon comme lieu de villégiature où les résidents pouvaient s'extraire des contraintes de la vie officielle et réorganiser les espaces selon leurs goûts.",
+        "reason": "Focus sur l'utilisation du Grand Trianon comme résidence de campagne, révélant comment chaque résident a adapté les espaces tout en préservant l'esprit de Louis XIV."
+    },
+    {
+        "activityId": "89",
+        "name": "Visite guidée - Les fantômes de Trianon",
+        "catchy_description": "Découvrez l'étrange expérience paranormale vécue par deux Anglaises en 1901 dans les jardins du Petit Trianon, qui contribua à la légende de Marie-Antoinette.",
+        "reason": "Thématique unique sur les légendes paranormales et l'histoire mystérieuse du Petit Trianon, révélant une facette surnaturelle de Versailles."
+    },
+    {
+        "activityId": "90",
+        "name": "Visite guidée - Les effets scéniques au théâtre de la Reine",
+        "catchy_description": "Découvrez les mécanismes anciens miraculeusement conservés du Théâtre de la Reine, l'un des plus beaux théâtres de société d'Europe, dissimulé dans la verdure du jardin de Trianon.",
+        "reason": "Focus unique sur l'ingénierie théâtrale et les mécanismes de scène du XVIIIe siècle, révélant les techniques de spectacle de l'époque."
+    },
+    {
+        "activityId": "91",
+        "name": "Visite guidée - Du château des rois au palais de la République",
+        "catchy_description": "Découvrez Versailles dans ses facettes les plus diverses : résidence royale, palais de la République, musée de l'Histoire de France et lieu de création contemporaine.",
+        "reason": "Parcours complet retraçant l'évolution de Versailles à travers les siècles, révélant ses multiples fonctions et transformations historiques."
+    },
+    {
+        "activityId": "92",
+        "name": "Visite guidée - Le Petit Trianon de Marie-Antoinette",
+        "catchy_description": "Découvrez le domaine personnel de Marie-Antoinette, offert par Louis XVI en 1774, où la reine créa un monde libéré de l'étiquette, à l'image de sa personnalité.",
+        "reason": "Focus sur l'intimité et la personnalité de Marie-Antoinette à travers son domaine privé, révélant son goût et son mode de vie libéré des contraintes de cour."
+    },
+    {
+        "activityId": "93",
+        "name": "Visite guidée - Louis-Philippe en famille à Trianon",
+        "catchy_description": "Découvrez comment Louis-Philippe, dernier souverain à aménager le Grand Trianon, y installa sa nombreuse famille et modernisa les lieux pour plus de confort et d'intimité.",
+        "reason": "Focus sur l'évolution des modes de vie au XIXe siècle à travers l'aménagement familial de Louis-Philippe, révélant les changements dans les goûts et le confort domestique."
+    },
+    {
+        "activityId": "94",
+        "name": "Visite guidée - Chez les favorites du Roi",
+        "catchy_description": "Découvrez les luxueux logements des favorites royales, Madame de Pompadour et Madame Du Barry, qui ont marqué l'histoire et la légende de Versailles.",
+        "reason": "Thématique unique sur l'influence des favorites royales et leur vie privée, révélant un aspect méconnu de la vie de cour au XVIIIe siècle."
+    },
+    {
+        "activityId": "95",
+        "name": "Visite guidée - Le Hameau de Marie-Antoinette à Marie-Louise",
+        "catchy_description": "Découvrez les chaumières du hameau construit par Richard Mique pour Marie-Antoinette, survivantes d'une époque brillante, avec leurs intérieurs raffinés contrastant avec leur aspect rustique.",
+        "reason": "Focus sur l'évolution du hameau à travers les époques, révélant le goût de Marie-Antoinette pour la vie champêtre et les contrastes entre rusticité extérieure et raffinement intérieur."
+    },
+    {
+        "activityId": "96",
+        "name": "Visite guidée - Appartements privés des Rois",
+        "catchy_description": "Découvrez l'atmosphère intime et le décor raffiné des appartements privés des rois, cachés derrière les murs des Grands Appartements : salle à manger, cabinet de la Pendule et salon de jeux.",
+        "reason": "Accès privilégié aux espaces intimes des rois, révélant leur vie quotidienne et leurs goûts personnels au-delà de l'étiquette officielle."
+    },
+    {
+        "activityId": "97",
+        "name": "Visite guidée - Un président chez le roi",
+        "catchy_description": "Découvrez comment le Grand Trianon fut transformé en palais de la République sous de Gaulle, accueillant présidents et chefs d'État comme Richard Nixon et la reine Élisabeth d'Angleterre.",
+        "reason": "Focus unique sur la transformation du Grand Trianon en résidence présidentielle moderne, révélant l'évolution de Versailles du XVIIIe siècle à la Ve République."
+    },
+    {
+        "activityId": "98",
+        "name": "Visite guidée - Lieux cachés",
+        "catchy_description": "Découvrez les portes dérobées, petits passages et appartements très privés où les souverains se retiraient pour échapper aux pesanteurs de la Cour.",
+        "reason": "Accès exclusif aux espaces secrets et méconnus de Versailles, révélant une histoire intime et surprenante du château."
+    }
+]

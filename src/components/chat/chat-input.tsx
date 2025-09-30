@@ -80,7 +80,10 @@ export function ChatInput() {
     setAttachments((prev) => {
       const newAttachments = [...prev];
       // Nettoyer l'URL object
-      URL.revokeObjectURL(newAttachments[index].url);
+      const attachment = newAttachments[index];
+      if (attachment) {
+        URL.revokeObjectURL(attachment.url);
+      }
       newAttachments.splice(index, 1);
       return newAttachments;
     });

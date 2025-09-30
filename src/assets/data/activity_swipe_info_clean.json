@@ -1,0 +1,116 @@
+[
+    {
+        "activityId": "1",
+        "name": "La Galerie des Carrosses",
+        "catchy_description": "Contemplez les somptueux carrosses des rois et empereurs, véritables trônes sur roues et chefs-d'œuvre d'artisanat.",
+        "reason": "Thématique originale et peu commune (transport royal), différente des appartements et des peintures."
+    },
+    {
+        "activityId": "3",
+        "name": "L'Académie Équestre de Versailles",
+        "catchy_description": "Assistez à un spectacle où l'art équestre rencontre la poésie dans le cadre magnifique des Grandes Écuries.",
+        "reason": "Expérience vivante et artistique, unique en son genre et qui se distingue d'une visite de musée classique."
+    },
+    {
+        "activityId": "5",
+        "name": "Le Hameau de la Reine",
+        "catchy_description": "Évadez-vous dans le village rustique et charmant créé pour Marie-Antoinette, loin de l'étiquette de la Cour.",
+        "reason": "Contraste fort avec le château. Ambiance bucolique et histoire centrée sur la vie intime de la Reine."
+    },
+    {
+        "activityId": "6",
+        "name": "Le Jardin Anglais",
+        "catchy_description": "Perdez-vous dans un jardin romantique aux allées sinueuses, grottes et ruisseaux, à l'opposé des jardins à la française.",
+        "reason": "Offre une alternative paysagère, pour les amateurs de nature plus sauvage et moins formelle."
+    },
+    {
+        "activityId": "8",
+        "name": "Le Grand Trianon",
+        "catchy_description": "Visitez ce palais de marbre rose et de jardins, refuge intime des rois pour échapper à la foule de Versailles.",
+        "reason": "Architecture distincte et plus intime, représente une autre facette de la vie royale et de son évolution."
+    },
+    {
+        "activityId": "11",
+        "name": "L'Appartement intérieur du Roi",
+        "catchy_description": "Pénétrez dans les pièces secrètes où le roi travaillait, se détendait et menait sa vie privée, loin des regards.",
+        "reason": "Plongée dans l'intimité du pouvoir et la vie quotidienne du monarque, au-delà des salles d'apparat."
+    },
+    {
+        "activityId": "12",
+        "name": "La Galerie des Glaces",
+        "catchy_description": "Marchez dans les pas des rois et des reines dans la plus éblouissante et emblématique galerie du monde.",
+        "reason": "Incontournable absolu. Représente le faste, l'histoire et la puissance politique du château."
+    },
+    {
+        "activityId": "15",
+        "name": "L'Opéra Royal",
+        "catchy_description": "Découvrez ce joyau caché de bois et d'or, une merveille d'acoustique et de décoration théâtrale.",
+        "reason": "Met en avant l'ingénierie, l'art de la scène et la vie culturelle de la Cour, un aspect différent des appartements."
+    },
+    {
+        "activityId": "16",
+        "name": "La Chapelle Royale",
+        "catchy_description": "Levez les yeux vers les voûtes dorées de ce chef-d'œuvre d'art sacré où la musique céleste résonnait pour le Roi.",
+        "reason": "Forte dimension spirituelle et un sommet de l'architecture baroque, un lieu à l'atmosphère unique."
+    },
+    {
+        "activityId": "18",
+        "name": "La Galerie des Batailles",
+        "catchy_description": "Revivez les plus grandes victoires militaires françaises à travers une galerie de peintures monumentales.",
+        "reason": "Thématique militaire et historique forte, qui contraste avec les scènes de vie de cour."
+    },
+    {
+        "activityId": "25",
+        "name": "Les Cabinets intérieurs de Marie-Antoinette",
+        "catchy_description": "Entrez dans le refuge personnel de Marie-Antoinette, des bibliothèques aux boudoirs où elle exprimait son goût unique.",
+        "reason": "Focus sur un personnage féminin emblématique, son intimité et son influence sur les arts décoratifs."
+    },
+    {
+        "activityId": "30",
+        "name": "La Galerie de l'Histoire du Château",
+        "catchy_description": "Commencez votre visite par une introduction multimédia et immersive pour comprendre l'histoire et la construction du Château.",
+        "reason": "Activité à caractère éducatif et introductif, parfaite pour contextualiser la visite pour un nouvel arrivant."
+    },
+    {
+        "activityId": "34",
+        "name": "Le Grand Commun",
+        "catchy_description": "Explorez les coulisses du Château en découvrant l'immense bâtiment qui abritait les cuisines et les serviteurs de la Cour.",
+        "reason": "Met en lumière la logistique et la vie des 'gens de service', un angle méconnu et fascinant du château."
+    },
+    {
+        "activityId": "36",
+        "name": "L'Orangerie",
+        "catchy_description": "Admirez cette impressionnante cathédrale de verre et de pierre conçue pour protéger les fragiles orangers du Roi-Soleil.",
+        "reason": "Alliance unique entre nature, architecture monumentale et prouesse technique horticole."
+    },
+    {
+        "activityId": "42",
+        "name": "La Galerie des Sculptures et des Moulages",
+        "catchy_description": "Flânez parmi les copies parfaites des plus grandes sculptures de l'Antiquité, comme le faisaient les artistes du roi.",
+        "reason": "Centrée sur la sculpture et la formation artistique, une vision de l'art différente de celle des galeries de peinture."
+    },
+    {
+        "activityId": "43",
+        "name": "Le Grand Canal",
+        "catchy_description": "Naviguez ou flânez le long de cette majestueuse perspective d'eau, cœur battant des jardins de Le Nôtre.",
+        "reason": "Activité en extérieur emblématique, mêlant nature, ingénierie et loisirs royaux."
+    },
+    {
+        "activityId": "46",
+        "name": "La Salle du Jeu de Paume",
+        "catchy_description": "Entrez dans le lieu où un serment fondateur a changé le cours de l'Histoire de France pour toujours.",
+        "reason": "Haut lieu de l'histoire politique française, focus sur la Révolution plutôt que sur la monarchie."
+    },
+    {
+        "activityId": "57",
+        "name": "Le Bassin d'Apollon",
+        "catchy_description": "Admirez le spectaculaire char du dieu soleil émergeant des eaux, pièce maîtresse de la perspective des jardins.",
+        "reason": "Point de repère iconique. Condense la mythologie, la symbolique du pouvoir et l'art de la fontainerie."
+    },
+    {
+        "activityId": "63",
+        "name": "Le Bosquet de la Salle de Bal",
+        "catchy_description": "Dansez avec l'histoire dans cet incroyable théâtre de verdure et de cascades, une salle de bal à ciel ouvert.",
+        "reason": "Concept original et surprenant, fusion parfaite entre nature, fête et architecture de jardin."
+    }
+]
