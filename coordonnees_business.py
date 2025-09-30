@@ -9,7 +9,7 @@ from tqdm import tqdm  # Importer tqdm pour la barre de progression
 gmaps = googlemaps.Client(key='AIzaSyCi3V2mwSSTneJpVfZLoOrO-7DiJYTkUrQ')
 
 # Charger le fichier JSON
-with open(r'C:\Users\decroux paul\Documents\info\hackaton_chateau_versaille\versailles\business.json', 'r', encoding='utf-8') as file:
+with open(r'business.json', 'r', encoding='utf-8') as file:
     data = json.load(file)
 
 # Créer un DataFrame à partir des données

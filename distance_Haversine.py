@@ -4,7 +4,7 @@ import json
 import math
 
 # Charger les données des activités (assurez-vous que vous avez le bon format)
-with open(r'src\assets\activity.json', 'r', encoding='utf-8') as file:
+with open(r'activity_v2.json', 'r', encoding='utf-8') as file:
     data = json.load(file)
 
 # Créer un DataFrame à partir des données des activités

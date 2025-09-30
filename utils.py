@@ -76,7 +76,8 @@ import numpy as np
 import json
 from datetime import timedelta
 
-def generate_optimized_route_with_travel(df, dist_df_walk, best_route, start_time_seconds):
+def generate_optimized_route_with_travel(df, dist_df_walk, best_route, start_time_seconds, wants_to_see_chateau
+                                         ):
     """
     Génère l'itinéraire optimisé en tenant compte du plaisir, des déplacements et des horaires.
     Affiche les informations de chaque activité avec les temps de trajet et de visite.

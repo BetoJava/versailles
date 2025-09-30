@@ -9,7 +9,7 @@ from tqdm import tqdm  # Importer tqdm pour la barre de progression
 gmaps = googlemaps.Client(key='AIzaSyCi3V2mwSSTneJpVfZLoOrO-7DiJYTkUrQ')
 
 # Charger le fichier JSON
-with open(r'C:\Users\decroux paul\Documents\info\hackaton_chateau_versaille\versailles\src\assets\activity.json', 'r', encoding='utf-8') as file:
+with open(r'src\assets\activity.json', 'r', encoding='utf-8') as file:
     data = json.load(file)
 
 # Créer un DataFrame à partir des données
@@ -40,8 +40,7 @@ for i, row in tqdm(df.iterrows(), total=len(df), desc="Updating Coordinates", nc
     df.at[i, 'latitude'] = lat
     df.at[i, 'longitude'] = lon
     
-    # Ajouter un délai entre les appels pour éviter de dépasser les quotas
-    time.sleep(1)
+
 
 # Afficher les DataFrame mis à jour avec les nouvelles coordonnées
 print(df[['name', 'latitude', 'longitude']].head())
