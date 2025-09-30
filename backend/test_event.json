@@ -1,0 +1,22 @@
+{
+  "available_time": 5,
+  "start_time": "10:00",
+  "likes_dislikes": [
+    {
+      "activityId": "1",
+      "like": true
+    },
+    {
+      "activityId": "2",
+      "like": true
+    },
+    {
+      "activityId": "3",
+      "like": false
+    },
+    {
+      "activityId": "5",
+      "like": true
+    }
+  ]
+}
