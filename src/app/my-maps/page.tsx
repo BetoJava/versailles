@@ -55,6 +55,7 @@ function MyMapsContent() {
     const [currentIndex, setCurrentIndex] = useState(0)
     const [activities, setActivities] = useState<Activity[]>([])
     const [isLoading, setIsLoading] = useState(true)
+    const [imageError, setImageError] = useState(false)
     const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 
     // Charger les activités depuis le contexte ou le fichier JSON de fallback
@@ -124,6 +125,7 @@ function MyMapsContent() {
         const currentActivity = activities[currentIndex]
         if (currentActivity) {
             setSelectedActivity(currentActivity)
+            setImageError(false) // Reset image error for new activity
         }
 
         // Programmer la prochaine activité après 3 secondes
@@ -171,6 +173,7 @@ function MyMapsContent() {
             }
         }
         setSelectedActivity(activity)
+        setImageError(false) // Reset image error when selecting new activity
     }
 
     // Afficher un écran de chargement pendant le chargement des activités
@@ -298,15 +301,21 @@ function MyMapsContent() {
                                 {/* Image */}
                                 {selectedActivity.activityId && (
                                     <div className="relative w-full sm:w-64 h-40 sm:h-48 flex-shrink-0 rounded-lg overflow-hidden">
-                                        <img
-                                            src={`/activity_images/${selectedActivity.activityId}.jpg`}
-                                            alt={selectedActivity.name}
-                                            className="w-full h-full object-cover"
-                                            onError={(e) => {
-                                                const target = e.target as HTMLImageElement
-                                                target.style.display = 'none'
-                                            }}
-                                        />
+                                        {!imageError ? (
+                                            <img
+                                                src={`/activity_images/${selectedActivity.activityId}.jpg`}
+                                                alt={selectedActivity.name}
+                                                className="w-full h-full object-cover"
+                                                onError={() => setImageError(true)}
+                                            />
+                                        ) : (
+                                            <div className="w-full h-full bg-muted flex items-center justify-center">
+                                                <div className="text-center text-muted-foreground">
+                                                    <div className="text-4xl mb-2">🏛️</div>
+                                                    <p className="text-sm">Image non disponible</p>
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
                                 )}
 
