@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 import { buildItinerary, type DistanceMatrix } from "~/lib/itinerary/itinerary-builder";
-import { type Activity, type LikeDislike } from "~/lib/itinerary/content-based-interest";
+import { type Activity } from "~/lib/itinerary/content-based-interest";
 import activitiesV2 from "~/assets/data/activity_v2_clean.json";
 import activityDistances from "~/assets/data/activity_distances.json";
 

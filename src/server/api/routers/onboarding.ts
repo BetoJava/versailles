@@ -32,8 +32,8 @@ import swipeInfoClean from "~/assets/data/activity_swipe_info_clean.json"
 const ALL_ACTIVITIES = activitiesV2.map(activity => ({
   id: activity.activityId,
   name: activity.name,
-  description: activity.catchy_description || "",
-  reason: activity.reason || "Une expérience unique vous attend dans ce lieu exceptionnel.",
+  description: activity.catchy_description ?? "",
+  reason: activity.reason ?? "Une expérience unique vous attend dans ce lieu exceptionnel.",
   duration: Math.round(activity.duration * 60), // Convertir en minutes
   interests: {
     architecture: activity["interests.architecture"] ?? 0,

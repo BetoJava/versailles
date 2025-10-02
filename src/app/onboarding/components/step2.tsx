@@ -36,7 +36,7 @@ interface Step2Props {
 
 export function Step2({ formData, setFormData, onNext, onBack }: Step2Props) {
   const getCurrentDate = () => {
-    return new Date().toISOString().split('T')[0] || ""
+    return new Date().toISOString().split('T')[0] ?? ""
   }
 
   const getCurrentTime = () => {

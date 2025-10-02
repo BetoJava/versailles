@@ -40,7 +40,7 @@ function OnboardingPageContent() {
   const { processOnboarding, state } = useOnboarding()
 
   const getCurrentDate = () => {
-    return new Date().toISOString().split('T')[0] || ""
+    return new Date().toISOString().split('T')[0] ?? ""
   }
 
   const getCurrentTime = () => {
