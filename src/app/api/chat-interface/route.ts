@@ -23,25 +23,27 @@ export async function POST(request: NextRequest) {
         { status: 400, headers: { "Content-Type": "application/json" } }
       );
     }
+  // // Construire le prompt avec les données
+  // const systemPrompt = buildSystemPrompt(activitiesData, businessData);
+      
+  // // Construire l'historique des messages pour Mistral
+  // const messages = [
+  //   {
+  //     role: "system" as const,
+  //     content: systemPrompt,
+  //   },
+  //   ...conversationHistory.map((msg: any) => ({
+  //     role: msg.role as "user" | "assistant",
+  //     content: cleanString(msg.content),
+  //   })),
+  //   {
+  //     role: "user" as const,
+  //     content: cleanString(message),
+  //   },
+  // ];
 
-    // Construire le prompt avec les données
-    const systemPrompt = buildSystemPrompt(activitiesData, businessData);
-    
-    // Construire l'historique des messages pour Mistral
-    const messages = [
-      {
-        role: "system" as const,
-        content: systemPrompt,
-      },
-      ...conversationHistory.map((msg: any) => ({
-        role: msg.role as "user" | "assistant",
-        content: cleanString(msg.content),
-      })),
-      {
-        role: "user" as const,
-        content: cleanString(message),
-      },
-    ];
+    // Message d'obstruction à streamer
+    const obstructionMessage = "Déployez l'application avec votre clé API Mistral AI pour utiliser la fonctionnalité de chat. Pour plus d'info : https://github.com/BetoJava/versailles";
 
     // Créer un encoder de texte pour le streaming
     const encoder = new TextEncoder();
@@ -50,23 +52,33 @@ export async function POST(request: NextRequest) {
     const stream = new ReadableStream({
       async start(controller) {
         try {
-          // Appel à Mistral AI avec streaming
-          const completion = await client.chat.completions.create({
-            model: "mistral-large-latest",
-            messages: messages,
-            temperature: 0.7,
-            max_tokens: 10000,
-            stream: true,
-          });
+          // // Appel à Mistral AI avec streaming
+          // const completion = await client.chat.completions.create({
+          //   model: "mistral-large-latest",
+          //   messages: messages,
+          //   temperature: 0.7,
+          //   max_tokens: 10000,
+          //   stream: true,
+          // });
 
-          // Streamer les chunks
-          for await (const chunk of completion) {
-            const content = chunk.choices[0]?.delta?.content;
+          // // Streamer les chunks
+          // for await (const chunk of completion) {
+          //   const content = chunk.choices[0]?.delta?.content;
             
-            if (content) {
-              const data = JSON.stringify({ content });
-              controller.enqueue(encoder.encode(`data: ${data}\n\n`));
-            }
+          //   if (content) {
+          //     const data = JSON.stringify({ content });
+          //     controller.enqueue(encoder.encode(`data: ${data}\n\n`));
+          //   }
+          // Diviser le message en mots pour simuler un streaming naturel
+          const words = obstructionMessage.split(' ');
+          
+          for (let i = 0; i < words.length; i++) {
+            const word = words[i];
+            const data = JSON.stringify({ content: i === 0 ? word : ` ${word}` });
+            controller.enqueue(encoder.encode(`data: ${data}\n\n`));
+            
+            // Ajouter un petit délai pour simuler le streaming
+            await new Promise(resolve => setTimeout(resolve, 50));
           }
 
           // Envoyer le signal de fin

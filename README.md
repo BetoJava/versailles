@@ -1,19 +1,24 @@
-# Versailles - Application de Visite Personnalisée
-Team : Joueurs de paume
+# Hackathon - Les Clefs de Versailles 
+**🏆 1er prix, team "Joueurs de Paume" 🏆**
+
+![pic](readme\pic.webp)
+<br></br>
 
 Une application web moderne en Next.js pour créer des itinéraires personnalisés au Château de Versailles, utilisant l'intelligence artificielle pour adapter les recommandations aux préférences des visiteurs.
 
 ## Application hébergée sur Vercel à :
 https://versailles-three.vercel.app
 
-Route POST configurée sur https://versailles-three.vercel.app/api/chat
+
+[![Deploy on Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/BetoJava/versailles)
+
 
 
 ## 🏗️ Architecture et Choix Techniques
 
 ### Stack Technologique
 
-- **Frontend** : Next.js 15 avec React 19, TypeScript
+- **Frontend** : Next.js avec React, TypeScript
 - **Styling** : Tailwind CSS avec composants Radix UI
 - **Base de données** : Stockée dans un json
 - **IA** : Mistral AI pour le traitement du langage naturel
@@ -23,8 +28,8 @@ Route POST configurée sur https://versailles-three.vercel.app/api/chat
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Frontend      │    │   Backend       │    │   IA Services  │
-│   (Next.js)     │◄──►│   (tRPC API)    │◄──►│   (Mistral AI) │
+│   Frontend      │    │   Backend       │    │   IA Services   │
+│   (Next.js)     │◄──►│   (tRPC API)    │◄──►│   (Mistral AI)  │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
                                 │
                                 │
@@ -69,10 +74,9 @@ pnpm install
 2. **Configuration de l'environnement**
 ```bash
 # Copier le fichier d'exemple
-cp src/env.example.js .env
+cp src/env.example .env
 
 # Éditer .env.local avec vos valeurs
-DATABASE_URL="peu-importe-il-n-y-a-pas-de-db-finalement"
 MISTRAL_API_KEY="votre_cle_mistral"
 ```
 
@@ -104,8 +108,7 @@ src/
 │   ├── itinerary/         # Algorithmes d'itinéraire
 │   └── activity-processing.ts
 ├── server/                # Backend tRPC
-│   ├── api/               # Routers tRPC
-│   └── db/                # Schéma de base de données
+│   └── api/               # Routers tRPC
 ├── assets/                # Données statiques
 │   └── data/              # JSON des activités et commerces
 └── contexts/              # Contextes React globaux

@@ -44,14 +44,16 @@ export async function POST(request: NextRequest) {
     ];
 
     // Appel à Mistral AI sans streaming
-    const completion = await client.chat.completions.create({
-      model: "mistral-large-latest",
-      messages: messages,
-      temperature: 0.7,
-      max_tokens: 50000,
-    });
+    // const completion = await client.chat.completions.create({
+    //   model: "mistral-large-latest",
+    //   messages: messages,
+    //   temperature: 0.7,
+    //   max_tokens: 50000,
+    // });
 
-    const response = completion.choices[0]?.message?.content || "Désolé, je n'ai pas pu générer de réponse.";
+    // const response = completion.choices[0]?.message?.content || "Désolé, je n'ai pas pu générer de réponse.";
+
+    const response = "Déployez l'application avec votre clé API Mistral AI pour utiliser la fonctionnalité de chat."
 
     return new Response(
       JSON.stringify({ answer: response }),
