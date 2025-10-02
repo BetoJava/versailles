@@ -1,7 +1,7 @@
 # Hackathon - Les Clefs de Versailles 
 **🏆 1er prix, team "Joueurs de Paume" 🏆**
 
-![pic](readme\pic.webp)
+<img width="1919" height="902" alt="image" src="readme\pic.webp" />
 <br></br>
 
 Une application web moderne en Next.js pour créer des itinéraires personnalisés au Château de Versailles, utilisant l'intelligence artificielle pour adapter les recommandations aux préférences des visiteurs.
